@@ -304,8 +304,7 @@
    "clip_vision_output_pose": [
     "261:220",
     0
-   ],
-   "continue_motion": null
+   ]
   },
   "_meta": {
    "title": "WanAnimate2ToVideo"
