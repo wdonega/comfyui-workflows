@@ -1,4 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 HR Endless Sampler (Gemma 4 dirige os chunks)** · Idioma: [English](README.md) · **Português**
+[comfyui-workflows](../../README_ptBR.md) › **H3 HR Endless Sampler (Gemma 4 dirige os chunks)**
+
+Idioma: [English](README.md) · **Português**
 
 # H3 HR Endless Sampler (Gemma 4 dirige os chunks)
 

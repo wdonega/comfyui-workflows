@@ -1,4 +1,6 @@
-[comfyui-workflows](../../README.md) › **H3 Long Video (LLM-split prompt)** · Language: **English** · [Português](README_ptBR.md)
+[comfyui-workflows](../../README.md) › **H3 Long Video (LLM-split prompt)**
+
+Language: **English** · [Português](README_ptBR.md)
 
 # H3 Long Video (LLM-split prompt)
 

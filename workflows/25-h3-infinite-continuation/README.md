@@ -1,4 +1,6 @@
-[comfyui-workflows](../../README.md) › **Herrgott's H3 Infinite Continuation (v1.4)** · Language: **English** · [Português](README_ptBR.md)
+[comfyui-workflows](../../README.md) › **Herrgott's H3 Infinite Continuation (v1.4)**
+
+Language: **English** · [Português](README_ptBR.md)
 
 # Herrgott's H3 Infinite Continuation (v1.4)
 

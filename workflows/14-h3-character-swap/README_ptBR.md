@@ -1,4 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Character Swap (Relay 2.0)** · Idioma: [English](README.md) · **Português**
+[comfyui-workflows](../../README_ptBR.md) › **H3 Character Swap (Relay 2.0)**
+
+Idioma: [English](README.md) · **Português**
 
 # H3 Character Swap (Relay 2.0)
 

@@ -1,4 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Ref2VA · TaoMate 3 steps** · Idioma: [English](README.md) · **Português**
+[comfyui-workflows](../../README_ptBR.md) › **H3 Ref2VA · TaoMate 3 steps**
+
+Idioma: [English](README.md) · **Português**
 
 # H3 Ref2VA · TaoMate 3 steps
 

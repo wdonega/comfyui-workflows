@@ -139,7 +139,7 @@ def readme(c, models, total, lang):
     t = c.get("test", {})
     lic = c["license"]
     crumb = f"[comfyui-workflows]({s['root']}) › **{tr(c['title'], lang)}**"
-    r = [f"{crumb} · {s['switch']}", "", f"# {tr(c['title'], lang)}", "", tr(c["summary"], lang), ""]
+    r = [crumb, "", s["switch"], "", f"# {tr(c['title'], lang)}", "", tr(c["summary"], lang), ""]
     r += ["| | |", "|---|---|",
           f"| {s['plan']} | {c.get('plan', '—')} |",
           f"| Status | {s['status'].get(c['status'], c['status'])} |",
