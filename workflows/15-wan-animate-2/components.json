@@ -1,0 +1,84 @@
+{
+ "kind": "video",
+ "title": {
+  "pt": "Wan Animate 2 · anima um personagem com o movimento de um vídeo",
+  "en": "Wan Animate 2 · animate a character with a video's motion"
+ },
+ "short": {
+  "pt": "Transfere pose, corpo e expressões de um vídeo-guia para a imagem de um personagem",
+  "en": "Transfers pose, body motion and expressions from a driving video to a character image"
+ },
+ "plan": "#15",
+ "family": "Wan 2.2 (Animate 2)",
+ "summary": {
+  "pt": "O template oficial `video_wan_animate2_distilled` (versão destilada, 10 steps `lcm`, CFG 1) em INT8 convrot com os nós nativos `WanAnimate2ToVideo` e `WanAnimate2Cache`. Recebe uma imagem do personagem e um vídeo-guia; o personagem repete a pose, o movimento do corpo e as expressões do vídeo. Mantém o áudio do vídeo-guia.",
+  "en": "The official `video_wan_animate2_distilled` template (distilled, 10 `lcm` steps, CFG 1) in INT8 convrot with the native `WanAnimate2ToVideo` and `WanAnimate2Cache` nodes. Takes a character image and a driving video; the character repeats the video's pose, body motion and expressions. Keeps the driving video's audio."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "personagem de corpo inteiro + vídeo-guia de uma criança correndo, 480x848, 81 frames, 10 steps: o personagem corre com as mesmas pernas, braços e aproximação da câmera do guia; o fundo é o da imagem do personagem. Com uma referência só de busto, só as expressões e a cabeça foram transferidas",
+   "en": "full-body character + driving video of a child running, 480x848, 81 frames, 10 steps: the character runs with the same legs, arms and approach to the camera as the guide; the background is the character image's. With a bust-only reference, only the expressions and head motion were transferred"
+  },
+  "clip": "3.4 s",
+  "time_s": 462,
+  "vram_mib": 15345,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Wan-Animate-2:diffusion_models/wan_animate_2_distill_int8_convrot.safetensors",
+   "role": {
+    "pt": "Wan Animate 2 destilado (INT8)",
+    "en": "Wan Animate 2 distilled (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Wan-Animate-2:text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+   "role": {
+    "pt": "text encoder UMT5-XXL (FP8)",
+    "en": "UMT5-XXL text encoder (FP8)"
+   }
+  },
+  {
+   "dest": "clip_vision",
+   "hf": "Comfy-Org/Wan-Animate-2:clip_vision/clip_vision_h.safetensors",
+   "role": {
+    "pt": "CLIP Vision H",
+    "en": "CLIP Vision H"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Wan-Animate-2:vae/Wan2_1_VAE_bf16.safetensors",
+   "role": {
+    "pt": "VAE do Wan 2.1",
+    "en": "Wan 2.1 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. **LoadImage**: o personagem (`character.png`), **de corpo inteiro** se o vídeo-guia tiver movimento de corpo (com um busto, só cabeça e expressões são transferidas).\n2. **LoadVideo**: o vídeo-guia (`driving.mp4`).\n3. Dois prompts: a ação (ex.: `A man running down a rainy street`) e a aparência do personagem.\n4. Resolução nos **ResizeImageMaskNode** do vídeo (480x854 no template) e `length` no **WanAnimate2ToVideo** (81 frames).",
+  "en": "1. **LoadImage**: the character (`character.png`), **full body** if the driving video has body motion (with a bust, only head and expressions are transferred).\n2. **LoadVideo**: the driving video (`driving.mp4`).\n3. Two prompts: the action (e.g. `A man running down a rainy street`) and the character's appearance.\n4. Resolution in the video's **ResizeImageMaskNode** (480x854 in the template) and `length` in **WanAnimate2ToVideo** (81 frames)."
+ },
+ "notes": {
+  "pt": "- O plano avisava que o loader **GGUF** padrão ignora o vídeo-guia sem avisar; aqui foi usado o INT8 convrot com loader nativo e o movimento do guia apareceu no resultado.\n- O template salva também um vídeo de comparação lado a lado (resultado + guia).\n- O personagem fica no cenário da própria imagem; para inserir no vídeo-guia, seria o modo de substituição (não testado).",
+  "en": "- The plan warned that the default **GGUF** loader silently ignores the driving video; here INT8 convrot with the native loader was used and the guide's motion showed up in the result.\n- The template also saves a side-by-side comparison video (result + guide).\n- The character stays in its own image's setting; inserting it into the driving video would be the replacement mode (not tested)."
+ }
+}
