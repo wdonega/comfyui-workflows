@@ -1,0 +1,133 @@
+{
+ "title": {
+  "pt": "LTX 2.3 · Face Swap (head swap)",
+  "en": "LTX 2.3 · Face Swap (head swap)"
+ },
+ "short": {
+  "pt": "Troca a cabeça/rosto de uma pessoa num vídeo mantendo corpo, roupa, movimento e áudio",
+  "en": "Swaps a person's head/face in a video keeping body, clothing, motion and audio"
+ },
+ "plan": "#17",
+ "family": "LTX 2.3",
+ "summary": {
+  "pt": "Workflow de head swap com o LTX 2.3 destilado e o LoRA **BFS head swap v3** do @Alissonerdx. O `ReservedRegionFrameComposer` (BFSNodes) monta cada frame com o rosto de referência numa faixa reservada ao lado do vídeo; o LTX gera o vídeo com a cabeça trocada e o áudio original é mantido. Também salva um vídeo de comparação lado a lado.",
+  "en": "Head swap workflow with the distilled LTX 2.3 and @Alissonerdx's **BFS head swap v3** LoRA. `ReservedRegionFrameComposer` (BFSNodes) builds each frame with the reference face in a reserved strip next to the video; LTX generates the video with the swapped head and the original audio is kept. It also saves a side-by-side comparison video."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "fonte 4 s (97 frames, 736x1280, 24 fps) + 1 imagem de rosto, 8 steps (euler_ancestral_cfg_pp + bong_tangent): cabeça trocada, pose/câmera/cenário/roupa preservados; elementos do fundo que não estavam no prompt (monstro, fumaça) sumiram",
+   "en": "4 s source (97 frames, 736x1280, 24 fps) + 1 face image, 8 steps (euler_ancestral_cfg_pp + bong_tangent): head swapped, pose/camera/set/clothing kept; background elements missing from the prompt (monster, smoke) disappeared"
+  },
+  "clip": "4 s",
+  "time_s": 522,
+  "vram_mib": 15821,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "LTX-2 Community License",
+  "url": "https://github.com/Lightricks/LTX-2/blob/main/LICENSE",
+  "short": {
+   "pt": "LTX-2 Community (grátis < US$ 10 mi)",
+   "en": "LTX-2 Community (free < US$ 10M)"
+  },
+  "summary": {
+   "pt": "Uso pessoal e comercial grátis para pessoas e empresas com receita anual abaixo de US$ 10 mi; acima disso, licença comercial paga da Lightricks. **Sem restrição de território.** A Lightricks não reivindica as saídas (são suas). Não pode usar saídas para treinar modelos concorrentes. O text encoder Gemma 3 segue os Gemma Terms of Use do Google (política de uso proibido; saídas livres).",
+   "en": "Free personal and commercial use for individuals and companies with annual revenue under US$ 10M; above that, a paid commercial license from Lightricks. **No territory restrictions.** Lightricks claims no rights over the outputs (they are yours). Outputs may not be used to train competing models. The Gemma 3 text encoder follows Google's Gemma Terms of Use (prohibited-use policy; outputs are free)."
+  }
+ },
+ "nodes": [
+  {
+   "name": "KJNodes",
+   "registry": "comfyui-kjnodes",
+   "version": "1.5.0",
+   "page": "https://github.com/kijai/ComfyUI-KJNodes"
+  },
+  {
+   "name": "VideoHelperSuite",
+   "registry": "comfyui-videohelpersuite",
+   "version": "1.7.9",
+   "page": "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
+  },
+  {
+   "name": "ComfyUI-BFSNodes",
+   "url": "https://github.com/alisson-anjos/ComfyUI-BFSNodes",
+   "commit": "64be9ced9851f7e440713d6695c936b9f22a3a1a",
+   "page": "https://github.com/alisson-anjos/ComfyUI-BFSNodes"
+  },
+  {
+   "name": "RES4LYF",
+   "url": "https://github.com/ClownsharkBatwing/RES4LYF",
+   "commit": "56e44755d866c87ff9cb4b6608c8e42155db6ecc",
+   "page": "https://github.com/ClownsharkBatwing/RES4LYF"
+  }
+ ],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Kijai/LTX2.3_comfy:diffusion_models/ltx-2.3-22b-distilled_transformer_only_fp8_input_scaled_v3.safetensors",
+   "role": {
+    "pt": "LTX 2.3 22B destilado, só transformer (FP8 com escala de ativação)",
+    "en": "LTX 2.3 22B distilled, transformer only (FP8 with activation scales)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Kijai/LTX2.3_comfy:vae/LTX23_video_vae_bf16.safetensors",
+   "role": {
+    "pt": "VAE de vídeo",
+    "en": "video VAE"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Kijai/LTX2.3_comfy:vae/LTX23_audio_vae_bf16.safetensors",
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/ltx-2:split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
+   "role": {
+    "pt": "text encoder Gemma 3 12B (FP8)",
+    "en": "Gemma 3 12B text encoder (FP8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Kijai/LTX2.3_comfy:text_encoders/ltx-2.3_text_projection_bf16.safetensors",
+   "role": {
+    "pt": "projeção de texto do LTX 2.3",
+    "en": "LTX 2.3 text projection"
+   }
+  },
+  {
+   "dest": "latent_upscale_models",
+   "hf": "Lightricks/LTX-2.3:ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
+   "role": {
+    "pt": "upscaler espacial x2 (2º estágio)",
+    "en": "x2 spatial upscaler (stage 2)"
+   }
+  },
+  {
+   "dest": "loras",
+   "file": "ltx23-head_swap_v3_rank_adaptive_fro_098.safetensors",
+   "hf": "Alissonerdx/BFS-Best-Face-Swap-Video:ltx-2.3/head_swap_v3_rank_adaptive_fro_098.safetensors",
+   "role": {
+    "pt": "LoRA BFS head swap v3 (renomeado como o workflow espera)",
+    "en": "BFS head swap v3 LoRA (renamed as the workflow expects)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. **VHS LoadVideo**: o vídeo-fonte (`source.mp4`); a duração em segundos fica no **PrimitiveFloat** (5 no original) e o fps no outro (24).\n2. **LoadImage**: o rosto/cabeça a colocar (`face.png`), de frente e bem iluminado.\n3. **Prompt**: descreva a pessoa que deve aparecer **e o resto da cena** (fundo, objetos, luz). O que não estiver no prompt pode sumir.\n4. Mantenha 8 steps, sampler `euler_ancestral_cfg_pp` e scheduler `bong_tangent` (RES4LYF); LoRA de head swap em 1.0.",
+  "en": "1. **VHS LoadVideo**: the source video (`source.mp4`); duration in seconds is in the **PrimitiveFloat** (5 in the original) and fps in the other one (24).\n2. **LoadImage**: the face/head to insert (`face.png`), frontal and well lit.\n3. **Prompt**: describe the person who should appear **and the rest of the scene** (background, props, lighting). Anything not in the prompt may disappear.\n4. Keep 8 steps, `euler_ancestral_cfg_pp` sampler and `bong_tangent` scheduler (RES4LYF); head swap LoRA at 1.0."
+ },
+ "notes": {
+  "pt": "- **Créditos:** workflow original de Rob no [comfy.org](https://comfy.org/workflows/download/bed989744195.json?filename=bed989744195), LoRA de [@Alissonerdx](https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap-Video). Esta pasta tem a versão testada, convertida para API e reorganizada automaticamente (o layout original está no link).\n- **BFSNodes e RES4LYF:** o RES4LYF precisa de `PyWavelets` (`pip install --no-deps PyWavelets` no Python do ComfyUI). As versões recentes do BFSNodes aparecem como *Flagged* no registro do ComfyUI; o código do commit testado foi revisado (`subprocess` só para ffmpeg, downloads só de OpenCV Zoo e Comfy-Org, patch do Wan inativo quando o core já suporta Bernini).\n- O mesmo autor publica um LoRA de head swap para o **MiniMax H3** (`h3/minimax_h3_head_swap_v1.0_r32.safetensors`).\n- Mais rápido que o Character Swap do H3 (#14: 868 s para 4 s) e mantém a roupa original; o #14 troca o personagem inteiro.\n- Licença: trocar o rosto de pessoas reais sem consentimento pode violar direito de imagem; use com pessoas que autorizaram ou rostos fictícios.",
+  "en": "- **Credits:** original workflow by Rob on [comfy.org](https://comfy.org/workflows/download/bed989744195.json?filename=bed989744195), LoRA by [@Alissonerdx](https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap-Video). This folder holds the tested version, converted to API and automatically re-laid-out (the original layout is at the link).\n- **BFSNodes and RES4LYF:** RES4LYF needs `PyWavelets` (`pip install --no-deps PyWavelets` in ComfyUI's Python). Recent BFSNodes versions show up as *Flagged* in the ComfyUI registry; the tested commit's code was reviewed (`subprocess` only for ffmpeg, downloads only from OpenCV Zoo and Comfy-Org, the Wan patch stays inactive when core already supports Bernini).\n- The same author publishes a head swap LoRA for **MiniMax H3** (`h3/minimax_h3_head_swap_v1.0_r32.safetensors`).\n- Faster than H3 Character Swap (#14: 868 s for 4 s) and keeps the original clothing; #14 swaps the whole character.\n- License: swapping real people's faces without consent may violate image rights; use people who agreed or fictional faces."
+ }
+}
