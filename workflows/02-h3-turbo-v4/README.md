@@ -1,56 +1,58 @@
+Language: **English** · [Português](README_ptBR.md)
+
 # H3 Turbo v4 (larryvrh)
 
-O Ref2VA base com o **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, recomendado pelo autor) e o **MiniMax-H3 Turbo Sampler**, no lugar do TaoMate. O sampler cuida das escalas separadas de vídeo e áudio. Faixa útil: 4 a 8 steps, scheduler `simple`.
+The base Ref2VA with the **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, the author's recommendation) and the **MiniMax-H3 Turbo Sampler** instead of TaoMate. The sampler handles the separate video and audio schedules. Useful range: 4 to 8 steps, `simple` scheduler.
 
 | | |
 |---|---|
-| Item do plano | #2 |
-| Status | ✅ testado |
-| Família | MiniMax H3 |
-| Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
-| Download total | 40.85 GB |
-| Teste | 736x1280, 362 frames (15 s), 6 steps, mesma cena/seed do workflow base: vídeo coerente, sem artefatos, fotografia mais escura e expressões mais dramáticas; ~2x mais lento que o TaoMate 3 steps |
-| Tempo | **16min 48s** (RTX 5060 Ti 16 GB, 2026-10-22) |
-| Pico de VRAM | 15603 MiB |
+| Plan item | #2 |
+| Status | ✅ tested |
+| Family | MiniMax H3 |
+| License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
+| Total download | 40.85 GB |
+| Test | 736x1280, 362 frames (15 s), 6 steps, same scene/seed as the base workflow: coherent video, no artifacts, darker cinematography and more dramatic expressions; ~2x slower than TaoMate 3 steps |
+| Time | **16min 48s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Peak VRAM | 15603 MiB |
 
-## Arquivos desta pasta
+## Files in this folder
 
-| Arquivo | O que é |
+| File | What it is |
 |---|---|
-| `workflow.json` | Workflow para arrastar na interface do ComfyUI |
-| `workflow.api.json` | Mesmo workflow no formato da API (parâmetros do teste, entradas de exemplo) |
-| `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |
-| `components.json` | Fonte dos dados deste README e do install.sh |
+| `workflow.json` | Workflow to drag into the ComfyUI interface |
+| `workflow.api.json` | Same workflow in API format (test parameters, example inputs) |
+| `install.sh` | Installs custom nodes and downloads the models into the right folders |
+| `components.json` | Source of this README and of install.sh |
 
-## Instalação
+## Installation
 
 ```bash
-# na máquina com o ComfyUI (o script confere se a pasta é a raiz do ComfyUI)
-bash install.sh /caminho/do/ComfyUI
+# on the ComfyUI machine (the script checks that the folder is the ComfyUI root)
+bash install.sh /path/to/ComfyUI
 
-# ComfyUI em Docker (container "comfyui")
+# ComfyUI in Docker (container "comfyui")
 docker exec -i -e HF_TOKEN comfyui bash -s -- /root/ComfyUI < install.sh
 ```
 
-Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm o SHA-256 conferido (`VERIFY_EXISTING=1` confere também os que já existiam).
+Files that already exist with the right size are skipped. New downloads have their SHA-256 checked (`VERIFY_EXISTING=1` also checks the existing ones).
 
 ## Custom nodes
 
-| Nó | Versão testada | Página |
+| Node | Tested version | Page |
 |---|---|---|
 | KJNodes | 1.5.0 | https://github.com/kijai/ComfyUI-KJNodes |
 | VideoHelperSuite | 1.7.9 | https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite |
 | ComfyUI-MiniMax-H3-Turbo | `4274783` | https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo |
 
-## Modelos
+## Models
 
-| Pasta (`models/…`) | Arquivo | Papel | Tamanho | Download | Página |
+| Folder (`models/…`) | File | Role | Size | Download | Page |
 |---|---|---|---|---|---|
-| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | modelo Ref2VA (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | text encoder Qwen3-VL 32B (NVFP4, Blackwell) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_video_vae_int8_convrot.safetensors` | VAE de vídeo | 2.81 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_int8_convrot.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | VAE de áudio | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `loras/` | `minimax_h3_turbo_v4_step600_ema.safetensors` | LoRA Turbo v4-600 (Apache-2.0; herda as regras do H3) | 0.78 GB | [download](https://huggingface.co/larryvrh/MiniMax-H3-Turbo-Lora/resolve/43a74557ac3f6539db8e0f2a959d03feb7a81480/minimax_h3_turbo_v4_step600_ema.safetensors) | [página](https://huggingface.co/larryvrh/MiniMax-H3-Turbo-Lora) |
+| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | Ref2VA model (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | Qwen3-VL 32B text encoder (NVFP4, Blackwell) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_video_vae_int8_convrot.safetensors` | video VAE | 2.81 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_int8_convrot.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | audio VAE | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `loras/` | `minimax_h3_turbo_v4_step600_ema.safetensors` | Turbo v4-600 LoRA (Apache-2.0; inherits the H3 terms) | 0.78 GB | [download](https://huggingface.co/larryvrh/MiniMax-H3-Turbo-Lora/resolve/43a74557ac3f6539db8e0f2a959d03feb7a81480/minimax_h3_turbo_v4_step600_ema.safetensors) | [page](https://huggingface.co/larryvrh/MiniMax-H3-Turbo-Lora) |
 
 <details><summary>SHA-256</summary>
 
@@ -64,18 +66,18 @@ Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm 
 
 </details>
 
-## Como usar
+## How to use
 
-1. Igual ao workflow base; o modelo passa por **MiniMax-H3 Turbo LoRA** (força 1.0) e o `SamplerCustomAdvanced` recebe o **MiniMax-H3 Turbo Sampler**.
-2. Steps no **BasicScheduler** (`simple`): 4 é o mínimo, 6–8 ficam visivelmente melhores; acima de 8 começa a dar nitidez exagerada.
-3. `low_vram` desligado (bypass) é o mais nítido; ligado (merge) usa menos VRAM mas fica mais suave em bases INT8.
+1. Same as the base workflow; the model goes through **MiniMax-H3 Turbo LoRA** (strength 1.0) and `SamplerCustomAdvanced` gets the **MiniMax-H3 Turbo Sampler**.
+2. Steps in **BasicScheduler** (`simple`): 4 is the minimum, 6–8 look noticeably better; above 8 it starts to over-sharpen.
+3. `low_vram` off (bypass) is the sharpest; on (merge) uses less VRAM but is softer on INT8 bases.
 
-## Licença
+## License
 
-Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir "MiniMax H3". LoRAs de terceiros herdam essas regras.
+Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display "MiniMax H3". Third-party LoRAs inherit these terms.
 
-## Observações
+## Notes
 
-- Comparado ao TaoMate 3 steps na mesma cena: 1008 s contra 524 s. Vale como alternativa de estética, não de velocidade.
-- O autor avisa que, em 4 steps com movimento rápido, o v4 pode deixar rastro; 6–8 steps resolvem.
-- O LoRA foi feito para T2V/I2V; aqui foi aplicado no Ref2VA e funcionou.
+- Compared with TaoMate 3 steps on the same scene: 1008 s vs 524 s. Worth it as an aesthetic alternative, not for speed.
+- The author warns that at 4 steps with fast motion v4 can leave trails; 6–8 steps fix it.
+- The LoRA was made for T2V/I2V; here it was applied to Ref2VA and worked.

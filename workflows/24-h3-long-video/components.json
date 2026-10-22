@@ -1,13 +1,28 @@
 {
- "title": "H3 Long Video (prompt dividido por LLM)",
- "short": "Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM",
+ "title": {
+  "pt": "H3 Long Video (prompt dividido por LLM)",
+  "en": "H3 Long Video (LLM-split prompt)"
+ },
+ "short": {
+  "pt": "Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM",
+  "en": "Long videos from chained segments, with the prompt split by an LLM"
+ },
  "plan": "#24",
  "family": "MiniMax H3",
- "summary": "Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (qualquer servidor compatível com a API da OpenAI; no teste, um llama.cpp local em outra GPU) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).",
+ "summary": {
+  "pt": "Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (qualquer servidor compatível com a API da OpenAI; no teste, um llama.cpp local em outra GPU) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).",
+  "en": "Generates videos longer than a single H3 sampling by chaining segments that continue motion and audio. An LLM (any OpenAI-compatible server; in the test, a local llama.cpp on another GPU) splits the story into per-segment prompts with the right timing. Uses Ref2VA + Ref2V Turbo 8-step LoRA and sparse attention (`BlockSparseAttention`)."
+ },
  "status": "testado",
  "test": {
-  "what": "16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next (llama.cpp local, outra GPU) dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo",
-  "clip": "16 s",
+  "what": {
+   "pt": "16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next (llama.cpp local, outra GPU) dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo",
+   "en": "16 s in 2 segments of 8 s, 960x544, 8 steps, 1 reference; qwen3.8-flash-next (local llama.cpp, another GPU) split the story correctly (dialogue in segment 2); continuous join, consistent identity, continuous audio"
+  },
+  "clip": {
+   "pt": "16 s",
+   "en": "16 s"
+  },
   "time_s": 687,
   "vram_mib": 15659,
   "gpu": "RTX 5060 Ti 16 GB",
@@ -15,9 +30,15 @@
  },
  "license": {
   "name": "MiniMax H3 Community License",
-  "short": "MiniMax H3 Community (⚠️ território)",
+  "short": {
+   "pt": "MiniMax H3 Community (⚠️ território)",
+   "en": "MiniMax H3 Community (⚠️ territory)"
+  },
   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
-  "summary": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."
+  "summary": {
+   "pt": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras.",
+   "en": "Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display \"MiniMax H3\". Third-party LoRAs inherit these terms."
+  }
  },
  "nodes": [
   {
@@ -31,29 +52,50 @@
   {
    "dest": "diffusion_models",
    "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
-   "role": "modelo Ref2VA (INT8)"
+   "role": {
+    "pt": "modelo Ref2VA (INT8)",
+    "en": "Ref2VA model (INT8)"
+   }
   },
   {
    "dest": "text_encoders",
    "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
-   "role": "text encoder Qwen3-VL 32B (NVFP4)"
+   "role": {
+    "pt": "text encoder Qwen3-VL 32B (NVFP4)",
+    "en": "Qwen3-VL 32B text encoder (NVFP4)"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_fp16.safetensors",
-   "role": "VAE de vídeo fp16"
+   "role": {
+    "pt": "VAE de vídeo fp16",
+    "en": "video VAE fp16"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors",
-   "role": "VAE de áudio"
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
   },
   {
    "dest": "loras",
    "hf": "lightx2v/Minimax-h3-Turbo:minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors",
-   "role": "LoRA Ref2V Turbo 8 steps v1.1 (força 0.8)"
+   "role": {
+    "pt": "LoRA Ref2V Turbo 8 steps v1.1 (força 0.8)",
+    "en": "Ref2V Turbo 8-step v1.1 LoRA (strength 0.8)"
+   }
   }
  ],
- "usage": "1. No **Ref Prompt Builder**, escolha as imagens de referência (`pictures`) e escreva a história inteira; cite `<Picture 1>` etc.\n2. No **H3 Prompt API**: `api_url` = servidor compatível com OpenAI (`http://localhost:8080/v1` neste arquivo; DeepSeek no original do autor), `model` do servidor. `max_tokens` com folga se o modelo \"pensa\" antes de responder.\n3. No **H3 Long Video**: `total_seconds` (duração final) e `segment_seconds` (tamanho de cada segmento). Mais de um segmento exige o Prompt API conectado.\n4. `local_llm` = `auto`: só descarrega os modelos do ComfyUI se a URL for localhost. Se o seu LLM roda em outra máquina ou GPU, use o endereço dela e nada é descarregado.",
- "notes": "- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.\n- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.\n- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó."
+ "usage": {
+  "pt": "1. No **Ref Prompt Builder**, escolha as imagens de referência (`pictures`) e escreva a história inteira; cite `<Picture 1>` etc.\n2. No **H3 Prompt API**: `api_url` = servidor compatível com OpenAI (`http://localhost:8080/v1` neste arquivo; DeepSeek no original do autor), `model` do servidor. `max_tokens` com folga se o modelo \"pensa\" antes de responder.\n3. No **H3 Long Video**: `total_seconds` (duração final) e `segment_seconds` (tamanho de cada segmento). Mais de um segmento exige o Prompt API conectado.\n4. `local_llm` = `auto`: só descarrega os modelos do ComfyUI se a URL for localhost. Se o seu LLM roda em outra máquina ou GPU, use o endereço dela e nada é descarregado.",
+  "en": "1. In **Ref Prompt Builder**, pick the reference images (`pictures`) and write the whole story; refer to `<Picture 1>` etc.\n2. In **H3 Prompt API**: `api_url` = an OpenAI-compatible server (`http://localhost:8080/v1` in this file; DeepSeek in the author's original), `model` from that server. Give `max_tokens` headroom if the model \"thinks\" before answering.\n3. In **H3 Long Video**: `total_seconds` (final length) and `segment_seconds` (length of each segment). More than one segment requires the Prompt API connected.\n4. `local_llm` = `auto`: it only unloads ComfyUI's models when the URL is localhost. If your LLM runs on another machine or GPU, use its address and nothing is unloaded."
+ },
+ "notes": {
+  "pt": "- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.\n- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.\n- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.",
+  "en": "- The log with each segment's prompts goes to `output/h3_prompt_logs/`.\n- The author recommends strong LLMs (27B dense or DeepSeek) to split timed dialogue; qwen3.8-flash-next (local llama.cpp) got it right in the test.\n- For the UI workflow with the author's original layout (subgraph), see `example_workflows/` in the node's repository."
+ }
 }

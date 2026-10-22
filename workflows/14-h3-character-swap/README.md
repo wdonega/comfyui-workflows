@@ -1,57 +1,59 @@
+Language: **English** · [Português](README_ptBR.md)
+
 # H3 Character Swap (Relay 2.0)
 
-Workflow oficial do autor (akatz-ai) com o **H3 Relay 2.0**: o SAM 3.1 mascara a pessoa descrita, e o Ref2VA com o LoRA de Character Swap v1.5 + Turbo FL2V 8 steps troca a identidade pela imagem de referência. Preserva movimento, câmera, cenário e a trilha de áudio original. Vídeos longos são feitos em janelas.
+The author's (akatz-ai) official workflow with **H3 Relay 2.0**: SAM 3.1 masks the described person, and Ref2VA with the Character Swap v1.5 LoRA + FL2V Turbo 8-step swaps the identity for the reference image. Keeps motion, camera, set and the original soundtrack. Long videos are processed in windows.
 
 | | |
 |---|---|
-| Item do plano | #14 |
-| Status | ✅ testado |
-| Família | MiniMax H3 |
-| Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
-| Download total | 46.33 GB |
-| Teste | fonte 4 s (96 frames, 736x1280, 24 fps), subject `boy`, receita do autor (8 steps, er_sde, CFG 1, LoRAs 1.0): identidade trocada, pose/cena/tempo preservados; roupa não veio da referência |
-| Tempo | **14min 28s** (RTX 5060 Ti 16 GB, 2026-10-22) |
-| Pico de VRAM | não medido |
+| Plan item | #14 |
+| Status | ✅ tested |
+| Family | MiniMax H3 |
+| License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
+| Total download | 46.33 GB |
+| Test | 4 s source (96 frames, 736x1280, 24 fps), subject `boy`, author's recipe (8 steps, er_sde, CFG 1, LoRAs 1.0): identity swapped, pose/scene/timing preserved; clothing did not follow the reference |
+| Time | **14min 28s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Peak VRAM | not measured |
 
-## Arquivos desta pasta
+## Files in this folder
 
-| Arquivo | O que é |
+| File | What it is |
 |---|---|
-| `workflow.json` | Workflow para arrastar na interface do ComfyUI |
-| `workflow.api.json` | Mesmo workflow no formato da API (parâmetros do teste, entradas de exemplo) |
-| `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |
-| `components.json` | Fonte dos dados deste README e do install.sh |
+| `workflow.json` | Workflow to drag into the ComfyUI interface |
+| `workflow.api.json` | Same workflow in API format (test parameters, example inputs) |
+| `install.sh` | Installs custom nodes and downloads the models into the right folders |
+| `components.json` | Source of this README and of install.sh |
 
-## Instalação
+## Installation
 
 ```bash
-# na máquina com o ComfyUI (o script confere se a pasta é a raiz do ComfyUI)
-bash install.sh /caminho/do/ComfyUI
+# on the ComfyUI machine (the script checks that the folder is the ComfyUI root)
+bash install.sh /path/to/ComfyUI
 
-# ComfyUI em Docker (container "comfyui")
+# ComfyUI in Docker (container "comfyui")
 docker exec -i -e HF_TOKEN comfyui bash -s -- /root/ComfyUI < install.sh
 ```
 
-Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm o SHA-256 conferido (`VERIFY_EXISTING=1` confere também os que já existiam).
+Files that already exist with the right size are skipped. New downloads have their SHA-256 checked (`VERIFY_EXISTING=1` also checks the existing ones).
 
 ## Custom nodes
 
-| Nó | Versão testada | Página |
+| Node | Tested version | Page |
 |---|---|---|
 | H3 Relay | `e2a7665` | https://github.com/akatz-ai/h3-relay |
 
-## Modelos
+## Models
 
-| Pasta (`models/…`) | Arquivo | Papel | Tamanho | Download | Página |
+| Folder (`models/…`) | File | Role | Size | Download | Page |
 |---|---|---|---|---|---|
-| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | modelo Ref2VA (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | text encoder Qwen3-VL 32B (NVFP4) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_video_vae_fp16.safetensors` | VAE de vídeo fp16 (receita do autor) | 5.21 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_fp16.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | VAE de áudio | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `loras/` | `minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors` | LoRA Turbo FL2V 8 steps (obrigatório) | 1.96 GB | [download](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/30f485ed874aa44c8183348ad361c5eabad318da/minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors) | [página](https://huggingface.co/lightx2v/Minimax-h3-Turbo) |
-| `loras/` | `h3_character_swap_v1.5.safetensors` | LoRA Character Swap v1.5 | 0.16 GB | [download](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/resolve/96ea3407b230b6f7df71c58c70e31df96bd7e533/h3_character_swap_v1.5.safetensors) | [página](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA) |
-| `checkpoints/` | `sam3.1_multiplex_fp16.safetensors` | SAM 3.1 (máscara da pessoa) | 1.75 GB | [download](https://huggingface.co/Comfy-Org/sam3.1/resolve/7bb8374780a725b4353ed31f3a9395c9742b5621/checkpoints/sam3.1_multiplex_fp16.safetensors) | [página](https://huggingface.co/Comfy-Org/sam3.1) |
-| `loras/` | `h3-v2-challenge-eval-20261013/v2-1000.safetensors` | link → `../h3_character_swap_v1.5.safetensors` (nome que o workflow do autor usa) | — | — | — |
+| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | Ref2VA model (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | Qwen3-VL 32B text encoder (NVFP4) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_video_vae_fp16.safetensors` | video VAE fp16 (author's recipe) | 5.21 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_fp16.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | audio VAE | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `loras/` | `minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors` | FL2V Turbo 8-step LoRA (required) | 1.96 GB | [download](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/30f485ed874aa44c8183348ad361c5eabad318da/minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors) | [page](https://huggingface.co/lightx2v/Minimax-h3-Turbo) |
+| `loras/` | `h3_character_swap_v1.5.safetensors` | Character Swap v1.5 LoRA | 0.16 GB | [download](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/resolve/96ea3407b230b6f7df71c58c70e31df96bd7e533/h3_character_swap_v1.5.safetensors) | [page](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA) |
+| `checkpoints/` | `sam3.1_multiplex_fp16.safetensors` | SAM 3.1 (person mask) | 1.75 GB | [download](https://huggingface.co/Comfy-Org/sam3.1/resolve/7bb8374780a725b4353ed31f3a9395c9742b5621/checkpoints/sam3.1_multiplex_fp16.safetensors) | [page](https://huggingface.co/Comfy-Org/sam3.1) |
+| `loras/` | `h3-v2-challenge-eval-20261013/v2-1000.safetensors` | link → `../h3_character_swap_v1.5.safetensors` (name used by the author's workflow) | — | — | — |
 
 <details><summary>SHA-256</summary>
 
@@ -67,21 +69,21 @@ Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm 
 
 </details>
 
-## Como usar
+## How to use
 
-1. Carregue `workflow.json`. No **LoadVideo**, um plano contínuo (`source.mp4`); no **LoadImage**, a referência do personagem (`reference.png`).
-2. Em **Prepare Source**: `duration_seconds` 0 = vídeo inteiro (normaliza para 24 fps e múltiplos de 32 px).
-3. No texto do SAM (`subject`), descreva a pessoa a trocar (ex.: `the man on the left`); confira a máscara no preview.
-4. Mantenha 8 steps, `er_sde`, scheduler `normal`, CFG 1 e os dois LoRAs em 1.0.
-5. Uma pessoa por vez: para trocar duas, rode de novo usando a saída como fonte.
+1. Load `workflow.json`. In **LoadVideo**, one continuous shot (`source.mp4`); in **LoadImage**, the character reference (`reference.png`).
+2. In **Prepare Source**: `duration_seconds` 0 = the whole video (normalized to 24 fps and multiples of 32 px).
+3. In the SAM text (`subject`), describe the person to swap (e.g. `the man on the left`); check the mask in the preview.
+4. Keep 8 steps, `er_sde`, `normal` scheduler, CFG 1 and both LoRAs at 1.0.
+5. One person at a time: to swap two, run again using the output as the source.
 
-## Licença
+## License
 
-Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir "MiniMax H3". LoRAs de terceiros herdam essas regras.
+Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display "MiniMax H3". Third-party LoRAs inherit these terms.
 
-## Observações
+## Notes
 
-- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~14,5 min.
-- **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).
-- Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.
-- **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores.
+- Slow on 16 GB: ~76 s per step (8 steps per window of up to 124 frames) because the recipe targets 24 GB and offloads. 4 s of video took ~14.5 min.
+- **Do not stack it with TaoMate** (the author's recipe uses only the 8-step Turbo).
+- License: impersonating real people without consent is prohibited by the H3 license.
+- **Credits:** `workflow.json` and `workflow.api.json` are Akatz Labs' official examples ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistributed unchanged; parts derived from ComfyUI templates are MIT (Comfy Org). The LoRA and H3 Relay belong to their authors.

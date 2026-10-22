@@ -1,54 +1,56 @@
-# H3 Long Video (prompt dividido por LLM)
+Language: **English** · [Português](README_ptBR.md)
 
-Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (qualquer servidor compatível com a API da OpenAI; no teste, um llama.cpp local em outra GPU) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).
+# H3 Long Video (LLM-split prompt)
+
+Generates videos longer than a single H3 sampling by chaining segments that continue motion and audio. An LLM (any OpenAI-compatible server; in the test, a local llama.cpp on another GPU) splits the story into per-segment prompts with the right timing. Uses Ref2VA + Ref2V Turbo 8-step LoRA and sparse attention (`BlockSparseAttention`).
 
 | | |
 |---|---|
-| Item do plano | #24 |
-| Status | ✅ testado |
-| Família | MiniMax H3 |
-| Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
-| Download total | 44.43 GB |
-| Teste | 16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next (llama.cpp local, outra GPU) dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo |
-| Tempo | **11min 27s** (RTX 5060 Ti 16 GB, 2026-10-22) |
-| Pico de VRAM | 15659 MiB |
+| Plan item | #24 |
+| Status | ✅ tested |
+| Family | MiniMax H3 |
+| License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
+| Total download | 44.43 GB |
+| Test | 16 s in 2 segments of 8 s, 960x544, 8 steps, 1 reference; qwen3.8-flash-next (local llama.cpp, another GPU) split the story correctly (dialogue in segment 2); continuous join, consistent identity, continuous audio |
+| Time | **11min 27s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Peak VRAM | 15659 MiB |
 
-## Arquivos desta pasta
+## Files in this folder
 
-| Arquivo | O que é |
+| File | What it is |
 |---|---|
-| `workflow.json` | Workflow para arrastar na interface do ComfyUI |
-| `workflow.api.json` | Mesmo workflow no formato da API (parâmetros do teste, entradas de exemplo) |
-| `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |
-| `components.json` | Fonte dos dados deste README e do install.sh |
+| `workflow.json` | Workflow to drag into the ComfyUI interface |
+| `workflow.api.json` | Same workflow in API format (test parameters, example inputs) |
+| `install.sh` | Installs custom nodes and downloads the models into the right folders |
+| `components.json` | Source of this README and of install.sh |
 
-## Instalação
+## Installation
 
 ```bash
-# na máquina com o ComfyUI (o script confere se a pasta é a raiz do ComfyUI)
-bash install.sh /caminho/do/ComfyUI
+# on the ComfyUI machine (the script checks that the folder is the ComfyUI root)
+bash install.sh /path/to/ComfyUI
 
-# ComfyUI em Docker (container "comfyui")
+# ComfyUI in Docker (container "comfyui")
 docker exec -i -e HF_TOKEN comfyui bash -s -- /root/ComfyUI < install.sh
 ```
 
-Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm o SHA-256 conferido (`VERIFY_EXISTING=1` confere também os que já existiam).
+Files that already exist with the right size are skipped. New downloads have their SHA-256 checked (`VERIFY_EXISTING=1` also checks the existing ones).
 
 ## Custom nodes
 
-| Nó | Versão testada | Página |
+| Node | Tested version | Page |
 |---|---|---|
 | ComfyUI-H3-Long-Video | `7499153` | https://github.com/ooizj/ComfyUI-H3-Long-Video |
 
-## Modelos
+## Models
 
-| Pasta (`models/…`) | Arquivo | Papel | Tamanho | Download | Página |
+| Folder (`models/…`) | File | Role | Size | Download | Page |
 |---|---|---|---|---|---|
-| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | modelo Ref2VA (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | text encoder Qwen3-VL 32B (NVFP4) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_video_vae_fp16.safetensors` | VAE de vídeo fp16 | 5.21 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_fp16.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | VAE de áudio | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `loras/` | `minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors` | LoRA Ref2V Turbo 8 steps v1.1 (força 0.8) | 1.96 GB | [download](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/30f485ed874aa44c8183348ad361c5eabad318da/minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors) | [página](https://huggingface.co/lightx2v/Minimax-h3-Turbo) |
+| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | Ref2VA model (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | Qwen3-VL 32B text encoder (NVFP4) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_video_vae_fp16.safetensors` | video VAE fp16 | 5.21 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_fp16.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | audio VAE | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `loras/` | `minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors` | Ref2V Turbo 8-step v1.1 LoRA (strength 0.8) | 1.96 GB | [download](https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/30f485ed874aa44c8183348ad361c5eabad318da/minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors) | [page](https://huggingface.co/lightx2v/Minimax-h3-Turbo) |
 
 <details><summary>SHA-256</summary>
 
@@ -62,19 +64,19 @@ e56863a7524e0300729cbb7b64cc8b548d90698c1abbf7d83898b0122fbe1e81  models/loras/m
 
 </details>
 
-## Como usar
+## How to use
 
-1. No **Ref Prompt Builder**, escolha as imagens de referência (`pictures`) e escreva a história inteira; cite `<Picture 1>` etc.
-2. No **H3 Prompt API**: `api_url` = servidor compatível com OpenAI (`http://localhost:8080/v1` neste arquivo; DeepSeek no original do autor), `model` do servidor. `max_tokens` com folga se o modelo "pensa" antes de responder.
-3. No **H3 Long Video**: `total_seconds` (duração final) e `segment_seconds` (tamanho de cada segmento). Mais de um segmento exige o Prompt API conectado.
-4. `local_llm` = `auto`: só descarrega os modelos do ComfyUI se a URL for localhost. Se o seu LLM roda em outra máquina ou GPU, use o endereço dela e nada é descarregado.
+1. In **Ref Prompt Builder**, pick the reference images (`pictures`) and write the whole story; refer to `<Picture 1>` etc.
+2. In **H3 Prompt API**: `api_url` = an OpenAI-compatible server (`http://localhost:8080/v1` in this file; DeepSeek in the author's original), `model` from that server. Give `max_tokens` headroom if the model "thinks" before answering.
+3. In **H3 Long Video**: `total_seconds` (final length) and `segment_seconds` (length of each segment). More than one segment requires the Prompt API connected.
+4. `local_llm` = `auto`: it only unloads ComfyUI's models when the URL is localhost. If your LLM runs on another machine or GPU, use its address and nothing is unloaded.
 
-## Licença
+## License
 
-Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir "MiniMax H3". LoRAs de terceiros herdam essas regras.
+Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display "MiniMax H3". Third-party LoRAs inherit these terms.
 
-## Observações
+## Notes
 
-- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.
-- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.
-- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.
+- The log with each segment's prompts goes to `output/h3_prompt_logs/`.
+- The author recommends strong LLMs (27B dense or DeepSeek) to split timed dialogue; qwen3.8-flash-next (local llama.cpp) got it right in the test.
+- For the UI workflow with the author's original layout (subgraph), see `example_workflows/` in the node's repository.

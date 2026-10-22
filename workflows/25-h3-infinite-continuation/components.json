@@ -1,21 +1,54 @@
 {
- "title": "Herrgott's H3 Infinite Continuation (v1.4)",
- "short": "Encadeia clipes FL2VA com handover seguro e junta tudo sem emenda visível",
+ "title": {
+  "pt": "Herrgott's H3 Infinite Continuation (v1.4)",
+  "en": "Herrgott's H3 Infinite Continuation (v1.4)"
+ },
+ "short": {
+  "pt": "Encadeia clipes FL2VA com handover seguro e junta tudo sem emenda visível",
+  "en": "Chains FL2VA clips with safe handover and joins them without visible seams"
+ },
  "plan": "#25",
  "family": "MiniMax H3",
- "summary": "Gera vídeos de qualquer duração clipe a clipe: o **Start** cria o clipe 1 (T2VA/I2VA/FL2VA) e salva o latente com metadados de *handover*; cada **Continue** carrega o anterior, protege os últimos 39 frames seguros como contexto (Masked AV nativo) e gera o próximo; o **Stitch** decodifica a cadeia salva e junta nos pontos seguros, com crossfade curto de vídeo e áudio.",
+ "summary": {
+  "pt": "Gera vídeos de qualquer duração clipe a clipe: o **Start** cria o clipe 1 (T2VA/I2VA/FL2VA) e salva o latente com metadados de *handover*; cada **Continue** carrega o anterior, protege os últimos 39 frames seguros como contexto (Masked AV nativo) e gera o próximo; o **Stitch** decodifica a cadeia salva e junta nos pontos seguros, com crossfade curto de vídeo e áudio.",
+  "en": "Makes videos of any length clip by clip: **Start** creates clip 1 (T2VA/I2VA/FL2VA) and saves the latent with *handover* metadata; each **Continue** loads the previous one, protects the last 39 safe frames as context (native Masked AV) and generates the next; **Stitch** decodes the saved chain and joins it at the safe points, with a short video and audio crossfade."
+ },
  "status": "testado",
  "files": {
-  "01-start.json": "Clipe 1: arrastar na interface",
-  "01-start.api.json": "Clipe 1 (API)",
-  "02-continue.json": "Clipes 2, 3, …: aumente `clip_index` no Load/Save a cada clipe",
-  "02-continue.api.json": "Continue (API)",
-  "03-stitch.json": "Junta a cadeia salva em um vídeo final",
-  "03-stitch.api.json": "Stitch (API)"
+  "01-start.json": {
+   "pt": "Clipe 1: arrastar na interface",
+   "en": "Clip 1: drag into the UI"
+  },
+  "01-start.api.json": {
+   "pt": "Clipe 1 (API)",
+   "en": "Clip 1 (API)"
+  },
+  "02-continue.json": {
+   "pt": "Clipes 2, 3, …: aumente `clip_index` no Load/Save a cada clipe",
+   "en": "Clips 2, 3, …: bump `clip_index` in Load/Save for each clip"
+  },
+  "02-continue.api.json": {
+   "pt": "Continue (API)",
+   "en": "Continue (API)"
+  },
+  "03-stitch.json": {
+   "pt": "Junta a cadeia salva em um vídeo final",
+   "en": "Joins the saved chain into one final video"
+  },
+  "03-stitch.api.json": {
+   "pt": "Stitch (API)",
+   "en": "Stitch (API)"
+  }
  },
  "test": {
-  "what": "736x1280, 15 steps: Start 5 s (553 s) + Continue 5 s (732 s) + Stitch (115 s) = 8,7 s finais. O Auto Handover detectou o final forçado e passou o ponto seguro: emenda sem salto. Referência usada como primeiro/último frame, por isso o retrato no fim",
-  "clip": "8,7 s (2 clipes)",
+  "what": {
+   "pt": "736x1280, 15 steps: Start 5 s (553 s) + Continue 5 s (732 s) + Stitch (115 s) = 8,7 s finais. O Auto Handover detectou o final forçado e passou o ponto seguro: emenda sem salto. Referência usada como primeiro/último frame, por isso o retrato no fim",
+   "en": "736x1280, 15 steps: Start 5 s (553 s) + Continue 5 s (732 s) + Stitch (115 s) = 8.7 s final. Auto Handover detected the forced ending and handed over the safe point: seamless join. The reference was used as first/last frame, hence the portrait at the end"
+  },
+  "clip": {
+   "pt": "8,7 s (2 clipes)",
+   "en": "8.7 s (2 clips)"
+  },
   "time_s": 1400,
   "vram_mib": 15651,
   "gpu": "RTX 5060 Ti 16 GB",
@@ -23,9 +56,15 @@
  },
  "license": {
   "name": "MiniMax H3 Community License",
-  "short": "MiniMax H3 Community (⚠️ território)",
+  "short": {
+   "pt": "MiniMax H3 Community (⚠️ território)",
+   "en": "MiniMax H3 Community (⚠️ territory)"
+  },
   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
-  "summary": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."
+  "summary": {
+   "pt": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras.",
+   "en": "Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display \"MiniMax H3\". Third-party LoRAs inherit these terms."
+  }
  },
  "nodes": [
   {
@@ -51,24 +90,42 @@
   {
    "dest": "diffusion_models",
    "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
-   "role": "modelo FL2VA (INT8)"
+   "role": {
+    "pt": "modelo FL2VA (INT8)",
+    "en": "FL2VA model (INT8)"
+   }
   },
   {
    "dest": "text_encoders",
    "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
-   "role": "text encoder Qwen3-VL 32B (NVFP4)"
+   "role": {
+    "pt": "text encoder Qwen3-VL 32B (NVFP4)",
+    "en": "Qwen3-VL 32B text encoder (NVFP4)"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_fp16.safetensors",
-   "role": "VAE de vídeo fp16"
+   "role": {
+    "pt": "VAE de vídeo fp16",
+    "en": "video VAE fp16"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors",
-   "role": "VAE de áudio"
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
   }
  ],
- "usage": "1. **01-start**: primeiro e último frame são opcionais (o autor recomenda repetir o mesmo frame nas pontas como \"reset\" de qualidade); a referência Qwen vira `<Picture 2>`. Rode e ele salva `output/h3_continuous/clip_00001`.\n2. **02-continue**: `clip_index` do Load = anterior, do Save = atual. `duration_mode` `Net New Content` faz a duração pedida ser só conteúdo novo.\n3. Repita o Continue quantas vezes quiser.\n4. **03-stitch**: `first_clip`/`last_clip` (0 = até o último) e gera o vídeo final.",
- "notes": "- Os exemplos do autor usam **SageAttention** (`PathchSageAttentionKJ`), que não estava instalado; aqui foi trocado pela atenção do comfy-kitchen + MiniMax LowVRAM Attention + Chunk FeedForward (KJNodes), e funcionou em 16 GB.\n- Não use o mesmo retrato de estúdio como último frame se quiser que a cena termine no cenário: o clipe é obrigado a chegar nele (foi o que aconteceu no teste).\n- O tempo da tabela soma os três passos (553 + 732 + 115 s)."
+ "usage": {
+  "pt": "1. **01-start**: primeiro e último frame são opcionais (o autor recomenda repetir o mesmo frame nas pontas como \"reset\" de qualidade); a referência Qwen vira `<Picture 2>`. Rode e ele salva `output/h3_continuous/clip_00001`.\n2. **02-continue**: `clip_index` do Load = anterior, do Save = atual. `duration_mode` `Net New Content` faz a duração pedida ser só conteúdo novo.\n3. Repita o Continue quantas vezes quiser.\n4. **03-stitch**: `first_clip`/`last_clip` (0 = até o último) e gera o vídeo final.",
+  "en": "1. **01-start**: first and last frames are optional (the author recommends repeating the same frame at both ends as a quality \"reset\"); the Qwen reference becomes `<Picture 2>`. Run it and it saves `output/h3_continuous/clip_00001`.\n2. **02-continue**: Load's `clip_index` = previous, Save's = current. `duration_mode` `Net New Content` makes the requested duration new content only.\n3. Repeat Continue as many times as you like.\n4. **03-stitch**: `first_clip`/`last_clip` (0 = up to the last) and it renders the final video."
+ },
+ "notes": {
+  "pt": "- Os exemplos do autor usam **SageAttention** (`PathchSageAttentionKJ`), que não estava instalado; aqui foi trocado pela atenção do comfy-kitchen + MiniMax LowVRAM Attention + Chunk FeedForward (KJNodes), e funcionou em 16 GB.\n- Não use o mesmo retrato de estúdio como último frame se quiser que a cena termine no cenário: o clipe é obrigado a chegar nele (foi o que aconteceu no teste).\n- O tempo da tabela soma os três passos (553 + 732 + 115 s).",
+  "en": "- The author's examples use **SageAttention** (`PathchSageAttentionKJ`), which was not installed; here it was replaced by comfy-kitchen attention + MiniMax LowVRAM Attention + Chunk FeedForward (KJNodes), and it worked on 16 GB.\n- Do not use the same studio portrait as the last frame if you want the scene to end on location: the clip is forced to reach it (that is what happened in the test).\n- The time in the table adds up the three steps (553 + 732 + 115 s)."
+ }
 }

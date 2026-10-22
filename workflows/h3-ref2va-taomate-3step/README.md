@@ -1,55 +1,57 @@
+Language: **English** · [Português](README_ptBR.md)
+
 # H3 Ref2VA · TaoMate 3 steps
 
-Workflow base de referência-para-vídeo (Ref2VA) do MiniMax H3 com o LoRA TaoMate de 3 steps: gera vídeo com áudio sincronizado a partir de um prompt estruturado e uma imagem de referência. Base dos itens #59 e da regressão do setup.
+Base MiniMax H3 reference-to-video (Ref2VA) workflow with the 3-step TaoMate LoRA: generates video with synchronized audio from a structured prompt and a reference image. Base of item #59 and of the setup regression test.
 
 | | |
 |---|---|
-| Item do plano | base |
-| Status | ✅ testado |
-| Família | MiniMax H3 |
-| Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
-| Download total | 42.55 GB |
-| Teste | 736x1280, 362 frames (15 s), 3 steps, mesma seed de uma geração anterior: mesma cena e qualidade |
-| Tempo | **8min 44s** (RTX 5060 Ti 16 GB, 2026-10-22) |
-| Pico de VRAM | 15559 MiB |
+| Plan item | base |
+| Status | ✅ tested |
+| Family | MiniMax H3 |
+| License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
+| Total download | 42.55 GB |
+| Test | 736x1280, 362 frames (15 s), 3 steps, same seed as an earlier generation: same scene and quality |
+| Time | **8min 44s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Peak VRAM | 15559 MiB |
 
-## Arquivos desta pasta
+## Files in this folder
 
-| Arquivo | O que é |
+| File | What it is |
 |---|---|
-| `workflow.json` | Workflow para arrastar na interface do ComfyUI |
-| `workflow.api.json` | Mesmo workflow no formato da API (parâmetros do teste, entradas de exemplo) |
-| `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |
-| `components.json` | Fonte dos dados deste README e do install.sh |
+| `workflow.json` | Workflow to drag into the ComfyUI interface |
+| `workflow.api.json` | Same workflow in API format (test parameters, example inputs) |
+| `install.sh` | Installs custom nodes and downloads the models into the right folders |
+| `components.json` | Source of this README and of install.sh |
 
-## Instalação
+## Installation
 
 ```bash
-# na máquina com o ComfyUI (o script confere se a pasta é a raiz do ComfyUI)
-bash install.sh /caminho/do/ComfyUI
+# on the ComfyUI machine (the script checks that the folder is the ComfyUI root)
+bash install.sh /path/to/ComfyUI
 
-# ComfyUI em Docker (container "comfyui")
+# ComfyUI in Docker (container "comfyui")
 docker exec -i -e HF_TOKEN comfyui bash -s -- /root/ComfyUI < install.sh
 ```
 
-Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm o SHA-256 conferido (`VERIFY_EXISTING=1` confere também os que já existiam).
+Files that already exist with the right size are skipped. New downloads have their SHA-256 checked (`VERIFY_EXISTING=1` also checks the existing ones).
 
 ## Custom nodes
 
-| Nó | Versão testada | Página |
+| Node | Tested version | Page |
 |---|---|---|
 | KJNodes | 1.5.0 | https://github.com/kijai/ComfyUI-KJNodes |
 | VideoHelperSuite | 1.7.9 | https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite |
 
-## Modelos
+## Models
 
-| Pasta (`models/…`) | Arquivo | Papel | Tamanho | Download | Página |
+| Folder (`models/…`) | File | Role | Size | Download | Page |
 |---|---|---|---|---|---|
-| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | modelo Ref2VA (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | text encoder Qwen3-VL 32B (NVFP4, Blackwell) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_video_vae_int8_convrot.safetensors` | VAE de vídeo | 2.81 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_int8_convrot.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | VAE de áudio | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [página](https://huggingface.co/Comfy-Org/MiniMax-H3) |
-| `loras/` | `minimax_h3_taomate_fl2va_3step_ema_comfyui.safetensors` | LoRA TaoMate 3 steps | 2.48 GB | [download](https://huggingface.co/drbaph/MiniMax-H3-Turbo-Lora-ComfyUI/resolve/633e6c48cd05f7800e2cb2c007b5c9023b92c576/experimental/minimax_h3_taomate_fl2va_3step_ema_comfyui.safetensors) | [página](https://huggingface.co/TaoLiveAIGC/TaoMate-H3-FL2VA) |
+| `diffusion_models/` | `minimax_h3_ref2va_pruned_int8_convrot.safetensors` | Ref2VA model (INT8) | 20.97 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `text_encoders/` | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | Qwen3-VL 32B text encoder (NVFP4, Blackwell) | 15.69 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_video_vae_int8_convrot.safetensors` | video VAE | 2.81 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_video_vae_int8_convrot.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `vae/` | `minimax_h3_audio_vae_fp32.safetensors` | audio VAE | 0.61 GB | [download](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/e5eb578a89295337b8ff433a035929ce0279e0b6/vae/minimax_h3_audio_vae_fp32.safetensors) | [page](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+| `loras/` | `minimax_h3_taomate_fl2va_3step_ema_comfyui.safetensors` | TaoMate 3-step LoRA | 2.48 GB | [download](https://huggingface.co/drbaph/MiniMax-H3-Turbo-Lora-ComfyUI/resolve/633e6c48cd05f7800e2cb2c007b5c9023b92c576/experimental/minimax_h3_taomate_fl2va_3step_ema_comfyui.safetensors) | [page](https://huggingface.co/TaoLiveAIGC/TaoMate-H3-FL2VA) |
 
 <details><summary>SHA-256</summary>
 
@@ -63,18 +65,18 @@ Arquivos que já existem com o tamanho certo são pulados. Downloads novos têm 
 
 </details>
 
-## Como usar
+## How to use
 
-1. Carregue `workflow.json` e escolha a imagem de referência no **LoadImage** (`reference.png`).
-2. Escreva o prompt no formato estruturado do H3 (`subject_definitions`, `detailed_description`, `audio`), citando `<Picture 1>`.
-3. `length` em frames a 24 fps (362 ≈ 15 s). Sigmas manuais `1.0, 0.961165, 0.853333, 0.0` + `res_multistep` são a receita do TaoMate.
-4. Em 16 GB, mantenha **MiniMax Chunk FeedForward** e **MiniMax LowVRAM Attention** (KJNodes) ligados.
+1. Load `workflow.json` and pick the reference image in **LoadImage** (`reference.png`).
+2. Write the prompt in H3's structured format (`subject_definitions`, `detailed_description`, `audio`), referring to `<Picture 1>`.
+3. `length` in frames at 24 fps (362 ≈ 15 s). Manual sigmas `1.0, 0.961165, 0.853333, 0.0` + `res_multistep` are TaoMate's recipe.
+4. On 16 GB, keep **MiniMax Chunk FeedForward** and **MiniMax LowVRAM Attention** (KJNodes) on.
 
-## Licença
+## License
 
-Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir "MiniMax H3". LoRAs de terceiros herdam essas regras.
+Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display "MiniMax H3". Third-party LoRAs inherit these terms.
 
-## Observações
+## Notes
 
-- O arquivo do TaoMate é a conversão para ComfyUI publicada por drbaph (SHA-256 conferido com o arquivo em uso); o LoRA original é da TaoLiveAIGC.
-- Resultados com a mesma seed variam um pouco entre execuções (não-determinismo da GPU).
+- The TaoMate file is the ComfyUI conversion published by drbaph (SHA-256 checked against the file in use); the original LoRA is by TaoLiveAIGC.
+- Results with the same seed vary slightly between runs (GPU non-determinism).

@@ -1,13 +1,28 @@
 {
- "title": "H3 Turbo v4 (larryvrh)",
- "short": "LoRA turbo de 4–8 steps com sampler próprio (alternativa ao TaoMate)",
+ "title": {
+  "pt": "H3 Turbo v4 (larryvrh)",
+  "en": "H3 Turbo v4 (larryvrh)"
+ },
+ "short": {
+  "pt": "LoRA turbo de 4–8 steps com sampler próprio (alternativa ao TaoMate)",
+  "en": "4–8 step turbo LoRA with its own sampler (TaoMate alternative)"
+ },
  "plan": "#2",
  "family": "MiniMax H3",
- "summary": "O Ref2VA base com o **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, recomendado pelo autor) e o **MiniMax-H3 Turbo Sampler**, no lugar do TaoMate. O sampler cuida das escalas separadas de vídeo e áudio. Faixa útil: 4 a 8 steps, scheduler `simple`.",
+ "summary": {
+  "pt": "O Ref2VA base com o **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, recomendado pelo autor) e o **MiniMax-H3 Turbo Sampler**, no lugar do TaoMate. O sampler cuida das escalas separadas de vídeo e áudio. Faixa útil: 4 a 8 steps, scheduler `simple`.",
+  "en": "The base Ref2VA with the **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, the author's recommendation) and the **MiniMax-H3 Turbo Sampler** instead of TaoMate. The sampler handles the separate video and audio schedules. Useful range: 4 to 8 steps, `simple` scheduler."
+ },
  "status": "testado",
  "test": {
-  "what": "736x1280, 362 frames (15 s), 6 steps, mesma cena/seed do workflow base: vídeo coerente, sem artefatos, fotografia mais escura e expressões mais dramáticas; ~2x mais lento que o TaoMate 3 steps",
-  "clip": "15 s",
+  "what": {
+   "pt": "736x1280, 362 frames (15 s), 6 steps, mesma cena/seed do workflow base: vídeo coerente, sem artefatos, fotografia mais escura e expressões mais dramáticas; ~2x mais lento que o TaoMate 3 steps",
+   "en": "736x1280, 362 frames (15 s), 6 steps, same scene/seed as the base workflow: coherent video, no artifacts, darker cinematography and more dramatic expressions; ~2x slower than TaoMate 3 steps"
+  },
+  "clip": {
+   "pt": "15 s",
+   "en": "15 s"
+  },
   "time_s": 1008,
   "vram_mib": 15603,
   "gpu": "RTX 5060 Ti 16 GB",
@@ -15,9 +30,15 @@
  },
  "license": {
   "name": "MiniMax H3 Community License",
-  "short": "MiniMax H3 Community (⚠️ território)",
+  "short": {
+   "pt": "MiniMax H3 Community (⚠️ território)",
+   "en": "MiniMax H3 Community (⚠️ territory)"
+  },
   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
-  "summary": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."
+  "summary": {
+   "pt": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras.",
+   "en": "Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display \"MiniMax H3\". Third-party LoRAs inherit these terms."
+  }
  },
  "nodes": [
   {
@@ -43,29 +64,50 @@
   {
    "dest": "diffusion_models",
    "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
-   "role": "modelo Ref2VA (INT8)"
+   "role": {
+    "pt": "modelo Ref2VA (INT8)",
+    "en": "Ref2VA model (INT8)"
+   }
   },
   {
    "dest": "text_encoders",
    "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
-   "role": "text encoder Qwen3-VL 32B (NVFP4, Blackwell)"
+   "role": {
+    "pt": "text encoder Qwen3-VL 32B (NVFP4, Blackwell)",
+    "en": "Qwen3-VL 32B text encoder (NVFP4, Blackwell)"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_int8_convrot.safetensors",
-   "role": "VAE de vídeo"
+   "role": {
+    "pt": "VAE de vídeo",
+    "en": "video VAE"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors",
-   "role": "VAE de áudio"
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
   },
   {
    "dest": "loras",
    "hf": "larryvrh/MiniMax-H3-Turbo-Lora:minimax_h3_turbo_v4_step600_ema.safetensors",
-   "role": "LoRA Turbo v4-600 (Apache-2.0; herda as regras do H3)"
+   "role": {
+    "pt": "LoRA Turbo v4-600 (Apache-2.0; herda as regras do H3)",
+    "en": "Turbo v4-600 LoRA (Apache-2.0; inherits the H3 terms)"
+   }
   }
  ],
- "usage": "1. Igual ao workflow base; o modelo passa por **MiniMax-H3 Turbo LoRA** (força 1.0) e o `SamplerCustomAdvanced` recebe o **MiniMax-H3 Turbo Sampler**.\n2. Steps no **BasicScheduler** (`simple`): 4 é o mínimo, 6–8 ficam visivelmente melhores; acima de 8 começa a dar nitidez exagerada.\n3. `low_vram` desligado (bypass) é o mais nítido; ligado (merge) usa menos VRAM mas fica mais suave em bases INT8.",
- "notes": "- Comparado ao TaoMate 3 steps na mesma cena: 1008 s contra 524 s. Vale como alternativa de estética, não de velocidade.\n- O autor avisa que, em 4 steps com movimento rápido, o v4 pode deixar rastro; 6–8 steps resolvem.\n- O LoRA foi feito para T2V/I2V; aqui foi aplicado no Ref2VA e funcionou."
+ "usage": {
+  "pt": "1. Igual ao workflow base; o modelo passa por **MiniMax-H3 Turbo LoRA** (força 1.0) e o `SamplerCustomAdvanced` recebe o **MiniMax-H3 Turbo Sampler**.\n2. Steps no **BasicScheduler** (`simple`): 4 é o mínimo, 6–8 ficam visivelmente melhores; acima de 8 começa a dar nitidez exagerada.\n3. `low_vram` desligado (bypass) é o mais nítido; ligado (merge) usa menos VRAM mas fica mais suave em bases INT8.",
+  "en": "1. Same as the base workflow; the model goes through **MiniMax-H3 Turbo LoRA** (strength 1.0) and `SamplerCustomAdvanced` gets the **MiniMax-H3 Turbo Sampler**.\n2. Steps in **BasicScheduler** (`simple`): 4 is the minimum, 6–8 look noticeably better; above 8 it starts to over-sharpen.\n3. `low_vram` off (bypass) is the sharpest; on (merge) uses less VRAM but is softer on INT8 bases."
+ },
+ "notes": {
+  "pt": "- Comparado ao TaoMate 3 steps na mesma cena: 1008 s contra 524 s. Vale como alternativa de estética, não de velocidade.\n- O autor avisa que, em 4 steps com movimento rápido, o v4 pode deixar rastro; 6–8 steps resolvem.\n- O LoRA foi feito para T2V/I2V; aqui foi aplicado no Ref2VA e funcionou.",
+  "en": "- Compared with TaoMate 3 steps on the same scene: 1008 s vs 524 s. Worth it as an aesthetic alternative, not for speed.\n- The author warns that at 4 steps with fast motion v4 can leave trails; 6–8 steps fix it.\n- The LoRA was made for T2V/I2V; here it was applied to Ref2VA and worked."
+ }
 }

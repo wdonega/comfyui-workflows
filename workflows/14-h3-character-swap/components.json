@@ -1,13 +1,28 @@
 {
- "title": "H3 Character Swap (Relay 2.0)",
- "short": "Troca o personagem de um vídeo mantendo performance, cena e áudio",
+ "title": {
+  "pt": "H3 Character Swap (Relay 2.0)",
+  "en": "H3 Character Swap (Relay 2.0)"
+ },
+ "short": {
+  "pt": "Troca o personagem de um vídeo mantendo performance, cena e áudio",
+  "en": "Swaps the character in a video while keeping performance, scene and audio"
+ },
  "plan": "#14",
  "family": "MiniMax H3",
- "summary": "Workflow oficial do autor (akatz-ai) com o **H3 Relay 2.0**: o SAM 3.1 mascara a pessoa descrita, e o Ref2VA com o LoRA de Character Swap v1.5 + Turbo FL2V 8 steps troca a identidade pela imagem de referência. Preserva movimento, câmera, cenário e a trilha de áudio original. Vídeos longos são feitos em janelas.",
+ "summary": {
+  "pt": "Workflow oficial do autor (akatz-ai) com o **H3 Relay 2.0**: o SAM 3.1 mascara a pessoa descrita, e o Ref2VA com o LoRA de Character Swap v1.5 + Turbo FL2V 8 steps troca a identidade pela imagem de referência. Preserva movimento, câmera, cenário e a trilha de áudio original. Vídeos longos são feitos em janelas.",
+  "en": "The author's (akatz-ai) official workflow with **H3 Relay 2.0**: SAM 3.1 masks the described person, and Ref2VA with the Character Swap v1.5 LoRA + FL2V Turbo 8-step swaps the identity for the reference image. Keeps motion, camera, set and the original soundtrack. Long videos are processed in windows."
+ },
  "status": "testado",
  "test": {
-  "what": "fonte 4 s (96 frames, 736x1280, 24 fps), subject `boy`, receita do autor (8 steps, er_sde, CFG 1, LoRAs 1.0): identidade trocada, pose/cena/tempo preservados; roupa não veio da referência",
-  "clip": "4 s",
+  "what": {
+   "pt": "fonte 4 s (96 frames, 736x1280, 24 fps), subject `boy`, receita do autor (8 steps, er_sde, CFG 1, LoRAs 1.0): identidade trocada, pose/cena/tempo preservados; roupa não veio da referência",
+   "en": "4 s source (96 frames, 736x1280, 24 fps), subject `boy`, author's recipe (8 steps, er_sde, CFG 1, LoRAs 1.0): identity swapped, pose/scene/timing preserved; clothing did not follow the reference"
+  },
+  "clip": {
+   "pt": "4 s",
+   "en": "4 s"
+  },
   "time_s": 868,
   "vram_mib": null,
   "gpu": "RTX 5060 Ti 16 GB",
@@ -15,9 +30,15 @@
  },
  "license": {
   "name": "MiniMax H3 Community License",
-  "short": "MiniMax H3 Community (⚠️ território)",
+  "short": {
+   "pt": "MiniMax H3 Community (⚠️ território)",
+   "en": "MiniMax H3 Community (⚠️ territory)"
+  },
   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
-  "summary": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."
+  "summary": {
+   "pt": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras.",
+   "en": "Personal and commercial use allowed up to US$ 20M/year in revenue (above that, MiniMax's authorization). **Prohibited in the US, EU, UK and South Korea, including displaying or distributing the outputs there (clause V.4)**: do not use the videos in globally published projects. Published content must be labeled as AI-generated; impersonating real people without consent is prohibited; commercial products must display \"MiniMax H3\". Third-party LoRAs inherit these terms."
+  }
  },
  "nodes": [
   {
@@ -31,37 +52,58 @@
   {
    "dest": "diffusion_models",
    "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
-   "role": "modelo Ref2VA (INT8)"
+   "role": {
+    "pt": "modelo Ref2VA (INT8)",
+    "en": "Ref2VA model (INT8)"
+   }
   },
   {
    "dest": "text_encoders",
    "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
-   "role": "text encoder Qwen3-VL 32B (NVFP4)"
+   "role": {
+    "pt": "text encoder Qwen3-VL 32B (NVFP4)",
+    "en": "Qwen3-VL 32B text encoder (NVFP4)"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_fp16.safetensors",
-   "role": "VAE de vídeo fp16 (receita do autor)"
+   "role": {
+    "pt": "VAE de vídeo fp16 (receita do autor)",
+    "en": "video VAE fp16 (author's recipe)"
+   }
   },
   {
    "dest": "vae",
    "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors",
-   "role": "VAE de áudio"
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
   },
   {
    "dest": "loras",
    "hf": "lightx2v/Minimax-h3-Turbo:minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors",
-   "role": "LoRA Turbo FL2V 8 steps (obrigatório)"
+   "role": {
+    "pt": "LoRA Turbo FL2V 8 steps (obrigatório)",
+    "en": "FL2V Turbo 8-step LoRA (required)"
+   }
   },
   {
    "dest": "loras",
    "hf": "akatz-ai/MiniMax-H3-Character-Swap-LoRA:h3_character_swap_v1.5.safetensors",
-   "role": "LoRA Character Swap v1.5"
+   "role": {
+    "pt": "LoRA Character Swap v1.5",
+    "en": "Character Swap v1.5 LoRA"
+   }
   },
   {
    "dest": "checkpoints",
    "hf": "Comfy-Org/sam3.1:checkpoints/sam3.1_multiplex_fp16.safetensors",
-   "role": "SAM 3.1 (máscara da pessoa)"
+   "role": {
+    "pt": "SAM 3.1 (máscara da pessoa)",
+    "en": "SAM 3.1 (person mask)"
+   }
   }
  ],
  "links": [
@@ -69,9 +111,18 @@
    "dest": "loras",
    "link": "h3-v2-challenge-eval-20261013/v2-1000.safetensors",
    "target": "../h3_character_swap_v1.5.safetensors",
-   "why": "nome que o workflow do autor usa"
+   "why": {
+    "pt": "nome que o workflow do autor usa",
+    "en": "name used by the author's workflow"
+   }
   }
  ],
- "usage": "1. Carregue `workflow.json`. No **LoadVideo**, um plano contínuo (`source.mp4`); no **LoadImage**, a referência do personagem (`reference.png`).\n2. Em **Prepare Source**: `duration_seconds` 0 = vídeo inteiro (normaliza para 24 fps e múltiplos de 32 px).\n3. No texto do SAM (`subject`), descreva a pessoa a trocar (ex.: `the man on the left`); confira a máscara no preview.\n4. Mantenha 8 steps, `er_sde`, scheduler `normal`, CFG 1 e os dois LoRAs em 1.0.\n5. Uma pessoa por vez: para trocar duas, rode de novo usando a saída como fonte.",
- "notes": "- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~14,5 min.\n- **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).\n- Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.\n- **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores."
+ "usage": {
+  "pt": "1. Carregue `workflow.json`. No **LoadVideo**, um plano contínuo (`source.mp4`); no **LoadImage**, a referência do personagem (`reference.png`).\n2. Em **Prepare Source**: `duration_seconds` 0 = vídeo inteiro (normaliza para 24 fps e múltiplos de 32 px).\n3. No texto do SAM (`subject`), descreva a pessoa a trocar (ex.: `the man on the left`); confira a máscara no preview.\n4. Mantenha 8 steps, `er_sde`, scheduler `normal`, CFG 1 e os dois LoRAs em 1.0.\n5. Uma pessoa por vez: para trocar duas, rode de novo usando a saída como fonte.",
+  "en": "1. Load `workflow.json`. In **LoadVideo**, one continuous shot (`source.mp4`); in **LoadImage**, the character reference (`reference.png`).\n2. In **Prepare Source**: `duration_seconds` 0 = the whole video (normalized to 24 fps and multiples of 32 px).\n3. In the SAM text (`subject`), describe the person to swap (e.g. `the man on the left`); check the mask in the preview.\n4. Keep 8 steps, `er_sde`, `normal` scheduler, CFG 1 and both LoRAs at 1.0.\n5. One person at a time: to swap two, run again using the output as the source."
+ },
+ "notes": {
+  "pt": "- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~14,5 min.\n- **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).\n- Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.\n- **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores.",
+  "en": "- Slow on 16 GB: ~76 s per step (8 steps per window of up to 124 frames) because the recipe targets 24 GB and offloads. 4 s of video took ~14.5 min.\n- **Do not stack it with TaoMate** (the author's recipe uses only the 8-step Turbo).\n- License: impersonating real people without consent is prohibited by the H3 license.\n- **Credits:** `workflow.json` and `workflow.api.json` are Akatz Labs' official examples ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistributed unchanged; parts derived from ComfyUI templates are MIT (Comfy Org). The LoRA and H3 Relay belong to their authors."
+ }
 }

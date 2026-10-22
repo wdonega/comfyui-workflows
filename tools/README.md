@@ -1,18 +1,21 @@
+Language: **English** · [Português](README_ptBR.md)
+
 # tools
 
-| Arquivo | Para quê |
+| File | Purpose |
 |---|---|
-| `gen.py` | Regera `workflows/*/README.md`, `workflows/*/install.sh` e o `README.md` geral a partir dos `components.json` |
-| `hfmeta.py` | Resolve `repo:caminho[@revisão]` do Hugging Face para URL fixada em commit + SHA-256 + tamanho (precisa de `huggingface_hub`) |
-| `.hf_cache.json` | Cache do `hfmeta.py` (o que fixa as versões; versionado de propósito) |
-| `ui2api.py` | Converte workflow da interface (nodes/links) para o formato da API, usando o `/object_info` de um ComfyUI rodando |
-| `api2ui.py` | O inverso: API → interface (layout simples em colunas) |
-| `cmp_api.py` | Compara dois prompts de API (usado para validar as conversões) |
-| `README.head.md`, `README.tail.md` | Texto fixo do README geral (o gerador insere a tabela entre eles) |
+| `gen.py` | Regenerates `workflows/*/README.md`, `README_ptBR.md`, `install.sh` and the root READMEs from `components.json` |
+| `hfmeta.py` | Resolves Hugging Face `repo:path[@revision]` into a commit-pinned URL + SHA-256 + size (needs `huggingface_hub`) |
+| `.hf_cache.json` | `hfmeta.py` cache (it is what pins the versions; versioned on purpose) |
+| `ui2api.py` | Converts a UI workflow (nodes/links) to API format, using the `/object_info` of a running ComfyUI |
+| `api2ui.py` | The reverse: API → UI (simple column layout) |
+| `cmp_api.py` | Compares two API prompts (used to validate the conversions) |
+| `README.head.*.md`, `README.tail.*.md` | Fixed text of the root READMEs per language (the generator inserts the table between them) |
 
-Conversores validados com ida e volta (0 diferenças) no workflow do Character Swap (45 nós,
-combos dinâmicos V3, loops) e no Ref2VA (19 nós, widgets dinâmicos do VHS). Tratam notas, Reroute,
-Set/Get (KJNodes), PrimitiveNode, nós em bypass/mutados, subgraphs e widgets ligados por link.
+The converters are validated round-trip (0 differences) on the Character Swap workflow (45 nodes,
+V3 dynamic combos, loops), on Ref2VA (19 nodes, VHS dynamic widgets) and on the LTX 2.3 template
+(subgraph with promoted widgets). They handle notes, Reroute, Set/Get (KJNodes), PrimitiveNode,
+bypassed/muted nodes, subgraphs and link-driven widgets.
 
 ```bash
 python3 tools/ui2api.py workflow.json workflow.api.json http://localhost:8188

@@ -11,13 +11,13 @@ torch 2.13 + CUDA 13.0, **RTX 5060 Ti 16 GB**, 61 GB de RAM.
 
 ```
 workflows/<pasta>/
-├── README.md          componentes, pastas, links, como usar, licença, resultado do teste
+├── README_ptBR.md     componentes, pastas, links, como usar, licença, resultado do teste (README.md: inglês)
 ├── workflow.json      arrastar na interface do ComfyUI
 ├── workflow.api.json  formato da API (POST /prompt)
 ├── install.sh         instala custom nodes e modelos (autocontido)
 └── components.json    fonte de dados do README e do install.sh
 lib/comfy_install.sh   funções dos install.sh (embutidas em cada um pelo gerador)
-tools/                 gerador e conversores (ver tools/README.md)
+tools/                 gerador e conversores (ver tools/README_ptBR.md)
 ```
 
 ## Workflows

@@ -32,8 +32,8 @@ jurídico). Atenção especial:
 ## Manutenção
 
 ```bash
-python3 tools/gen.py      # regera os README.md e install.sh a partir dos components.json
+python3 tools/gen.py      # regera README.md, README_ptBR.md e install.sh a partir dos components.json
 ```
 
 Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `workflow.api.json` e
-`components.json` (copie um existente como modelo) e rode o gerador.
+`components.json` (copie um existente como modelo; textos traduzíveis são `{"pt": ..., "en": ...}`) e rode o gerador.
