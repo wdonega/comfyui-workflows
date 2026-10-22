@@ -119,15 +119,26 @@ def flatten(wf):
             changed = True
             prefix = nid + ":"
             add_graph(sg, prefix, prefix)
-            # nós de entrada/saída do subgraph: -10 = input, -20 = output
+            # nós de entrada/saída do subgraph: -10 = input, -20 = output.
+            # A entrada é casada pelo NOME (a lista inputs do nó externo pode estar desatualizada);
+            # sem link, o valor vem de widgets_values na ordem das entradas do subgraph que são widgets.
+            sg_inputs = sg.get("inputs", [])
+            outer_by_name = {i["name"]: i for i in n.get("inputs", [])}
+            wv = n.get("widgets_values") or []
+            widget_pos, k = {}, 0
+            for idx, si in enumerate(sg_inputs):
+                if any(t in LINK_TYPES_WIDGET or t == "COMBO" for t in str(si.get("type", "")).split(",")):
+                    widget_pos[idx] = k
+                    k += 1
             for lid, (o, os_, t, ts, typ) in list(links.items()):
                 if o == prefix + "-10":  # vem de uma entrada do subgraph
-                    ext = n["inputs"][os_].get("link") if os_ < len(n["inputs"]) else None
+                    name = sg_inputs[os_]["name"] if os_ < len(sg_inputs) else None
+                    ext = (outer_by_name.get(name) or {}).get("link")
                     if ext is not None and ext in links:
                         links[lid] = [links[ext][0], links[ext][1], t, ts, typ]
                     else:
-                        # entrada não conectada: valor de widget do nó-subgraph
-                        links[lid] = ["__const__", (n.get("widgets_values") or [None])[os_] if os_ < len(n.get("widgets_values") or []) else None, t, ts, typ]
+                        wi = widget_pos.get(os_)
+                        links[lid] = ["__const__", wv[wi] if wi is not None and wi < len(wv) else None, t, ts, typ]
             for lid, (o, os_, t, ts, typ) in list(links.items()):
                 if t == nid:  # links de fora que entram no nó-subgraph: já tratados acima
                     continue
