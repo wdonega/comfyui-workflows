@@ -26,6 +26,7 @@ tools/                 gerador e conversores (ver tools/README.md)
 |---|---|---|---|---|---|---|---|---|
 | [H3 Turbo v4 (larryvrh)](workflows/02-h3-turbo-v4/) | #2 | MiniMax H3 | LoRA turbo de 4–8 steps com sampler próprio (alternativa ao TaoMate) | ✅ testado | 16min 48s · 15 s | 15.2 GB | 40.85 GB | MiniMax H3 Community (⚠️ território) |
 | [H3 Character Swap (Relay 2.0)](workflows/14-h3-character-swap/) | #14 | MiniMax H3 | Troca o personagem de um vídeo mantendo performance, cena e áudio | ✅ testado | 14min 28s · 4 s | — | 46.33 GB | MiniMax H3 Community (⚠️ território) |
+| [H3 Long Video (prompt dividido por LLM)](workflows/24-h3-long-video/) | #24 | MiniMax H3 | Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM | ✅ testado | 11min 27s · 16 s | 15.3 GB | 44.43 GB | MiniMax H3 Community (⚠️ território) |
 | [H3 Realism People](workflows/59-h3-realism-people/) | #59 | MiniMax H3 | LoRA de realismo para pessoas (gatilho r34l1sm) | ✅ testado | 2min 14s · 5 s | 15.2 GB | 42.69 GB | MiniMax H3 Community (⚠️ território) |
 | [H3 Ref2VA · TaoMate 3 steps](workflows/h3-ref2va-taomate-3step/) | base | MiniMax H3 | Vídeo+áudio a partir de imagem de referência em 3 steps | ✅ testado | 8min 44s · 15 s | 15.2 GB | 42.55 GB | MiniMax H3 Community (⚠️ território) |
 

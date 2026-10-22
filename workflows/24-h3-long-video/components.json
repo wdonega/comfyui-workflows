@@ -1,0 +1,59 @@
+{
+ "title": "H3 Long Video (prompt dividido por LLM)",
+ "short": "Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM",
+ "plan": "#24",
+ "family": "MiniMax H3",
+ "summary": "Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (aqui o local `http://llm2.lab:8080/v1`) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).",
+ "status": "testado",
+ "test": {
+  "what": "16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next no llm2.lab dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo",
+  "clip": "16 s",
+  "time_s": 687,
+  "vram_mib": 15659,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "MiniMax H3 Community License",
+  "short": "MiniMax H3 Community (⚠️ território)",
+  "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
+  "summary": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-H3-Long-Video",
+   "url": "https://github.com/ooizj/ComfyUI-H3-Long-Video",
+   "commit": "7499153747f6311f51419df845740db4b7000e6d",
+   "page": "https://github.com/ooizj/ComfyUI-H3-Long-Video"
+  }
+ ],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+   "role": "modelo Ref2VA (INT8)"
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+   "role": "text encoder Qwen3-VL 32B (NVFP4)"
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_fp16.safetensors",
+   "role": "VAE de vídeo fp16"
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors",
+   "role": "VAE de áudio"
+  },
+  {
+   "dest": "loras",
+   "hf": "lightx2v/Minimax-h3-Turbo:minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors",
+   "role": "LoRA Ref2V Turbo 8 steps v1.1 (força 0.8)"
+  }
+ ],
+ "usage": "1. No **Ref Prompt Builder**, escolha as imagens de referência (`pictures`) e escreva a história inteira; cite `<Picture 1>` etc.\n2. No **H3 Prompt API**: `api_url` = servidor compatível com OpenAI (`http://llm2.lab:8080/v1` aqui; DeepSeek por padrão no original), `model` do servidor. `max_tokens` com folga se o modelo \"pensa\" antes de responder.\n3. No **H3 Long Video**: `total_seconds` (duração final) e `segment_seconds` (tamanho de cada segmento). Mais de um segmento exige o Prompt API conectado.\n4. `local_llm` = `auto`: só descarrega os modelos do ComfyUI se a URL for localhost. O llm2.lab roda em outra GPU, então não descarrega nada.",
+ "notes": "- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.\n- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next do llm2.lab acertou no teste.\n- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó."
+}
