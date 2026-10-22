@@ -10,7 +10,7 @@
 | `ui2api.py` | Converte workflow da interface (nodes/links) para o formato da API, usando o `/object_info` de um ComfyUI rodando |
 | `api2ui.py` | O inverso: API → interface (layout simples em colunas) |
 | `cmp_api.py` | Compara dois prompts de API (usado para validar as conversões) |
-| `make_logo.py` | Gera `assets/logo.svg` (letras em blocos próprias, magenta/branco com sombra preta, fundo transparente) |
+| `make_logo.py` | Gera `assets/logo.svg` (letras em blocos próprias, magenta/branco com contorno preto fino, fundo transparente) |
 | `README.head.*.md`, `README.tail.*.md` | Texto fixo dos READMEs gerais por idioma (o gerador insere a tabela entre eles) |
 
 Conversores validados com ida e volta (0 diferenças) no workflow do Character Swap (45 nós,

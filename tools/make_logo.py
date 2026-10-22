@@ -26,16 +26,17 @@ GAP = 1.5        # espaço entre letras (unidades)
 SPACE = 4        # espaço entre palavras (unidades)
 SKEW = -14       # graus
 PAD_X, PAD_Y = 24, 18
-MAGENTA, WHITE, SHADOW = "#FF2ECF", "#FFFFFF", "#000000"
-SHADOW_OFFSET = 0.55  # sombra: cópia em preto deslocada para a direita e para baixo (unidades)
+MAGENTA, WHITE, OUTLINE = "#FF2ECF", "#FFFFFF", "#000000"
+OUTLINE_WIDTH = 0.3  # contorno: cópia em preto expandida para todos os lados, por trás (unidades)
 
 
-def word(text, x0, color, dx=0.0, dy=0.0):
+def word(text, x0, color, grow=0.0):
     rects, x = [], x0
     for ch in text:
         w, parts = GLYPHS[ch]
         for (rx, ry, rw, rh) in parts:
-            rects.append(f'<rect x="{(x + rx + dx) * U:.1f}" y="{(ry + dy) * U:.1f}" width="{rw * U:.1f}" height="{rh * U:.1f}" rx="{0.35 * U:.1f}" fill="{color}"/>')
+            g = grow
+            rects.append(f'<rect x="{(x + rx - g) * U:.1f}" y="{(ry - g) * U:.1f}" width="{(rw + 2 * g) * U:.1f}" height="{(rh + 2 * g) * U:.1f}" rx="{(0.35 + g) * U:.1f}" fill="{color}"/>')
         x += w + GAP
     return rects, x - GAP
 
@@ -43,17 +44,17 @@ def word(text, x0, color, dx=0.0, dy=0.0):
 def main():
     a, end_a = word("COMFYUI", 0, MAGENTA)
     b, end_b = word("WORKFLOWS", end_a + SPACE, WHITE)
-    o = SHADOW_OFFSET
-    sa, _ = word("COMFYUI", 0, SHADOW, o, o)
-    sb, _ = word("WORKFLOWS", end_a + SPACE, SHADOW, o, o)
-    text_w, text_h = (end_b + o) * U, (8 + o) * U
+    o = OUTLINE_WIDTH
+    sa, _ = word("COMFYUI", 0, OUTLINE, o)
+    sb, _ = word("WORKFLOWS", end_a + SPACE, OUTLINE, o)
+    text_w, text_h = (end_b + 2 * o) * U, (8 + 2 * o) * U
     slant = text_h * 0.25  # deslocamento horizontal do skew de -14° (tan 14° ≈ 0.25)
     width, height = int(text_w + slant + 2 * PAD_X), int(text_h + 2 * PAD_Y)
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="ComfyUI Workflows">',
         "<title>ComfyUI Workflows</title>",
-        f'<g transform="translate({PAD_X + slant:.1f} {PAD_Y}) skewX({SKEW})">',
-        *sa, *sb,  # sombra primeiro, por trás
+        f'<g transform="translate({PAD_X + slant + o * U:.1f} {PAD_Y + o * U:.1f}) skewX({SKEW})">',
+        *sa, *sb,  # contorno primeiro, por trás
         *a, *b,
         "</g>",
         "</svg>",
