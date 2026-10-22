@@ -14,7 +14,7 @@
 
 Conversores validados com ida e volta (0 diferenças) no workflow do Character Swap (45 nós,
 combos dinâmicos V3, loops), no Ref2VA (19 nós, widgets dinâmicos do VHS) e no template do LTX 2.3
-(subgraph com widgets promovidos). Tratam notas, Reroute,
+(subgraph com widgets promovidos) e no Bernini-R (subgraphs aninhados, formato `proxyWidgets`). Tratam notas, Reroute,
 Set/Get (KJNodes), PrimitiveNode, nós em bypass/mutados, subgraphs e widgets ligados por link.
 
 ```bash

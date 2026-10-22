@@ -14,7 +14,7 @@
 
 The converters are validated round-trip (0 differences) on the Character Swap workflow (45 nodes,
 V3 dynamic combos, loops), on Ref2VA (19 nodes, VHS dynamic widgets) and on the LTX 2.3 template
-(subgraph with promoted widgets). They handle notes, Reroute, Set/Get (KJNodes), PrimitiveNode,
+(subgraph with promoted widgets) and Bernini-R (nested subgraphs, `proxyWidgets` format). They handle notes, Reroute, Set/Get (KJNodes), PrimitiveNode,
 bypassed/muted nodes, subgraphs and link-driven widgets.
 
 ```bash

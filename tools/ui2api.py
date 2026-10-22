@@ -144,7 +144,11 @@ def flatten(wf):
                         links[lid] = [links[ext][0], links[ext][1], t, ts, typ]
                     else:
                         wi = widget_pos.get(os_)
-                        links[lid] = ["__const__", wv[wi] if wi is not None and wi < len(wv) else None, t, ts, typ]
+                        if wi is not None and wi < len(wv):
+                            links[lid] = ["__const__", wv[wi], t, ts, typ]
+                        else:
+                            # formato novo (properties.proxyWidgets): o valor já está no widget do nó interno
+                            del links[lid]
             for lid, (o, os_, t, ts, typ) in list(links.items()):
                 if t == nid:  # links de fora que entram no nó-subgraph: já tratados acima
                     continue
