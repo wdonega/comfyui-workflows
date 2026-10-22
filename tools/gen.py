@@ -20,7 +20,7 @@ LANGS = {"en": "README.md", "pt": "README_ptBR.md"}
 L = {
     "en": {
         "switch": "Language: **English** · [Português](README_ptBR.md)",
-        "back": "[← Back to the list](../../README.md)",
+        "root": "../../README.md",
         "status": {"testado": "✅ tested", "parcial": "⚠️ partial", "falhou": "❌ failed", "pendente": "⏳ pending"},
         "plan": "Plan item", "family": "Family", "license": "License", "download": "Total download",
         "test": "Test", "time": "Time", "vram": "Peak VRAM", "not_measured": "not measured",
@@ -42,7 +42,7 @@ L = {
     },
     "pt": {
         "switch": "Idioma: [English](README.md) · **Português**",
-        "back": "[← Voltar à lista](../../README_ptBR.md)",
+        "root": "../../README_ptBR.md",
         "status": {"testado": "✅ testado", "parcial": "⚠️ parcial", "falhou": "❌ falhou", "pendente": "⏳ pendente"},
         "plan": "Item do plano", "family": "Família", "license": "Licença", "download": "Download total",
         "test": "Teste", "time": "Tempo", "vram": "Pico de VRAM", "not_measured": "não medido",
@@ -138,7 +138,8 @@ def readme(c, models, total, lang):
     s = L[lang]
     t = c.get("test", {})
     lic = c["license"]
-    r = [f"{s['back']} · {s['switch']}", "", f"# {tr(c['title'], lang)}", "", tr(c["summary"], lang), ""]
+    crumb = f"[comfyui-workflows]({s['root']}) › **{tr(c['title'], lang)}**"
+    r = [f"{crumb} · {s['switch']}", "", f"# {tr(c['title'], lang)}", "", tr(c["summary"], lang), ""]
     r += ["| | |", "|---|---|",
           f"| {s['plan']} | {c.get('plan', '—')} |",
           f"| Status | {s['status'].get(c['status'], c['status'])} |",
