@@ -1,0 +1,74 @@
+{
+ "title": "Herrgott's H3 Infinite Continuation (v1.4)",
+ "short": "Encadeia clipes FL2VA com handover seguro e junta tudo sem emenda visível",
+ "plan": "#25",
+ "family": "MiniMax H3",
+ "summary": "Gera vídeos de qualquer duração clipe a clipe: o **Start** cria o clipe 1 (T2VA/I2VA/FL2VA) e salva o latente com metadados de *handover*; cada **Continue** carrega o anterior, protege os últimos 39 frames seguros como contexto (Masked AV nativo) e gera o próximo; o **Stitch** decodifica a cadeia salva e junta nos pontos seguros, com crossfade curto de vídeo e áudio.",
+ "status": "testado",
+ "files": {
+  "01-start.json": "Clipe 1: arrastar na interface",
+  "01-start.api.json": "Clipe 1 (API)",
+  "02-continue.json": "Clipes 2, 3, …: aumente `clip_index` no Load/Save a cada clipe",
+  "02-continue.api.json": "Continue (API)",
+  "03-stitch.json": "Junta a cadeia salva em um vídeo final",
+  "03-stitch.api.json": "Stitch (API)"
+ },
+ "test": {
+  "what": "736x1280, 15 steps: Start 5 s (553 s) + Continue 5 s (732 s) + Stitch (115 s) = 8,7 s finais. O Auto Handover detectou o final forçado e passou o ponto seguro: emenda sem salto. Referência usada como primeiro/último frame, por isso o retrato no fim",
+  "clip": "8,7 s (2 clipes)",
+  "time_s": 1400,
+  "vram_mib": 15651,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "MiniMax H3 Community License",
+  "short": "MiniMax H3 Community (⚠️ território)",
+  "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
+  "summary": "Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."
+ },
+ "nodes": [
+  {
+   "name": "KJNodes",
+   "registry": "comfyui-kjnodes",
+   "version": "1.5.0",
+   "page": "https://github.com/kijai/ComfyUI-KJNodes"
+  },
+  {
+   "name": "VideoHelperSuite",
+   "registry": "comfyui-videohelpersuite",
+   "version": "1.7.9",
+   "page": "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
+  },
+  {
+   "name": "Herrgotts-H3-Infinite-Continuation-Suite",
+   "url": "https://github.com/HerrgottMargott/Herrgotts-H3-Infinite-Continuation-Suite",
+   "commit": "4b1edd678de7356beebf3761b2532a35e07d0389",
+   "page": "https://github.com/HerrgottMargott/Herrgotts-H3-Infinite-Continuation-Suite"
+  }
+ ],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+   "role": "modelo FL2VA (INT8)"
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+   "role": "text encoder Qwen3-VL 32B (NVFP4)"
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_fp16.safetensors",
+   "role": "VAE de vídeo fp16"
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors",
+   "role": "VAE de áudio"
+  }
+ ],
+ "usage": "1. **01-start**: primeiro e último frame são opcionais (o autor recomenda repetir o mesmo frame nas pontas como \"reset\" de qualidade); a referência Qwen vira `<Picture 2>`. Rode e ele salva `output/h3_continuous/clip_00001`.\n2. **02-continue**: `clip_index` do Load = anterior, do Save = atual. `duration_mode` `Net New Content` faz a duração pedida ser só conteúdo novo.\n3. Repita o Continue quantas vezes quiser.\n4. **03-stitch**: `first_clip`/`last_clip` (0 = até o último) e gera o vídeo final.",
+ "notes": "- Os exemplos do autor usam **SageAttention** (`PathchSageAttentionKJ`), que não estava instalado; aqui foi trocado pela atenção do comfy-kitchen + MiniMax LowVRAM Attention + Chunk FeedForward (KJNodes), e funcionou em 16 GB.\n- Não use o mesmo retrato de estúdio como último frame se quiser que a cena termine no cenário: o clipe é obrigado a chegar nele (foi o que aconteceu no teste).\n- O tempo da tabela soma os três passos (553 + 732 + 115 s)."
+}

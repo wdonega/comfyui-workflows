@@ -102,11 +102,13 @@ def build(folder):
         r += [f"| Teste | {t['what']} |",
               f"| Tempo | **{fmt_time(t['time_s'])}** ({t['gpu']}, {t['date']}) |",
               f"| Pico de VRAM | {str(t['vram_mib']) + ' MiB' if t.get('vram_mib') else 'não medido'} |"]
-    r += ["", "## Arquivos desta pasta", "",
-          "| Arquivo | O que é |", "|---|---|",
-          "| `workflow.json` | Workflow para arrastar na interface do ComfyUI |",
-          "| `workflow.api.json` | Mesmo workflow no formato da API (o que foi testado) |",
-          "| `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |",
+    files = c.get("files") or {
+        "workflow.json": "Workflow para arrastar na interface do ComfyUI",
+        "workflow.api.json": "Mesmo workflow no formato da API (parâmetros do teste, entradas de exemplo)",
+    }
+    r += ["", "## Arquivos desta pasta", "", "| Arquivo | O que é |", "|---|---|"]
+    r += [f"| `{f}` | {d} |" for f, d in files.items()]
+    r += ["| `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |",
           "| `components.json` | Fonte dos dados deste README e do install.sh |", ""]
     r += ["## Instalação", "", "```bash", "# na máquina com o ComfyUI (o script confere se a pasta é a raiz do ComfyUI)",
           "bash install.sh /caminho/do/ComfyUI", "", "# ComfyUI em Docker (container \"comfyui\")",

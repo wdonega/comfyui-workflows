@@ -18,7 +18,7 @@ Substitui o `SamplerCustomAdvanced` por um sampler em chunks com continuação n
 | Arquivo | O que é |
 |---|---|
 | `workflow.json` | Workflow para arrastar na interface do ComfyUI |
-| `workflow.api.json` | Mesmo workflow no formato da API (o que foi testado) |
+| `workflow.api.json` | Mesmo workflow no formato da API (parâmetros do teste, entradas de exemplo) |
 | `install.sh` | Instala custom nodes e baixa os modelos para as pastas certas |
 | `components.json` | Fonte dos dados deste README e do install.sh |
 

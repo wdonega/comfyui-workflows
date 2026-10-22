@@ -1,0 +1,47 @@
+{
+ "2": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+  },
+  "_meta": {
+   "title": "Video VAE"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+  },
+  "_meta": {
+   "title": "Audio VAE"
+  }
+ },
+ "4": {
+  "class_type": "H3ContinuousStitchSavedChainV14",
+  "inputs": {
+   "latent_prefix": "h3_continuous/clip",
+   "first_clip": 1,
+   "last_clip": 0,
+   "filename_prefix": "h3/infinite_stitched",
+   "video_crossfade_frames": 4,
+   "audio_crossfade_ms": 15.0,
+   "luminance_match": false,
+   "luminance_fade_frames": 16,
+   "max_luminance_correction_percent": 10.0,
+   "crf": 18,
+   "max_safe_tail_bridge_frames": 0,
+   "video_vae": [
+    "2",
+    0
+   ],
+   "audio_vae": [
+    "3",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "STITCH SAVED CHAIN — Memory-Bounded"
+  }
+ }
+}
