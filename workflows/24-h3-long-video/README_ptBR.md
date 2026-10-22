@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Long Video (prompt dividido por LLM)**
-
-Idioma: [English](README.md) · **Português**
-
 # H3 Long Video (prompt dividido por LLM)
+
+[comfyui-workflows](../../README_ptBR.md) › **H3 Long Video (prompt dividido por LLM)**
 
 Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (qualquer servidor compatível com a API da OpenAI; no teste, um llama.cpp local em outra GPU) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).
 

@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 HR Endless Sampler (Gemma 4 dirige os chunks)**
-
-Idioma: [English](README.md) · **Português**
-
 # H3 HR Endless Sampler (Gemma 4 dirige os chunks)
+
+[comfyui-workflows](../../README_ptBR.md) › **H3 HR Endless Sampler (Gemma 4 dirige os chunks)**
 
 Substitui o `SamplerCustomAdvanced` por um sampler em chunks com continuação no latente. Um **Gemma 4 12B** local (llama.cpp) analisa o prompt e as referências, planeja os planos e escreve o prompt de cada chunk; os cortes `[Shot N] At MM:SS.mmm,` caem no frame exato. Ref2VA sem LoRA, 20 steps.
 

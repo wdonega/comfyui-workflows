@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Realism People**
-
-Idioma: [English](README.md) · **Português**
-
 # H3 Realism People
+
+[comfyui-workflows](../../README_ptBR.md) › **H3 Realism People**
 
 O Ref2VA + TaoMate base com o LoRA **Realism People** da fal encadeado depois do TaoMate. Deixa pessoas com aparência mais natural e cinematográfica (menos brilho de IA). Gatilho no prompt: `r34l1sm`.
 

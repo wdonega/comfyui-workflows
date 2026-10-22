@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Turbo v4 (larryvrh)**
-
-Idioma: [English](README.md) · **Português**
-
 # H3 Turbo v4 (larryvrh)
+
+[comfyui-workflows](../../README_ptBR.md) › **H3 Turbo v4 (larryvrh)**
 
 O Ref2VA base com o **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, recomendado pelo autor) e o **MiniMax-H3 Turbo Sampler**, no lugar do TaoMate. O sampler cuida das escalas separadas de vídeo e áudio. Faixa útil: 4 a 8 steps, scheduler `simple`.
 

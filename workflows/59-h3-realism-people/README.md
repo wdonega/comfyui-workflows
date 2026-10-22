@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README.md) › **H3 Realism People**
-
-Language: **English** · [Português](README_ptBR.md)
-
 # H3 Realism People
+
+[comfyui-workflows](../../README.md) › **H3 Realism People**
 
 The base Ref2VA + TaoMate with fal's **Realism People** LoRA chained after TaoMate. Makes people look more natural and cinematic (less AI sheen). Prompt trigger: `r34l1sm`.
 

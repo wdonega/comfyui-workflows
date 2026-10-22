@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README.md) › **H3 Long Video (LLM-split prompt)**
-
-Language: **English** · [Português](README_ptBR.md)
-
 # H3 Long Video (LLM-split prompt)
+
+[comfyui-workflows](../../README.md) › **H3 Long Video (LLM-split prompt)**
 
 Generates videos longer than a single H3 sampling by chaining segments that continue motion and audio. An LLM (any OpenAI-compatible server; in the test, a local llama.cpp on another GPU) splits the story into per-segment prompts with the right timing. Uses Ref2VA + Ref2V Turbo 8-step LoRA and sparse attention (`BlockSparseAttention`).
 

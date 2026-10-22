@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Character Swap (Relay 2.0)**
-
-Idioma: [English](README.md) · **Português**
-
 # H3 Character Swap (Relay 2.0)
+
+[comfyui-workflows](../../README_ptBR.md) › **H3 Character Swap (Relay 2.0)**
 
 Workflow oficial do autor (akatz-ai) com o **H3 Relay 2.0**: o SAM 3.1 mascara a pessoa descrita, e o Ref2VA com o LoRA de Character Swap v1.5 + Turbo FL2V 8 steps troca a identidade pela imagem de referência. Preserva movimento, câmera, cenário e a trilha de áudio original. Vídeos longos são feitos em janelas.
 

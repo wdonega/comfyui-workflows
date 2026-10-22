@@ -1,8 +1,6 @@
-[comfyui-workflows](../README_ptBR.md) › **tools**
-
-Idioma: [English](README.md) · **Português**
-
 # tools
+
+[comfyui-workflows](../README_ptBR.md) › **tools**
 
 | Arquivo | Para quê |
 |---|---|

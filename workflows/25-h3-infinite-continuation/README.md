@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README.md) › **Herrgott's H3 Infinite Continuation (v1.4)**
-
-Language: **English** · [Português](README_ptBR.md)
-
 # Herrgott's H3 Infinite Continuation (v1.4)
+
+[comfyui-workflows](../../README.md) › **Herrgott's H3 Infinite Continuation (v1.4)**
 
 Makes videos of any length clip by clip: **Start** creates clip 1 (T2VA/I2VA/FL2VA) and saves the latent with *handover* metadata; each **Continue** loads the previous one, protects the last 39 safe frames as context (native Masked AV) and generates the next; **Stitch** decodes the saved chain and joins it at the safe points, with a short video and audio crossfade.
 

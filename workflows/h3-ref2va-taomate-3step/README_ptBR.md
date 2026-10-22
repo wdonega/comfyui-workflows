@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README_ptBR.md) › **H3 Ref2VA · TaoMate 3 steps**
-
-Idioma: [English](README.md) · **Português**
-
 # H3 Ref2VA · TaoMate 3 steps
+
+[comfyui-workflows](../../README_ptBR.md) › **H3 Ref2VA · TaoMate 3 steps**
 
 Workflow base de referência-para-vídeo (Ref2VA) do MiniMax H3 com o LoRA TaoMate de 3 steps: gera vídeo com áudio sincronizado a partir de um prompt estruturado e uma imagem de referência. Base dos itens #59 e da regressão do setup.
 

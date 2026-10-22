@@ -1,8 +1,6 @@
-[comfyui-workflows](../../README.md) › **H3 Turbo v4 (larryvrh)**
-
-Language: **English** · [Português](README_ptBR.md)
-
 # H3 Turbo v4 (larryvrh)
+
+[comfyui-workflows](../../README.md) › **H3 Turbo v4 (larryvrh)**
 
 The base Ref2VA with the **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`, the author's recommendation) and the **MiniMax-H3 Turbo Sampler** instead of TaoMate. The sampler handles the separate video and audio schedules. Useful range: 4 to 8 steps, `simple` scheduler.
 
