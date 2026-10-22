@@ -1,0 +1,20 @@
+{
+ "title": "H3 Ref2VA · TaoMate 3 steps",
+ "short": "Vídeo+áudio a partir de imagem de referência em 3 steps",
+ "plan": "base",
+ "family": "MiniMax H3",
+ "summary": "Workflow base de referência-para-vídeo (Ref2VA) do MiniMax H3 com o LoRA TaoMate de 3 steps: gera vídeo com áudio sincronizado a partir de um prompt estruturado e uma imagem de referência. Base dos itens #59 e da regressão do setup.",
+ "status": "testado",
+ "test": {"what": "736x1280, 362 frames (15 s), 3 steps, mesma seed de uma geração anterior: mesma cena e qualidade", "clip": "15 s", "time_s": 524, "vram_mib": 15559, "gpu": "RTX 5060 Ti 16 GB", "date": "2026-10-22"},
+ "license": {"name":"MiniMax H3 Community License","short":"MiniMax H3 Community (⚠️ território)","url":"https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE","summary":"Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, autorização da MiniMax). **Proibido nos EUA, UE, Reino Unido e Coreia do Sul, inclusive exibir ou distribuir as saídas lá (cláusula V.4)**: não use os vídeos em projetos publicados globalmente. Conteúdo publicado deve ser identificado como gerado por IA; proibido personificar pessoas reais sem consentimento; produto comercial deve exibir \"MiniMax H3\". LoRAs de terceiros herdam essas regras."},
+ "nodes": [{"name":"KJNodes","registry":"comfyui-kjnodes","version":"1.5.0","page":"https://github.com/kijai/ComfyUI-KJNodes"}, {"name":"VideoHelperSuite","registry":"comfyui-videohelpersuite","version":"1.7.9","page":"https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"}],
+ "models": [
+  {"dest": "diffusion_models", "hf": "Comfy-Org/MiniMax-H3:diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors", "role": "modelo Ref2VA (INT8)"},
+  {"dest": "text_encoders", "hf": "Comfy-Org/MiniMax-H3:text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors", "role": "text encoder Qwen3-VL 32B (NVFP4, Blackwell)"},
+  {"dest": "vae", "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_video_vae_int8_convrot.safetensors", "role": "VAE de vídeo"},
+  {"dest": "vae", "hf": "Comfy-Org/MiniMax-H3:vae/minimax_h3_audio_vae_fp32.safetensors", "role": "VAE de áudio"},
+  {"dest": "loras", "hf": "drbaph/MiniMax-H3-Turbo-Lora-ComfyUI:experimental/minimax_h3_taomate_fl2va_3step_ema_comfyui.safetensors@633e6c48cd05f7800e2cb2c007b5c9023b92c576", "role": "LoRA TaoMate 3 steps", "page": "https://huggingface.co/TaoLiveAIGC/TaoMate-H3-FL2VA"}
+ ],
+ "usage": "1. Carregue `workflow.json` e escolha a imagem de referência no **LoadImage** (`reference.png`).\n2. Escreva o prompt no formato estruturado do H3 (`subject_definitions`, `detailed_description`, `audio`), citando `<Picture 1>`.\n3. `length` em frames a 24 fps (362 ≈ 15 s). Sigmas manuais `1.0, 0.961165, 0.853333, 0.0` + `res_multistep` são a receita do TaoMate.\n4. Em 16 GB, mantenha **MiniMax Chunk FeedForward** e **MiniMax LowVRAM Attention** (KJNodes) ligados.",
+ "notes": "- O arquivo do TaoMate é a conversão para ComfyUI publicada por drbaph (SHA-256 conferido com o arquivo em uso); o LoRA original é da TaoLiveAIGC.\n- Resultados com a mesma seed variam um pouco entre execuções (não-determinismo da GPU)."
+}
