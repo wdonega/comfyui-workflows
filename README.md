@@ -52,7 +52,11 @@ Repositórios gated precisam da licença aceita no Hugging Face e de `HF_TOKEN` 
 
 ## Licenças
 
-Cada pasta tem um resumo da licença dos modelos (não é parecer jurídico). Atenção especial:
+O conteúdo deste repositório (scripts, `lib/`, `tools/`, READMEs e os workflows montados aqui) está sob
+**[0BSD](LICENSE)**: use, copie e modifique à vontade, sem precisar dar crédito.
+Workflows de terceiros redistribuídos (indicados no README da pasta) mantêm a licença do autor, e os
+**modelos** baixados pelos `install.sh` têm licenças próprias, resumidas em cada pasta (não é parecer
+jurídico). Atenção especial:
 
 - **MiniMax H3**: proibido nos EUA, UE, Reino Unido e Coreia do Sul, **inclusive as saídas**.
   Não use os vídeos em projetos publicados globalmente.
