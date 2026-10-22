@@ -1,0 +1,58 @@
+{
+ "kind": "audio",
+ "title": {
+  "pt": "Chatterbox Multilingual · TTS com clonagem (23 idiomas)",
+  "en": "Chatterbox Multilingual · TTS with cloning (23 languages)"
+ },
+ "short": {
+  "pt": "TTS leve e rápido com clonagem, inclui português",
+  "en": "Light, fast TTS with cloning, Portuguese included"
+ },
+ "plan": "#48",
+ "family": "Chatterbox",
+ "summary": {
+  "pt": "O nó **FL Chatterbox Multilingual TTS** (ResembleAI) clonando uma voz de referência em português (`Portuguese (pt)`). Usa ~3,7 GB de VRAM.",
+  "en": "The **FL Chatterbox Multilingual TTS** node (ResembleAI) cloning a reference voice in Portuguese (`Portuguese (pt)`). Uses ~3.7 GB VRAM."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "temperatura 0,6: 8,6 s só com a frase. Com a temperatura padrão (0,8) o modelo continuou ~30 s com balbucio depois da frase. A frase em PT foi transcrita de volta pelo Qwen3-ASR e saiu correta (só \"ComfyUI\" vira algo como \"Confiuí\", normal para um nome em inglês).",
+   "en": "temperature 0.6: 8.6 s with just the sentence. With the default temperature (0.8) the model kept going ~30 s of babble after the sentence. The PT sentence was transcribed back by Qwen3-ASR and came out right (only \"ComfyUI\" turns into something like \"Confiuí\", normal for an English name)."
+  },
+  "clip": "8.6 s",
+  "time_s": 11,
+  "vram_mib": 3729,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "MIT",
+  "url": "https://opensource.org/license/mit",
+  "short": {
+   "pt": "MIT (livre)",
+   "en": "MIT (free)"
+  },
+  "summary": {
+   "pt": "MIT: uso pessoal e comercial livres, sem limite; basta manter o aviso de copyright ao redistribuir os pesos.",
+   "en": "MIT: free personal and commercial use, no limits; just keep the copyright notice when redistributing the weights."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI_Fill-ChatterBox",
+   "url": "https://github.com/filliptm/ComfyUI_Fill-ChatterBox",
+   "commit": "f7d7a16187430abcaf91a3039b9c83aa9960816a",
+   "page": "https://github.com/filliptm/ComfyUI_Fill-ChatterBox"
+  }
+ ],
+ "models": [],
+ "usage": {
+  "pt": "1. Os modelos baixam sozinhos no primeiro uso para `models/chatterbox/chatterbox_multilingual/` ([ResembleAI/chatterbox](https://huggingface.co/ResembleAI/chatterbox)).\n2. Dependências pip do `requirements.txt` do nó (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. Use **temperatura 0,6**; em 0,8 ele alucinou depois do fim da frase.",
+  "en": "1. The models download themselves on first use to `models/chatterbox/chatterbox_multilingual/` ([ResembleAI/chatterbox](https://huggingface.co/ResembleAI/chatterbox)).\n2. Pip dependencies from the node's `requirements.txt` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. Use **temperature 0.6**; at 0.8 it hallucinated after the end of the sentence."
+ },
+ "notes": {
+  "pt": "- O download automático deixa uma cópia de ~3 GB em `~/.cache/huggingface/hub/models--ResembleAI--chatterbox` além da pasta `models/chatterbox`; a cópia do cache pode ser apagada.\n- O repositório do nó não declara licença.\n- A voz de referência dos testes é sintética (voz \"Serena\" do Qwen3-TTS, 12,8 s em PT); nenhuma voz real foi clonada. Clonar a voz de alguém exige o consentimento dessa pessoa (direito de imagem/voz e LGPD).",
+  "en": "- The automatic download leaves a ~3 GB copy in `~/.cache/huggingface/hub/models--ResembleAI--chatterbox` besides the `models/chatterbox` folder; the cache copy can be deleted.\n- The node repository declares no license.\n- The test reference voice is synthetic (Qwen3-TTS \"Serena\" voice, 12.8 s in PT); no real voice was cloned. Cloning someone's voice requires that person's consent."
+ }
+}

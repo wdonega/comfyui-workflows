@@ -1,0 +1,83 @@
+{
+ "kind": "audio",
+ "title": {
+  "pt": "Fish Audio Drama 3 · clonagem de voz",
+  "en": "Fish Audio Drama 3 · voice cloning"
+ },
+ "short": {
+  "pt": "TTS expressivo de 35B com clonagem, deixas como [laughs] e vários falantes",
+  "en": "Expressive 35B TTS with cloning, cues like [laughs] and multiple speakers"
+ },
+ "plan": "#46",
+ "family": "Fish Audio Drama 3",
+ "summary": {
+  "pt": "O exemplo `drama3_voice_clone` do nó: o Qwen3-ASR transcreve a voz de referência, o Drama 3 codifica a voz e fala o texto (aceita deixas como `[laughs]`, `[whispers]`). Variante **int8experts**: ~6 GB do modelo na GPU e os experts na **RAM** (~48 GB de RAM livre).",
+  "en": "The node's `drama3_voice_clone` example: Qwen3-ASR transcribes the reference voice, Drama 3 encodes the voice and speaks the text (accepts cues like `[laughs]`, `[whispers]`). **int8experts** variant: ~6 GB of the model on the GPU and the experts in **RAM** (~48 GB free RAM)."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "clonagem da voz sintética com a frase em PT (8,6 s, 44,1 kHz). A frase em PT foi transcrita de volta pelo Qwen3-ASR e saiu correta (só \"ComfyUI\" vira algo como \"Confiuí\", normal para um nome em inglês).",
+   "en": "cloning the synthetic voice with the PT sentence (8.6 s, 44.1 kHz). The PT sentence was transcribed back by Qwen3-ASR and came out right (only \"ComfyUI\" turns into something like \"Confiuí\", normal for an English name)."
+  },
+  "clip": "8.6 s",
+  "time_s": 64,
+  "vram_mib": 14215,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Fish Audio Community License",
+  "url": "https://huggingface.co/fishaudio/drama-3",
+  "short": {
+   "pt": "Fish Audio Community (comercial < US$ 500 mil)",
+   "en": "Fish Audio Community (commercial < US$ 500K)"
+  },
+  "summary": {
+   "pt": "Pesquisa e uso não comercial grátis; uso comercial grátis para quem fatura menos de US$ 500 mil/ano. **Serviço hospedado (gerar voz para terceiros) exige licença separada.** Proibido imitar a voz de uma pessoa identificável sem consentimento prévio, e usar as saídas para treinar outros modelos de voz. As saídas são suas.",
+   "en": "Free research and non-commercial use; free commercial use for those under US$ 500K/year in revenue. **A hosted service (generating voices for others) needs a separate license.** Imitating an identifiable person's voice without prior consent is prohibited, as is using the outputs to train other speech models. The outputs are yours."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-Drama3",
+   "url": "https://github.com/PedroMarinhoDev/ComfyUI-Drama3",
+   "commit": "67a733a96890637dc27b1914974ad00c569405fb",
+   "page": "https://github.com/PedroMarinhoDev/ComfyUI-Drama3"
+  }
+ ],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "PedroMarinhoDev/Drama-3-ComfyUI:drama3_int8experts_bf16.safetensors",
+   "role": {
+    "pt": "Drama 3 (experts INT8; o mais rápido em < 24 GB)",
+    "en": "Drama 3 (INT8 experts; fastest under 24 GB)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "PedroMarinhoDev/Drama-3-ComfyUI:drama3_codec.safetensors",
+   "role": {
+    "pt": "codec de áudio",
+    "en": "audio codec"
+   }
+  },
+  {
+   "dest": "asr",
+   "hf": "PedroMarinhoDev/Qwen3-ASR-ComfyUI:qwen3_asr_1.7b_bf16.safetensors",
+   "role": {
+    "pt": "Qwen3-ASR 1.7B (transcreve a referência)",
+    "en": "Qwen3-ASR 1.7B (transcribes the reference)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. **LoadAudio**: 5 a 15 s da voz a clonar (`reference_voice.flac`).\n2. **Drama3Generate**: o texto; deixas entre colchetes (`[sighs]`, `[laughs]`). `speakers` = `one take per line` para uma voz.\n3. **Drama3Decode**: `shorten_long_pauses` ligado corta pausas longas.",
+  "en": "1. **LoadAudio**: 5 to 15 s of the voice to clone (`reference_voice.flac`).\n2. **Drama3Generate**: the text; cues in brackets (`[sighs]`, `[laughs]`). `speakers` = `one take per line` for one voice.\n3. **Drama3Decode**: `shorten_long_pauses` on trims long pauses."
+ },
+ "notes": {
+  "pt": "- **RAM:** precisa de ~48 GB de RAM livre (~32 GB na variante W4A8, que falha mais com vozes reais). No teste foi preciso pausar outro serviço que usava 48 GB.\n- O nó é mais novo que o exemplo dele: `speakers` e `shorten_long_pauses` foram adicionados.\n- Sem dependências pip extras.\n- A voz de referência dos testes é sintética (voz \"Serena\" do Qwen3-TTS, 12,8 s em PT); nenhuma voz real foi clonada. Clonar a voz de alguém exige o consentimento dessa pessoa (direito de imagem/voz e LGPD).",
+  "en": "- **RAM:** needs ~48 GB of free RAM (~32 GB with the W4A8 variant, which fails more often with real voices). In the test another service using 48 GB had to be paused.\n- The node is newer than its example: `speakers` and `shorten_long_pauses` were added.\n- No extra pip dependencies.\n- The test reference voice is synthetic (Qwen3-TTS \"Serena\" voice, 12.8 s in PT); no real voice was cloned. Cloning someone's voice requires that person's consent."
+ }
+}

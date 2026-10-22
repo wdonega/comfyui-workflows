@@ -1,0 +1,49 @@
+{
+ "24": {
+  "class_type": "LoadAudio",
+  "inputs": {
+   "audio": "reference_voice.flac"
+  },
+  "_meta": {
+   "title": "LoadAudio"
+  }
+ },
+ "40": {
+  "class_type": "FB_Qwen3TTSVoiceClone",
+  "inputs": {
+   "target_text": "Este é um teste de clonagem de voz em português, gerado localmente no ComfyUI, sem enviar nada para a internet.",
+   "model_choice": "1.7B",
+   "device": "auto",
+   "precision": "bf16",
+   "language": "Portuguese",
+   "ref_text": "Olá! Eu sou uma voz sintética, criada só para testar a clonagem de voz. Hoje o dia está bonito, o café está quentinho na mesa e a música toca baixinho na sala.",
+   "seed": 20261022,
+   "max_new_tokens": 2048,
+   "top_p": 0.8,
+   "top_k": 20,
+   "temperature": 1,
+   "repetition_penalty": 1.05,
+   "x_vector_only": false,
+   "instruct": "sage_attn",
+   "attention": "sdpa",
+   "unload_model_after_generate": true,
+   "ref_audio": [
+    "24",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "FB_Qwen3TTSVoiceClone"
+  }
+ },
+ "s": {
+  "class_type": "SaveAudio",
+  "inputs": {
+   "audio": [
+    "40",
+    0
+   ],
+   "filename_prefix": "audio/qwen3tts_clone"
+  }
+ }
+}

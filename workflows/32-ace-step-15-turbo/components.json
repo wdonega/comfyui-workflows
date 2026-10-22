@@ -1,0 +1,84 @@
+{
+ "kind": "audio",
+ "title": {
+  "pt": "ACE-Step 1.5 Turbo · música",
+  "en": "ACE-Step 1.5 Turbo · music"
+ },
+ "short": {
+  "pt": "Música com letra em 8 steps; 30 s em 16 s",
+  "en": "Songs with lyrics in 8 steps; 30 s in 16 s"
+ },
+ "plan": "#32",
+ "family": "ACE-Step 1.5",
+ "summary": {
+  "pt": "O template oficial `audio_ace_step_1_5_split` (modelo turbo + dois text encoders Qwen + VAE). Gera música com vocal a partir de tags de estilo e letra, em 8 steps. Licença MIT: a opção livre para trilhas de projetos publicados.",
+  "en": "The official `audio_ace_step_1_5_split` template (turbo model + two Qwen text encoders + VAE). Generates songs with vocals from style tags and lyrics in 8 steps. MIT license: the free option for soundtracks of published projects."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "exemplo do template (K-pop com letra) encurtado para 30 s",
+   "en": "template example (K-pop with lyrics) shortened to 30 s"
+  },
+  "clip": "30 s",
+  "time_s": 16,
+  "vram_mib": 11267,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "MIT",
+  "url": "https://opensource.org/license/mit",
+  "short": {
+   "pt": "MIT (livre)",
+   "en": "MIT (free)"
+  },
+  "summary": {
+   "pt": "MIT: uso pessoal e comercial livres, sem limite; basta manter o aviso de copyright ao redistribuir os pesos.",
+   "en": "MIT: free personal and commercial use, no limits; just keep the copyright notice when redistributing the weights."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/ace_step_1.5_ComfyUI_files:split_files/diffusion_models/acestep_v1.5_turbo.safetensors",
+   "role": {
+    "pt": "ACE-Step 1.5 Turbo",
+    "en": "ACE-Step 1.5 Turbo"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/ace_step_1.5_ComfyUI_files:split_files/text_encoders/qwen_0.6b_ace15.safetensors",
+   "role": {
+    "pt": "text encoder Qwen 0.6B",
+    "en": "Qwen 0.6B text encoder"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/ace_step_1.5_ComfyUI_files:split_files/text_encoders/qwen_1.7b_ace15.safetensors",
+   "role": {
+    "pt": "text encoder Qwen 1.7B (letra)",
+    "en": "Qwen 1.7B text encoder (lyrics)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/ace_step_1.5_ComfyUI_files:split_files/vae/ace_1.5_vae.safetensors",
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "No **TextEncodeAceStepAudio1.5**: tags de estilo e a letra com seções. Duração em segundos no **EmptyAceStep1.5LatentAudio** (120 no template). Há variantes XL (4B) nos templates do ComfyUI, que pedem ≥ 12 GB com offload.",
+  "en": "In **TextEncodeAceStepAudio1.5**: style tags and lyrics with sections. Length in seconds in **EmptyAceStep1.5LatentAudio** (120 in the template). XL (4B) variants exist among the ComfyUI templates and need ≥ 12 GB with offload."
+ },
+ "notes": {
+  "pt": "- Muito rápido: 30 s de música em 16 s.",
+  "en": "- Very fast: 30 s of music in 16 s."
+ }
+}

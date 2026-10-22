@@ -1,0 +1,58 @@
+{
+ "kind": "audio",
+ "title": {
+  "pt": "VoxCPM2 · TTS, voz por descrição e clonagem",
+  "en": "VoxCPM2 · TTS, voice design and cloning"
+ },
+ "short": {
+  "pt": "TTS de 2B em 30 idiomas, 48 kHz: voz criada por texto ou clonada",
+  "en": "2B TTS in 30 languages, 48 kHz: voice from a description or cloned"
+ },
+ "plan": "#47",
+ "family": "VoxCPM2",
+ "summary": {
+  "pt": "Exemplo do nó com os dois modos: **VoxCPM2_TTS** cria a voz a partir de uma descrição em texto; **VoxCPM2_Clone** clona uma referência (com a transcrição dela no `prompt_text`). Saída em 48 kHz.",
+  "en": "The node's example with both modes: **VoxCPM2_TTS** creates the voice from a text description; **VoxCPM2_Clone** clones a reference (with its transcript in `prompt_text`). 48 kHz output."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "clone (9,4 s) e voz descrita como \"homem calmo, voz grave, português do Brasil\" (7,0 s). A frase em PT foi transcrita de volta pelo Qwen3-ASR e saiu correta (só \"ComfyUI\" vira algo como \"Confiuí\", normal para um nome em inglês).",
+   "en": "clone (9.4 s) and a voice described as \"calm man, deep voice, Brazilian Portuguese\" (7.0 s). The PT sentence was transcribed back by Qwen3-ASR and came out right (only \"ComfyUI\" turns into something like \"Confiuí\", normal for an English name)."
+  },
+  "clip": "2 × ~8 s",
+  "time_s": 93,
+  "vram_mib": 6581,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-VoxCPM2",
+   "url": "https://github.com/Saganaki22/ComfyUI-VoxCPM2",
+   "commit": "0e52a6cd006769e030d0e1ae907ffebbbfac4f5f",
+   "page": "https://github.com/Saganaki22/ComfyUI-VoxCPM2"
+  }
+ ],
+ "models": [],
+ "usage": {
+  "pt": "1. O modelo (~5 GB) baixa sozinho no primeiro uso para `models/tts/VoxCPM/VoxCPM2/` ([openbmb/VoxCPM2](https://huggingface.co/openbmb/VoxCPM2)).\n2. Dependências pip: `wetext inflect simplejson sortedcontainers soundfile` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.). **Não** instale o pacote `voxcpm` do PyPI (conflita com `dill`); o nó traz o código em `src/`.\n3. `enable_denoiser` e `enable_asr` exigem `modelscope`/`funasr` (não instalados); deixe desligados.",
+  "en": "1. The model (~5 GB) downloads itself on first use to `models/tts/VoxCPM/VoxCPM2/` ([openbmb/VoxCPM2](https://huggingface.co/openbmb/VoxCPM2)).\n2. Pip dependencies: `wetext inflect simplejson sortedcontainers soundfile` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.). Do **not** install the `voxcpm` PyPI package (conflicts with `dill`); the node ships the code in `src/`.\n3. `enable_denoiser` and `enable_asr` need `modelscope`/`funasr` (not installed); keep them off."
+ },
+ "notes": {
+  "pt": "- A voz de referência dos testes é sintética (voz \"Serena\" do Qwen3-TTS, 12,8 s em PT); nenhuma voz real foi clonada. Clonar a voz de alguém exige o consentimento dessa pessoa (direito de imagem/voz e LGPD).",
+  "en": "- The test reference voice is synthetic (Qwen3-TTS \"Serena\" voice, 12.8 s in PT); no real voice was cloned. Cloning someone's voice requires that person's consent."
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "2": {
+  "class_type": "Drama3Loader",
+  "inputs": {
+   "model_name": "drama3_int8experts_bf16.safetensors",
+   "experts": "in RAM",
+   "expert_cache_gb": 0,
+   "second_gpu": "none",
+   "split_layer": 0
+  },
+  "_meta": {
+   "title": "Drama3Loader"
+  }
+ },
+ "3": {
+  "class_type": "Drama3CodecLoader",
+  "inputs": {
+   "codec_name": "drama3_codec.safetensors"
+  },
+  "_meta": {
+   "title": "Drama3CodecLoader"
+  }
+ },
+ "4": {
+  "class_type": "LoadAudio",
+  "inputs": {
+   "audio": "reference_voice.flac"
+  },
+  "_meta": {
+   "title": "LoadAudio"
+  }
+ },
+ "5": {
+  "class_type": "Drama3EncodeVoice",
+  "inputs": {
+   "transcript": [
+    "10",
+    0
+   ],
+   "codec": [
+    "3",
+    0
+   ],
+   "audio": [
+    "4",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Drama3EncodeVoice"
+  }
+ },
+ "6": {
+  "class_type": "Drama3Generate",
+  "inputs": {
+   "text": "Este é um teste de clonagem de voz em português, gerado localmente no ComfyUI, sem enviar nada para a internet.",
+   "seed": 20261022,
+   "temperature": 1,
+   "top_p": 0.9,
+   "top_k": 0,
+   "max_frames": 600,
+   "split_long_text": true,
+   "model": [
+    "2",
+    0
+   ],
+   "voices.voice0": [
+    "5",
+    0
+   ],
+   "speakers": "one take per line"
+  },
+  "_meta": {
+   "title": "Drama3Generate"
+  }
+ },
+ "7": {
+  "class_type": "Drama3Decode",
+  "inputs": {
+   "codec": [
+    "3",
+    0
+   ],
+   "codes": [
+    "6",
+    0
+   ],
+   "shorten_long_pauses": true
+  },
+  "_meta": {
+   "title": "Drama3Decode"
+  }
+ },
+ "8": {
+  "class_type": "SaveAudio",
+  "inputs": {
+   "filename_prefix": "audio/drama3_clone",
+   "audio": [
+    "7",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "SaveAudio"
+  }
+ },
+ "9": {
+  "class_type": "Qwen3ASRLoader",
+  "inputs": {
+   "model_name": "qwen3_asr_1.7b_bf16.safetensors"
+  },
+  "_meta": {
+   "title": "Qwen3ASRLoader"
+  }
+ },
+ "10": {
+  "class_type": "Qwen3ASRTranscribe",
+  "inputs": {
+   "language": "auto",
+   "context": "",
+   "max_new_tokens": 4096,
+   "model": [
+    "9",
+    0
+   ],
+   "audio": [
+    "4",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Qwen3ASRTranscribe"
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "12": {
+  "class_type": "LoadAudio",
+  "inputs": {
+   "audio": "reference_voice.flac"
+  },
+  "_meta": {
+   "title": "LoadAudio"
+  }
+ },
+ "25": {
+  "class_type": "FL_ChatterboxMultilingualTTS",
+  "inputs": {
+   "text": "Este é um teste de clonagem de voz em português, gerado localmente no ComfyUI, sem enviar nada para a internet.",
+   "language": "Portuguese (pt)",
+   "exaggeration": 0.5,
+   "cfg_weight": 0.5,
+   "temperature": 0.6,
+   "repetition_penalty": 2,
+   "min_p": 0.05,
+   "top_p": 1,
+   "seed": 7,
+   "use_cpu": false,
+   "keep_model_loaded": false,
+   "audio_prompt": [
+    "12",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "FL_ChatterboxMultilingualTTS"
+  }
+ },
+ "s": {
+  "class_type": "SaveAudio",
+  "inputs": {
+   "audio": [
+    "25",
+    0
+   ],
+   "filename_prefix": "audio/chatterbox_multilingual"
+  }
+ }
+}

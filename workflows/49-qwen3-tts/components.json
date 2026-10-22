@@ -1,0 +1,76 @@
+{
+ "kind": "audio",
+ "title": {
+  "pt": "Qwen3-TTS · vozes prontas e clonagem",
+  "en": "Qwen3-TTS · built-in voices and cloning"
+ },
+ "short": {
+  "pt": "TTS de 1.7B em 10 idiomas (inclui PT): 9 vozes prontas, clonagem e voz por descrição",
+  "en": "1.7B TTS in 10 languages (PT included): 9 built-in voices, cloning and voice design"
+ },
+ "plan": "#49",
+ "family": "Qwen3-TTS",
+ "summary": {
+  "pt": "Dois workflows do nó **ComfyUI-Qwen-TTS**: `01-custom-voice` fala o texto com uma das 9 vozes prontas (Serena, Ryan, Eric…); `02-voice-clone` clona uma referência a partir do áudio e da transcrição dela. O nó também tem **VoiceDesign** (voz por descrição) e diálogo com vários falantes.",
+  "en": "Two workflows for the **ComfyUI-Qwen-TTS** node: `01-custom-voice` speaks the text with one of the 9 built-in voices (Serena, Ryan, Eric…); `02-voice-clone` clones a reference from its audio and transcript. The node also has **VoiceDesign** (voice from a description) and multi-speaker dialogue."
+ },
+ "status": "testado",
+ "files": {
+  "01-custom-voice.json": {
+   "pt": "Voz pronta: arrastar na interface",
+   "en": "Built-in voice: drag into the UI"
+  },
+  "01-custom-voice.api.json": {
+   "pt": "Voz pronta (API)",
+   "en": "Built-in voice (API)"
+  },
+  "02-voice-clone.json": {
+   "pt": "Clonagem: arrastar na interface",
+   "en": "Cloning: drag into the UI"
+  },
+  "02-voice-clone.api.json": {
+   "pt": "Clonagem (API)",
+   "en": "Cloning (API)"
+  }
+ },
+ "test": {
+  "what": {
+   "pt": "voz \"Serena\" em PT (12,8 s), transcrita palavra por palavra; clonagem dessa voz com a frase em PT (7,5 s, 81 s com o download do modelo base). A frase em PT foi transcrita de volta pelo Qwen3-ASR e saiu correta (só \"ComfyUI\" vira algo como \"Confiuí\", normal para um nome em inglês).",
+   "en": "\"Serena\" voice in PT (12.8 s), transcribed word for word; cloning that voice with the PT sentence (7.5 s, 81 s including the base model download). The PT sentence was transcribed back by Qwen3-ASR and came out right (only \"ComfyUI\" turns into something like \"Confiuí\", normal for an English name)."
+  },
+  "clip": "12.8 s + 7.5 s",
+  "time_s": 89,
+  "vram_mib": 8439,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-Qwen-TTS",
+   "url": "https://github.com/flybirdxx/ComfyUI-Qwen-TTS",
+   "commit": "a1328c8a731eff82cf4c205b31bdfb7f29d817f4",
+   "page": "https://github.com/flybirdxx/ComfyUI-Qwen-TTS"
+  }
+ ],
+ "models": [],
+ "usage": {
+  "pt": "1. Os modelos baixam sozinhos no primeiro uso para `models/qwen-tts/` (`Qwen3-TTS-12Hz-1.7B-CustomVoice`, `-Base` e o tokenizer, ~4,5 GB cada). Para baixar antes: `python3 download_models.py` na pasta do nó.\n2. Dependências pip do `requirements.txt` **sem** `onnxruntime-openvino` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. `attention` = `sdpa` se o SageAttention não estiver instalado; `language` = `Portuguese`.",
+  "en": "1. The models download themselves on first use to `models/qwen-tts/` (`Qwen3-TTS-12Hz-1.7B-CustomVoice`, `-Base` and the tokenizer, ~4.5 GB each). To download ahead of time: `python3 download_models.py` in the node folder.\n2. Pip dependencies from `requirements.txt` **without** `onnxruntime-openvino` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. `attention` = `sdpa` if SageAttention is not installed; `language` = `Portuguese`."
+ },
+ "notes": {
+  "pt": "- O exemplo original do nó clona a voz de uma pessoa real (`雷军.mp3`); aqui foi trocado pela voz sintética.\n- O repositório do nó não declara licença.\n- Clonar a voz de alguém exige o consentimento dessa pessoa (direito de imagem/voz e LGPD).",
+  "en": "- The node's original example clones a real person's voice (`雷军.mp3`); here it was replaced with the synthetic voice.\n- The node repository declares no license.\n- Cloning someone's voice requires that person's consent."
+ }
+}

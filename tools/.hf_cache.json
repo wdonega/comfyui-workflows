@@ -493,5 +493,68 @@
   "page": "https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo",
   "sha256": "5c494dce662a95898d0988831af733b203ceced9116a82aa099c997f96ea1a3a",
   "size": 339832808
+ },
+ {
+  "repo": "Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "path": "split_files/diffusion_models/acestep_v1.5_turbo.safetensors",
+  "revision": "6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc",
+  "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc/split_files/diffusion_models/acestep_v1.5_turbo.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "sha256": "3f6e0797fad420a39bd33979eb6e840e30989e34a3794e843d23b60ec6e422d7",
+  "size": 4787825604
+ },
+ {
+  "repo": "Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "path": "split_files/text_encoders/qwen_0.6b_ace15.safetensors",
+  "revision": "6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc",
+  "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc/split_files/text_encoders/qwen_0.6b_ace15.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "sha256": "fd4590c82153b8ddb67e15a2e7aaa8afa8b83a858c8a9b82a4831063156aa7a7",
+  "size": 1191588248
+ },
+ {
+  "repo": "Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "path": "split_files/text_encoders/qwen_1.7b_ace15.safetensors",
+  "revision": "6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc",
+  "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc/split_files/text_encoders/qwen_1.7b_ace15.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "sha256": "ed63e9247d1f55f3ace04fa11e95b085fc82d459c82c5626f0b2e37b91ebd710",
+  "size": 3708523360
+ },
+ {
+  "repo": "Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "path": "split_files/vae/ace_1.5_vae.safetensors",
+  "revision": "6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc",
+  "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/6707deb277e9e0907fd9c14ce6b6f1d695c6a3fc/split_files/vae/ace_1.5_vae.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files",
+  "sha256": "6de92e3a862acd287e08b024ac90f0783a8635451b728721a33ff03565bcb2bb",
+  "size": 337431732
+ },
+ {
+  "repo": "PedroMarinhoDev/Drama-3-ComfyUI",
+  "path": "drama3_int8experts_bf16.safetensors",
+  "revision": "681e2fae64af1f12e64b9c19c82930a5f3bba1a4",
+  "url": "https://huggingface.co/PedroMarinhoDev/Drama-3-ComfyUI/resolve/681e2fae64af1f12e64b9c19c82930a5f3bba1a4/drama3_int8experts_bf16.safetensors",
+  "page": "https://huggingface.co/PedroMarinhoDev/Drama-3-ComfyUI",
+  "sha256": "f407996b17583ba857ace14e0330a13788cf89f4d47cfdcd4766ad5106576899",
+  "size": 38696401232
+ },
+ {
+  "repo": "PedroMarinhoDev/Drama-3-ComfyUI",
+  "path": "drama3_codec.safetensors",
+  "revision": "681e2fae64af1f12e64b9c19c82930a5f3bba1a4",
+  "url": "https://huggingface.co/PedroMarinhoDev/Drama-3-ComfyUI/resolve/681e2fae64af1f12e64b9c19c82930a5f3bba1a4/drama3_codec.safetensors",
+  "page": "https://huggingface.co/PedroMarinhoDev/Drama-3-ComfyUI",
+  "sha256": "4fecf102907a48414230da9a74d72d07c3a92368eab53fab655797837bddf5ae",
+  "size": 1565647484
+ },
+ {
+  "repo": "PedroMarinhoDev/Qwen3-ASR-ComfyUI",
+  "path": "qwen3_asr_1.7b_bf16.safetensors",
+  "revision": "6ad8c9be026925839479a8d97749068a4202fbe9",
+  "url": "https://huggingface.co/PedroMarinhoDev/Qwen3-ASR-ComfyUI/resolve/6ad8c9be026925839479a8d97749068a4202fbe9/qwen3_asr_1.7b_bf16.safetensors",
+  "page": "https://huggingface.co/PedroMarinhoDev/Qwen3-ASR-ComfyUI",
+  "sha256": "958ac49a7015ad546206e87fbcf390ac567b81d1cc7d613a1255a41033b8345f",
+  "size": 4076192608
  }
 ]

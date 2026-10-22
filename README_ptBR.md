@@ -65,6 +65,11 @@ Todos os workflows abaixo foram testados no setup descrito acima; os tempos são
 
 | Workflow | Família | O que faz | Tempo do teste | Download | Licença |
 |---|---|---|---|---|---|
+| [ACE-Step 1.5 Turbo · música](workflows/32-ace-step-15-turbo/README_ptBR.md) | ACE-Step 1.5 | Música com letra em 8 steps; 30 s em 16 s | 16s · 30 s | 10.03 GB | MIT (livre) |
+| [Fish Audio Drama 3 · clonagem de voz](workflows/46-fish-drama3-voice-clone/README_ptBR.md) | Fish Audio Drama 3 | TTS expressivo de 35B com clonagem, deixas como [laughs] e vários falantes | 1min 04s · 8.6 s | 44.34 GB | Fish Audio Community (comercial < US$ 500 mil) |
+| [VoxCPM2 · TTS, voz por descrição e clonagem](workflows/47-voxcpm2/README_ptBR.md) | VoxCPM2 | TTS de 2B em 30 idiomas, 48 kHz: voz criada por texto ou clonada | 1min 33s · 2 × ~8 s | 0 MB | Apache-2.0 (livre) |
+| [Chatterbox Multilingual · TTS com clonagem (23 idiomas)](workflows/48-chatterbox-multilingual/README_ptBR.md) | Chatterbox | TTS leve e rápido com clonagem, inclui português | 11s · 8.6 s | 0 MB | MIT (livre) |
+| [Qwen3-TTS · vozes prontas e clonagem](workflows/49-qwen3-tts/README_ptBR.md) | Qwen3-TTS | TTS de 1.7B em 10 idiomas (inclui PT): 9 vozes prontas, clonagem e voz por descrição | 1min 29s · 12.8 s + 7.5 s | 0 MB | Apache-2.0 (livre) |
 | [MiniMax Music 3 · música com letra](workflows/minimax-music3/README_ptBR.md) | MiniMax Music 3 | Gera uma música de até alguns minutos a partir de estilo + letra | 2min 26s · 60 s | 14.33 GB | MiniMax-Music3 Community |
 
 Tempos medidos na RTX 5060 Ti 16 GB com os parâmetros descritos no README de cada pasta

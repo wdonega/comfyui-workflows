@@ -1,0 +1,82 @@
+{
+ "3": {
+  "class_type": "LoadAudio",
+  "inputs": {
+   "audio": "reference_voice.flac"
+  },
+  "_meta": {
+   "title": "LoadAudio"
+  }
+ },
+ "26": {
+  "class_type": "VoxCPM2_Clone",
+  "inputs": {
+   "model_name": "VoxCPM2",
+   "lora_name": "None",
+   "voice_description": "",
+   "text": "Este é um teste de clonagem de voz em português, gerado localmente no ComfyUI, sem enviar nada para a internet.",
+   "prompt_text": "Olá! Eu sou uma voz sintética, criada só para testar a clonagem de voz. Hoje o dia está bonito, o café está quentinho na mesa e a música toca baixinho na sala.",
+   "cfg_value": 2,
+   "inference_timesteps": 10,
+   "max_tokens": 1024,
+   "normalize_text": false,
+   "enable_denoiser": false,
+   "seed": 42,
+   "force_offload": false,
+   "dtype": "auto",
+   "device": "cuda",
+   "enable_asr": false,
+   "retry_max_attempts": 3,
+   "retry_threshold": 6,
+   "torch_compile": false,
+   "reference_audio": [
+    "3",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "VoxCPM2_Clone"
+  }
+ },
+ "27": {
+  "class_type": "VoxCPM2_TTS",
+  "inputs": {
+   "model_name": "VoxCPM2",
+   "lora_name": "None",
+   "voice_description": "A calm middle-aged man with a warm, deep voice, speaking Brazilian Portuguese",
+   "text": "Este é um teste de clonagem de voz em português, gerado localmente no ComfyUI, sem enviar nada para a internet.",
+   "cfg_value": 2,
+   "inference_timesteps": 10,
+   "max_tokens": 1024,
+   "normalize_text": false,
+   "seed": 205,
+   "force_offload": false,
+   "dtype": "auto",
+   "device": "cuda",
+   "torch_compile": false
+  },
+  "_meta": {
+   "title": "VoxCPM2_TTS"
+  }
+ },
+ "s1": {
+  "class_type": "SaveAudio",
+  "inputs": {
+   "audio": [
+    "26",
+    0
+   ],
+   "filename_prefix": "audio/voxcpm2_clone"
+  }
+ },
+ "s2": {
+  "class_type": "SaveAudio",
+  "inputs": {
+   "audio": [
+    "27",
+    0
+   ],
+   "filename_prefix": "audio/voxcpm2_tts"
+  }
+ }
+}
