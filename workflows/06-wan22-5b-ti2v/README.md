@@ -6,7 +6,6 @@ The official `video_wan2_2_5B_ti2v` template unchanged: the 5B TI2V model in fp1
 
 | | |
 |---|---|
-| Plan item | #6 |
 | Status | ✅ tested |
 | Family | Wan 2.2 |
 | License | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |

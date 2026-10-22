@@ -6,7 +6,6 @@ Base MiniMax H3 reference-to-video (Ref2VA) workflow with the 3-step TaoMate LoR
 
 | | |
 |---|---|
-| Plan item | base |
 | Status | ✅ tested |
 | Family | MiniMax H3 |
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

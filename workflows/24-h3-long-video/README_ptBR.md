@@ -6,7 +6,6 @@ Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que c
 
 | | |
 |---|---|
-| Item do plano | #24 |
 | Status | ✅ testado |
 | Família | MiniMax H3 |
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

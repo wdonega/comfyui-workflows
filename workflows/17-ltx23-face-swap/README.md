@@ -6,7 +6,6 @@ Head swap workflow with the distilled LTX 2.3 and @Alissonerdx's **BFS head swap
 
 | | |
 |---|---|
-| Plan item | #17 |
 | Status | ✅ tested |
 | Family | LTX 2.3 |
 | License | [LTX-2 Community License](https://github.com/Lightricks/LTX-2/blob/main/LICENSE) |

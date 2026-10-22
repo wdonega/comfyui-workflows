@@ -6,7 +6,6 @@ Workflow base de referência-para-vídeo (Ref2VA) do MiniMax H3 com o LoRA TaoMa
 
 | | |
 |---|---|
-| Item do plano | base |
 | Status | ✅ testado |
 | Família | MiniMax H3 |
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

@@ -6,7 +6,6 @@ Generates videos longer than a single H3 sampling by chaining segments that cont
 
 | | |
 |---|---|
-| Plan item | #24 |
 | Status | ✅ tested |
 | Family | MiniMax H3 |
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

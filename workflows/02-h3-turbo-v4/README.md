@@ -6,7 +6,6 @@ The base Ref2VA with the **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`,
 
 | | |
 |---|---|
-| Plan item | #2 |
 | Status | ✅ tested |
 | Family | MiniMax H3 |
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

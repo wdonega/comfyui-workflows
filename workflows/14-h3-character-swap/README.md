@@ -6,7 +6,6 @@ The author's (akatz-ai) official workflow with **H3 Relay 2.0**: SAM 3.1 masks t
 
 | | |
 |---|---|
-| Plan item | #14 |
 | Status | ✅ tested |
 | Family | MiniMax H3 |
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

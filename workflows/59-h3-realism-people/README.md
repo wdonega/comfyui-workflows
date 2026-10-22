@@ -6,7 +6,6 @@ The base Ref2VA + TaoMate with fal's **Realism People** LoRA chained after TaoMa
 
 | | |
 |---|---|
-| Plan item | #59 |
 | Status | ✅ tested |
 | Family | MiniMax H3 |
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

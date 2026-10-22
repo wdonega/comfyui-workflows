@@ -6,7 +6,6 @@ The official ComfyUI template `video_ltx2_3_i2v` (native nodes, no required cust
 
 | | |
 |---|---|
-| Plan item | #4 |
 | Status | ✅ tested |
 | Family | LTX 2.3 |
 | License | [LTX-2 Community License](https://github.com/Lightricks/LTX-2/blob/main/LICENSE) |

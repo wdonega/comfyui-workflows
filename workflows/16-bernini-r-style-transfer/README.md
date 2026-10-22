@@ -6,7 +6,6 @@ The official `video_bernini_r_video_editing` template (instruction-based video e
 
 | | |
 |---|---|
-| Plan item | #16 + #56 |
 | Status | ✅ tested |
 | Family | Wan 2.2 (Bernini-R) |
 | License | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |

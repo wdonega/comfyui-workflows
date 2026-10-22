@@ -6,7 +6,6 @@ Gera vídeos de qualquer duração clipe a clipe: o **Start** cria o clipe 1 (T2
 
 | | |
 |---|---|
-| Item do plano | #25 |
 | Status | ✅ testado |
 | Família | MiniMax H3 |
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

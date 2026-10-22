@@ -6,7 +6,6 @@ O template oficial `video_bernini_r_video_editing` (edição de vídeo por instr
 
 | | |
 |---|---|
-| Item do plano | #16 + #56 |
 | Status | ✅ testado |
 | Família | Wan 2.2 (Bernini-R) |
 | Licença | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |

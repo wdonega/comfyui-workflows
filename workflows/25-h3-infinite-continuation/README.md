@@ -6,7 +6,6 @@ Makes videos of any length clip by clip: **Start** creates clip 1 (T2VA/I2VA/FL2
 
 | | |
 |---|---|
-| Plan item | #25 |
 | Status | ✅ tested |
 | Family | MiniMax H3 |
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |

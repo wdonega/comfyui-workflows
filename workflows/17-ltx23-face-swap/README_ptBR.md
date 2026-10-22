@@ -6,7 +6,6 @@ Workflow de head swap com o LTX 2.3 destilado e o LoRA **BFS head swap v3** do @
 
 | | |
 |---|---|
-| Item do plano | #17 |
 | Status | ✅ testado |
 | Família | LTX 2.3 |
 | Licença | [LTX-2 Community License](https://github.com/Lightricks/LTX-2/blob/main/LICENSE) |

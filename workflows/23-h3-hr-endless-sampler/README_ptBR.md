@@ -6,7 +6,6 @@ Substitui o `SamplerCustomAdvanced` por um sampler em chunks com continuação n
 
 | | |
 |---|---|
-| Item do plano | #23 |
 | Status | ✅ testado |
 | Família | MiniMax H3 |
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
