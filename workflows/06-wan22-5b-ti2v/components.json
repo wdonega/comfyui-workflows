@@ -1,0 +1,75 @@
+{
+ "title": {
+  "pt": "Wan 2.2 5B · texto/imagem para vídeo",
+  "en": "Wan 2.2 5B · text/image to video"
+ },
+ "short": {
+  "pt": "Vídeo 720p de 5 s a partir de texto (ou imagem), cabe nativo em 16 GB",
+  "en": "5 s 720p video from text (or image), fits natively in 16 GB"
+ },
+ "plan": "#6",
+ "family": "Wan 2.2",
+ "summary": {
+  "pt": "O template oficial `video_wan2_2_5B_ti2v` sem mudanças: o modelo TI2V de 5B em fp16 (10 GB) gera 121 frames em 1280x704 a 24 fps. Funciona como texto-para-vídeo ou, ligando uma imagem inicial no `Wan22ImageToVideoLatent`, imagem-para-vídeo. Sem áudio.",
+  "en": "The official `video_wan2_2_5B_ti2v` template unchanged: the 5B TI2V model in fp16 (10 GB) generates 121 frames at 1280x704, 24 fps. Works as text-to-video or, by connecting a start image to `Wan22ImageToVideoLatent`, image-to-video. No audio."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "prompt do template (músico no metrô), 1280x704, 121 frames, 20 steps uni_pc, CFG 5: cena coerente e fiel ao prompt",
+   "en": "template prompt (subway musician), 1280x704, 121 frames, 20 steps uni_pc, CFG 5: coherent scene, faithful to the prompt"
+  },
+  "clip": "5 s",
+  "time_s": 552,
+  "vram_mib": 15465,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Wan_2.2_ComfyUI_Repackaged:split_files/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors",
+   "role": {
+    "pt": "Wan 2.2 TI2V 5B (fp16)",
+    "en": "Wan 2.2 TI2V 5B (fp16)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Wan-Animate-2:text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+   "role": {
+    "pt": "text encoder UMT5-XXL (FP8)",
+    "en": "UMT5-XXL text encoder (FP8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Wan_2.2_ComfyUI_Repackaged:split_files/vae/wan2.2_vae.safetensors",
+   "role": {
+    "pt": "VAE do Wan 2.2",
+    "en": "Wan 2.2 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Prompt positivo no primeiro **CLIPTextEncode**; o negativo (em chinês, do template) pode ficar.\n2. Resolução e duração no **Wan22ImageToVideoLatent** (121 frames = 5 s a 24 fps).\n3. Para imagem-para-vídeo, ligue um **LoadImage** na entrada `start_image` do Wan22ImageToVideoLatent.",
+  "en": "1. Positive prompt in the first **CLIPTextEncode**; the negative one (Chinese, from the template) can stay.\n2. Resolution and length in **Wan22ImageToVideoLatent** (121 frames = 5 s at 24 fps).\n3. For image-to-video, connect a **LoadImage** to the `start_image` input of Wan22ImageToVideoLatent."
+ },
+ "notes": {
+  "pt": "- Plano original sugeria GGUF para 16 GB; o 5B em fp16 roda nativo (pico de 15,5 GB), sem custom node.\n- O `umt5_xxl_fp8_e4m3fn_scaled` é o mesmo arquivo usado pelo Wan Animate 2 e pelo Bernini-R (SHA-256 idêntico).",
+  "en": "- The original plan suggested GGUF for 16 GB; the 5B in fp16 runs natively (15.5 GB peak), no custom node.\n- `umt5_xxl_fp8_e4m3fn_scaled` is the same file used by Wan Animate 2 and Bernini-R (identical SHA-256)."
+ }
+}

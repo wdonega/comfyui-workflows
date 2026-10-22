@@ -1,0 +1,124 @@
+{
+ "title": {
+  "pt": "Bernini-R · transferência de estilo (anime / real)",
+  "en": "Bernini-R · style transfer (anime / real life)"
+ },
+ "short": {
+  "pt": "Edita vídeo com o Bernini-R; LoRAs de estilo anime e real-life",
+  "en": "Video editing with Bernini-R; anime and real-life style LoRAs"
+ },
+ "plan": "#16 + #56",
+ "family": "Wan 2.2 (Bernini-R)",
+ "summary": {
+  "pt": "O template oficial `video_bernini_r_video_editing` (edição de vídeo por instrução, ByteDance Bernini-R sobre o Wan 2.2 14B, high + low noise) em INT8 convrot, com o LoRA de velocidade lightx2v (6 steps) e os LoRAs de estilo do **tarn59** encadeados nos dois ramos. Modo \"Video Editing (Style / Motion)\" e prompt-gatilho `Anime style transfer.`",
+  "en": "The official `video_bernini_r_video_editing` template (instruction-based video editing, ByteDance Bernini-R on Wan 2.2 14B, high + low noise) in INT8 convrot, with the lightx2v speed LoRA (6 steps) and **tarn59**'s style LoRAs chained in both branches. \"Video Editing (Style / Motion)\" mode and trigger prompt `Anime style transfer.`"
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "fonte 4,9 s (117 frames, 480x832), LoRA de anime 1.0: personagem convertido para anime (rosto e olhos), movimento e enquadramento idênticos; o fundo ficou quase fotográfico",
+   "en": "4.9 s source (117 frames, 480x832), anime LoRA 1.0: character converted to anime (face and eyes), identical motion and framing; the background stayed mostly photographic"
+  },
+  "clip": "4,9 s",
+  "time_s": 1125,
+  "vram_mib": 11663,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Bernini-R:diffusion_models/wan2.2_bernini_r_high_noise_int8_convrot.safetensors",
+   "role": {
+    "pt": "Bernini-R high noise (INT8)",
+    "en": "Bernini-R high noise (INT8)"
+   }
+  },
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Bernini-R:diffusion_models/wan2.2_bernini_r_low_noise_int8_convrot.safetensors",
+   "role": {
+    "pt": "Bernini-R low noise (INT8)",
+    "en": "Bernini-R low noise (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Wan-Animate-2:text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+   "role": {
+    "pt": "text encoder UMT5-XXL (FP8)",
+    "en": "UMT5-XXL text encoder (FP8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Wan-Animate-2:vae/Wan2_1_VAE_bf16.safetensors",
+   "role": {
+    "pt": "VAE do Wan 2.1",
+    "en": "Wan 2.1 VAE"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "Kijai/WanVideo_comfy:Lightx2v/lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors",
+   "role": {
+    "pt": "LoRA de velocidade lightx2v (Apache-2.0)",
+    "en": "lightx2v speed LoRA (Apache-2.0)"
+   },
+   "page": "https://huggingface.co/lightx2v/Wan2.1-T2V-14B-StepDistill-CfgDistill"
+  },
+  {
+   "dest": "loras",
+   "hf": "tarn59/bernini_r_anime_style_transfer_lora:bernini_r_anime_style_transfer_high_noise.safetensors",
+   "role": {
+    "pt": "#56 estilo anime (high noise)",
+    "en": "#56 anime style (high noise)"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "tarn59/bernini_r_anime_style_transfer_lora:bernini_r_anime_style_transfer_low_noise.safetensors",
+   "role": {
+    "pt": "#56 estilo anime (low noise)",
+    "en": "#56 anime style (low noise)"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "tarn59/bernini_r_real_life_style_transfer_lora:bernini_r_real_life_style_transfer_v3_high_noise.safetensors",
+   "role": {
+    "pt": "#56 estilo real-life v3 (high noise)",
+    "en": "#56 real-life style v3 (high noise)"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "tarn59/bernini_r_real_life_style_transfer_lora:bernini_r_real_life_style_transfer_v3_low_noise.safetensors",
+   "role": {
+    "pt": "#56 estilo real-life v3 (low noise)",
+    "en": "#56 real-life style v3 (low noise)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. **LoadVideo**: o vídeo a editar (`source.mp4`; o **Video Slice** usa os primeiros 5 s).\n2. Modo no combo de tarefa: **Video Editing (Style / Motion)**.\n3. Prompt = gatilho do LoRA: `Anime style transfer.` (anime) ou `Real life style transfer.` (real-life; troque os dois LoRAs pelos `real_life_..._v3`).\n4. Os LoRAs de estilo ficam **depois** do lightx2v, um no ramo high noise e outro no low noise, força 1.0.\n5. Sem estilo: tire os dois nós de LoRA de estilo e escreva a edição no prompt (ex.: trocar o fundo).",
+  "en": "1. **LoadVideo**: the video to edit (`source.mp4`; **Video Slice** takes the first 5 s).\n2. Task combo mode: **Video Editing (Style / Motion)**.\n3. Prompt = LoRA trigger: `Anime style transfer.` (anime) or `Real life style transfer.` (real-life; swap both LoRAs for the `real_life_..._v3` ones).\n4. The style LoRAs go **after** lightx2v, one in the high noise branch and one in the low noise branch, strength 1.0.\n5. No style: remove both style LoRA nodes and write the edit in the prompt (e.g. replace the background)."
+ },
+ "notes": {
+  "pt": "- O template original usa os pesos FP8 (15,6 GB cada); aqui foram usados os INT8 convrot (14,5 GB cada).\n- O LoRA de real-life foi baixado, mas só o de anime foi testado.\n- Bernini-R tem suporte nativo no core do ComfyUI v0.37 (não precisa de custom node).",
+  "en": "- The original template uses the FP8 weights (15.6 GB each); the INT8 convrot ones (14.5 GB each) were used here.\n- The real-life LoRA was downloaded, but only the anime one was tested.\n- Bernini-R is natively supported in ComfyUI v0.37 core (no custom node needed)."
+ }
+}

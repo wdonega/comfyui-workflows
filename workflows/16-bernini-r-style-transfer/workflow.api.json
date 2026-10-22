@@ -1,0 +1,677 @@
+{
+ "47": {
+  "class_type": "LoadVideo",
+  "inputs": {
+   "file": "source.mp4"
+  },
+  "_meta": {
+   "title": "LoadVideo"
+  }
+ },
+ "46": {
+  "class_type": "SaveVideo",
+  "inputs": {
+   "filename_prefix": "bernini/style_transfer",
+   "format": "auto",
+   "format.codec": "auto",
+   "video": [
+    "298:274",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "SaveVideo"
+  }
+ },
+ "100": {
+  "class_type": "BatchImagesNode",
+  "inputs": {
+   "images.image0": [
+    "104",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "BatchImagesNode"
+  }
+ },
+ "104": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "reference.png"
+  },
+  "_meta": {
+   "title": "LoadImage"
+  }
+ },
+ "109": {
+  "class_type": "Video Slice",
+  "inputs": {
+   "start_time": 0,
+   "duration": 5,
+   "strict_duration": false,
+   "video": [
+    "47",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Video Slice"
+  }
+ },
+ "110": {
+  "class_type": "GetVideoComponents",
+  "inputs": {
+   "video": [
+    "109",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "GetVideoComponents"
+  }
+ },
+ "111": {
+  "class_type": "GetImageSize",
+  "inputs": {
+   "image": [
+    "110",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "GetImageSize"
+  }
+ },
+ "112": {
+  "class_type": "PreviewAny",
+  "inputs": {
+   "source": [
+    "111",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Preview as Text (Frame Count)"
+  }
+ },
+ "298:264": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+   "type": "wan",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "CLIPLoader"
+  }
+ },
+ "298:265": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "Wan2_1_VAE_bf16.safetensors"
+  },
+  "_meta": {
+   "title": "VAELoader"
+  }
+ },
+ "298:266": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "lora_name": "lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors",
+   "strength_model": 1.5,
+   "model": [
+    "298:272",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "LoraLoaderModelOnly"
+  }
+ },
+ "298:267": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+   "clip": [
+    "298:264",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "CLIPTextEncode"
+  }
+ },
+ "298:268": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "step": [
+    "298:290",
+    0
+   ],
+   "sigmas": [
+    "298:276",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "SplitSigmas"
+  }
+ },
+ "298:269": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "res_multistep"
+  },
+  "_meta": {
+   "title": "KSamplerSelect"
+  }
+ },
+ "298:270": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "wan2.2_bernini_r_high_noise_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  },
+  "_meta": {
+   "title": "UNETLoader"
+  }
+ },
+ "298:271": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "lora_name": "lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors",
+   "strength_model": 3,
+   "model": [
+    "298:270",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "LoraLoaderModelOnly"
+  }
+ },
+ "298:272": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "wan2.2_bernini_r_low_noise_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  },
+  "_meta": {
+   "title": "UNETLoader"
+  }
+ },
+ "298:273": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "298:277",
+    0
+   ],
+   "vae": [
+    "298:265",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "VAEDecode"
+  }
+ },
+ "298:274": {
+  "class_type": "CreateVideo",
+  "inputs": {
+   "fps": [
+    "298:279",
+    2
+   ],
+   "bit_depth": 8,
+   "images": [
+    "298:273",
+    0
+   ],
+   "audio": [
+    "298:279",
+    1
+   ]
+  },
+  "_meta": {
+   "title": "CreateVideo"
+  }
+ },
+ "298:275": {
+  "class_type": "SamplerCustom",
+  "inputs": {
+   "add_noise": true,
+   "noise_seed": 852303761886160,
+   "cfg": [
+    "298:291",
+    0
+   ],
+   "model": [
+    "298:295",
+    0
+   ],
+   "positive": [
+    "298:278",
+    0
+   ],
+   "negative": [
+    "298:278",
+    1
+   ],
+   "sampler": [
+    "298:269",
+    0
+   ],
+   "sigmas": [
+    "298:268",
+    0
+   ],
+   "latent_image": [
+    "298:278",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "SamplerCustom"
+  }
+ },
+ "298:276": {
+  "class_type": "BasicScheduler",
+  "inputs": {
+   "scheduler": "simple",
+   "steps": [
+    "298:287",
+    0
+   ],
+   "denoise": 1,
+   "model": [
+    "298:272",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "BasicScheduler"
+  }
+ },
+ "298:277": {
+  "class_type": "SamplerCustom",
+  "inputs": {
+   "add_noise": false,
+   "noise_seed": 0,
+   "cfg": [
+    "298:291",
+    0
+   ],
+   "model": [
+    "298:281",
+    0
+   ],
+   "positive": [
+    "298:278",
+    0
+   ],
+   "negative": [
+    "298:278",
+    1
+   ],
+   "sampler": [
+    "298:269",
+    0
+   ],
+   "sigmas": [
+    "298:268",
+    1
+   ],
+   "latent_image": [
+    "298:275",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "SamplerCustom"
+  }
+ },
+ "298:278": {
+  "class_type": "BerniniConditioning",
+  "inputs": {
+   "width": 480,
+   "height": 832,
+   "length": [
+    "111",
+    2
+   ],
+   "batch_size": 1,
+   "ref_max_size": 848,
+   "positive": [
+    "298:280",
+    0
+   ],
+   "negative": [
+    "298:267",
+    0
+   ],
+   "vae": [
+    "298:265",
+    0
+   ],
+   "source_video": [
+    "298:279",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "BerniniConditioning"
+  }
+ },
+ "298:279": {
+  "class_type": "GetVideoComponents",
+  "inputs": {
+   "video": [
+    "109",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "GetVideoComponents"
+  }
+ },
+ "298:280": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": [
+    "298:284",
+    0
+   ],
+   "clip": [
+    "298:264",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "CLIPTextEncode"
+  }
+ },
+ "298:281": {
+  "class_type": "ComfySwitchNode",
+  "inputs": {
+   "switch": [
+    "298:294",
+    0
+   ],
+   "on_false": [
+    "298:272",
+    0
+   ],
+   "on_true": [
+    "al",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Switch (Low Noise)"
+  }
+ },
+ "298:282": {
+  "class_type": "CustomCombo",
+  "inputs": {
+   "choice": "Video Editing (Style / Motion)"
+  },
+  "_meta": {
+   "title": "CustomCombo"
+  }
+ },
+ "298:284": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": [
+    "298:283:2",
+    0
+   ],
+   "string_b": [
+    "298:297",
+    0
+   ],
+   "delimiter": ""
+  },
+  "_meta": {
+   "title": "StringConcatenate"
+  }
+ },
+ "298:285": {
+  "class_type": "PrimitiveInt",
+  "inputs": {
+   "value": 40
+  },
+  "_meta": {
+   "title": "Int (Steps)"
+  }
+ },
+ "298:286": {
+  "class_type": "PrimitiveInt",
+  "inputs": {
+   "value": 6
+  },
+  "_meta": {
+   "title": "Int (Steps)"
+  }
+ },
+ "298:287": {
+  "class_type": "ComfySwitchNode",
+  "inputs": {
+   "switch": [
+    "298:294",
+    0
+   ],
+   "on_false": [
+    "298:285",
+    0
+   ],
+   "on_true": [
+    "298:286",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Switch (Steps)"
+  }
+ },
+ "298:288": {
+  "class_type": "PrimitiveInt",
+  "inputs": {
+   "value": 20
+  },
+  "_meta": {
+   "title": "Int (Split Steps)"
+  }
+ },
+ "298:289": {
+  "class_type": "PrimitiveInt",
+  "inputs": {
+   "value": 3
+  },
+  "_meta": {
+   "title": "Int (Split Steps)"
+  }
+ },
+ "298:290": {
+  "class_type": "ComfySwitchNode",
+  "inputs": {
+   "switch": [
+    "298:294",
+    0
+   ],
+   "on_false": [
+    "298:288",
+    0
+   ],
+   "on_true": [
+    "298:289",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Switch (Low Steps)"
+  }
+ },
+ "298:291": {
+  "class_type": "ComfySwitchNode",
+  "inputs": {
+   "switch": [
+    "298:294",
+    0
+   ],
+   "on_false": [
+    "298:293",
+    0
+   ],
+   "on_true": [
+    "298:292",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Switch (CFG)"
+  }
+ },
+ "298:292": {
+  "class_type": "PrimitiveFloat",
+  "inputs": {
+   "value": 1
+  },
+  "_meta": {
+   "title": "Float (CFG)"
+  }
+ },
+ "298:293": {
+  "class_type": "PrimitiveFloat",
+  "inputs": {
+   "value": 5
+  },
+  "_meta": {
+   "title": "Float (CFG)"
+  }
+ },
+ "298:294": {
+  "class_type": "PrimitiveBoolean",
+  "inputs": {
+   "value": true
+  },
+  "_meta": {
+   "title": "Boolean (Enable Turbo LoRA?)"
+  }
+ },
+ "298:295": {
+  "class_type": "ComfySwitchNode",
+  "inputs": {
+   "switch": [
+    "298:294",
+    0
+   ],
+   "on_false": [
+    "298:270",
+    0
+   ],
+   "on_true": [
+    "ah",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Switch (High Noise)"
+  }
+ },
+ "298:297": {
+  "class_type": "PrimitiveStringMultiline",
+  "inputs": {
+   "value": "Anime style transfer."
+  },
+  "_meta": {
+   "title": "PrimitiveStringMultiline"
+  }
+ },
+ "298:283:1": {
+  "class_type": "PreviewAny",
+  "inputs": {
+   "source": [
+    "298:283:56",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "PreviewAny"
+  }
+ },
+ "298:283:2": {
+  "class_type": "RegexExtract",
+  "inputs": {
+   "string": "You are a helpful assistant.\nYou are a helpful assistant specialized in text-to-image generation.\nYou are a helpful assistant specialized in text-to-video generation.\nYou are a helpful assistant specialized in image editing.\nYou are a helpful assistant specialized in subject-to-image generation.\nYou are a helpful assistant specialized in image-to-video generation.\nYou are a helpful assistant specialized in video editing.\nYou are a helpful assistant specialized in video editing on content propagation.\nYou are a helpful assistant specialized in video editing with reference.\nYou are a helpful assistant specialized in ads insertion.\nYou are a helpful assistant for editing. You may need to adjust the subject's action or position.\nYou are a helpful assistant for editing. You might need to adjust the video's style, lighting, colors, textures, and the subject's pose or action.",
+   "regex_pattern": [
+    "298:283:8",
+    0
+   ],
+   "mode": "First Group",
+   "case_insensitive": false,
+   "multiline": false,
+   "dotall": false,
+   "group_index": 1
+  },
+  "_meta": {
+   "title": "RegexExtract"
+  }
+ },
+ "298:283:56": {
+  "class_type": "PrimitiveInt",
+  "inputs": {
+   "value": [
+    "298:282",
+    1
+   ]
+  },
+  "_meta": {
+   "title": "Int (line index)"
+  }
+ },
+ "298:283:8": {
+  "class_type": "StringReplace",
+  "inputs": {
+   "string": "^(?:[^\\n]*\\n){index}([^\\n]*)(?:\\n|$)",
+   "find": "index",
+   "replace": [
+    "298:283:1",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "StringReplace"
+  }
+ },
+ "ah": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "298:271",
+    0
+   ],
+   "lora_name": "bernini_r_anime_style_transfer_high_noise.safetensors",
+   "strength_model": 1.0
+  },
+  "_meta": {
+   "title": "Anime style LoRA (high noise)"
+  }
+ },
+ "al": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "298:266",
+    0
+   ],
+   "lora_name": "bernini_r_anime_style_transfer_low_noise.safetensors",
+   "strength_model": 1.0
+  },
+  "_meta": {
+   "title": "Anime style LoRA (low noise)"
+  }
+ }
+}
