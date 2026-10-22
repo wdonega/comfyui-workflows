@@ -38,3 +38,7 @@ python3 tools/gen.py      # regenerates README.md, README_ptBR.md and install.sh
 To add a workflow: create `workflows/<folder>/` with `workflow.json`, `workflow.api.json` and
 `components.json` (copy an existing one as a template; translatable texts are `{"pt": ..., "en": ...}`)
 and run the generator.
+
+---
+
+Independent project, not affiliated with or endorsed by Comfy Org. The logo uses original lettering; "ComfyUI" is used only to say what these workflows are for.

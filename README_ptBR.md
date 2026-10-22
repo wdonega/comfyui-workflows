@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="760"></p>
+
 Idioma: [English](README.md) · **Português**
 
 # comfyui-workflows
@@ -75,3 +77,7 @@ python3 tools/gen.py      # regera README.md, README_ptBR.md e install.sh a part
 
 Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `workflow.api.json` e
 `components.json` (copie um existente como modelo; textos traduzíveis são `{"pt": ..., "en": ...}`) e rode o gerador.
+
+---
+
+Projeto independente, sem afiliação nem endosso da Comfy Org. O logo usa letras próprias; "ComfyUI" aparece só para dizer para que servem estes workflows.

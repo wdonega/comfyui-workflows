@@ -10,6 +10,7 @@
 | `ui2api.py` | Converts a UI workflow (nodes/links) to API format, using the `/object_info` of a running ComfyUI |
 | `api2ui.py` | The reverse: API → UI (simple column layout) |
 | `cmp_api.py` | Compares two API prompts (used to validate the conversions) |
+| `make_logo.py` | Generates `assets/logo.svg` (original block lettering, no font dependency) |
 | `README.head.*.md`, `README.tail.*.md` | Fixed text of the root READMEs per language (the generator inserts the table between them) |
 
 The converters are validated round-trip (0 differences) on the Character Swap workflow (45 nodes,
