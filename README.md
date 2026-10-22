@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="760"></p>
+<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="100%"></p>
 
 Language: **English** · [Português](README_ptBR.md)
 

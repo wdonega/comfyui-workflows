@@ -207,7 +207,7 @@ def main():
                 f"| {tr(c['license']['short'], lang)} |")
         head = (ROOT / "tools" / f"README.head.{lang}.md").read_text().strip()
         tail = (ROOT / "tools" / f"README.tail.{lang}.md").read_text().strip()
-        logo = '<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="760"></p>'
+        logo = '<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="100%"></p>'
         (ROOT / fname).write_text(logo + "\n\n" + s["switch"] + "\n\n" + head + "\n\n" + "\n".join(table) + "\n\n" + tail + "\n")
         print(f"ok  {fname}")
 
