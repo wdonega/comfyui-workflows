@@ -227,7 +227,7 @@
     "Node name for S&R": "MiniMaxH3PromptAPI"
    },
    "widgets_values": [
-    "http://llm2.lab:8080/v1",
+    "http://localhost:8080/v1",
     "qwen3.8-flash-next-iq3_s",
     "",
     true,

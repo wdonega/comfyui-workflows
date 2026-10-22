@@ -1,6 +1,6 @@
 # H3 Long Video (prompt dividido por LLM)
 
-Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (aqui o local `http://llm2.lab:8080/v1`) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).
+Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que continuam movimento e áudio. Um LLM (qualquer servidor compatível com a API da OpenAI; no teste, um llama.cpp local em outra GPU) divide a história em prompts por segmento com o tempo certo. Usa Ref2VA + LoRA Ref2V Turbo 8 steps e atenção esparsa (`BlockSparseAttention`).
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que c
 | Família | MiniMax H3 |
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Download total | 44.43 GB |
-| Teste | 16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next no llm2.lab dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo |
+| Teste | 16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next (llama.cpp local, outra GPU) dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo |
 | Tempo | **11min 27s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Pico de VRAM | 15659 MiB |
 
@@ -65,9 +65,9 @@ e56863a7524e0300729cbb7b64cc8b548d90698c1abbf7d83898b0122fbe1e81  models/loras/m
 ## Como usar
 
 1. No **Ref Prompt Builder**, escolha as imagens de referência (`pictures`) e escreva a história inteira; cite `<Picture 1>` etc.
-2. No **H3 Prompt API**: `api_url` = servidor compatível com OpenAI (`http://llm2.lab:8080/v1` aqui; DeepSeek por padrão no original), `model` do servidor. `max_tokens` com folga se o modelo "pensa" antes de responder.
+2. No **H3 Prompt API**: `api_url` = servidor compatível com OpenAI (`http://localhost:8080/v1` neste arquivo; DeepSeek no original do autor), `model` do servidor. `max_tokens` com folga se o modelo "pensa" antes de responder.
 3. No **H3 Long Video**: `total_seconds` (duração final) e `segment_seconds` (tamanho de cada segmento). Mais de um segmento exige o Prompt API conectado.
-4. `local_llm` = `auto`: só descarrega os modelos do ComfyUI se a URL for localhost. O llm2.lab roda em outra GPU, então não descarrega nada.
+4. `local_llm` = `auto`: só descarrega os modelos do ComfyUI se a URL for localhost. Se o seu LLM roda em outra máquina ou GPU, use o endereço dela e nada é descarregado.
 
 ## Licença
 
@@ -76,5 +76,5 @@ Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, au
 ## Observações
 
 - O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.
-- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next do llm2.lab acertou no teste.
+- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.
 - Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.

@@ -84,3 +84,4 @@ Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, au
 - Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~14,5 min.
 - **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).
 - Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.
+- **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores.

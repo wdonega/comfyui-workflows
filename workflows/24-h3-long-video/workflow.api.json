@@ -85,7 +85,7 @@
  "314": {
   "class_type": "MiniMaxH3PromptAPI",
   "inputs": {
-   "api_url": "http://llm2.lab:8080/v1",
+   "api_url": "http://localhost:8080/v1",
    "model": "qwen3.8-flash-next-iq3_s",
    "api_key": "",
    "json_mode": true,
