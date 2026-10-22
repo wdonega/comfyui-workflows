@@ -1,4 +1,4 @@
-Idioma: [English](README.md) · **Português**
+[← Voltar à lista](../../README_ptBR.md) · Idioma: [English](README.md) · **Português**
 
 # H3 Character Swap (Relay 2.0)
 

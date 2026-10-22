@@ -1,4 +1,4 @@
-Language: **English** · [Português](README_ptBR.md)
+[← Back to the list](../../README.md) · Language: **English** · [Português](README_ptBR.md)
 
 # H3 HR Endless Sampler (Gemma 4 directs the chunks)
 
