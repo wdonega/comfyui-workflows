@@ -27,6 +27,7 @@ tools/                 gerador e conversores (ver tools/README_ptBR.md)
 | Workflow | Item | Família | O que faz | Status | Tempo do teste | VRAM | Download | Licença |
 |---|---|---|---|---|---|---|---|---|
 | [H3 Turbo v4 (larryvrh)](workflows/02-h3-turbo-v4/README_ptBR.md) | #2 | MiniMax H3 | LoRA turbo de 4–8 steps com sampler próprio (alternativa ao TaoMate) | ✅ testado | 16min 48s · 15 s | 15.2 GB | 40.85 GB | MiniMax H3 Community (⚠️ território) |
+| [LTX 2.3 · imagem para vídeo com áudio](workflows/04-ltx23-i2v/README_ptBR.md) | #4 | LTX 2.3 | Imagem → vídeo com áudio e fala em 2 estágios (rápido) | ✅ testado | 1min 51s · 4,8 s | 15.5 GB | 43.35 GB | LTX-2 Community (grátis < US$ 10 mi) |
 | [H3 Character Swap (Relay 2.0)](workflows/14-h3-character-swap/README_ptBR.md) | #14 | MiniMax H3 | Troca o personagem de um vídeo mantendo performance, cena e áudio | ✅ testado | 14min 28s · 4 s | — | 46.33 GB | MiniMax H3 Community (⚠️ território) |
 | [H3 HR Endless Sampler (Gemma 4 dirige os chunks)](workflows/23-h3-hr-endless-sampler/README_ptBR.md) | #23 | MiniMax H3 | Vídeo longo em chunks; Gemma 4 local planeja a produção e escreve o prompt de cada chunk | ✅ testado | 18min 38s · 6,6 s | 15.2 GB | 50.11 GB | MiniMax H3 Community (⚠️ território) |
 | [H3 Long Video (prompt dividido por LLM)](workflows/24-h3-long-video/README_ptBR.md) | #24 | MiniMax H3 | Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM | ✅ testado | 11min 27s · 16 s | 15.3 GB | 44.43 GB | MiniMax H3 Community (⚠️ território) |
