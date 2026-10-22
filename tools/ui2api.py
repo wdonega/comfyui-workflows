@@ -21,7 +21,11 @@ def load_object_info(server):
 
 def is_widget(spec):
     t = spec[0]
-    return isinstance(t, list) or t in LINK_TYPES_WIDGET or (isinstance(t, str) and t.startswith("COMFY_") and "COMBO" in t)
+    opts = spec[1] if len(spec) > 1 and isinstance(spec[1], dict) else {}
+    if isinstance(t, list) or opts.get("widgetType"):
+        return True
+    # tipos compostos como "FLOAT,INT" viram widget se todas as partes forem tipos de widget
+    return isinstance(t, str) and (all(p in LINK_TYPES_WIDGET for p in t.split(",")) or (t.startswith("COMFY_") and "COMBO" in t))
 
 
 def section_widgets(input_spec, order=None, prefix=""):
@@ -40,6 +44,8 @@ def section_widgets(input_spec, order=None, prefix=""):
 def fits(v, spec):
     """O valor salvo combina com o tipo do widget? (nós com JS próprio às vezes omitem widgets)"""
     t = spec[0]
+    if isinstance(t, str) and "," in t:
+        return any(fits(v, [p] + list(spec[1:])) for p in t.split(","))
     if t == "BOOLEAN":
         return isinstance(v, bool)
     if t == "INT":
