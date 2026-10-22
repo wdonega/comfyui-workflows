@@ -104,5 +104,6 @@
  "notes": {
   "pt": "- O arquivo do TaoMate é a conversão para ComfyUI publicada por drbaph (SHA-256 conferido com o arquivo em uso); o LoRA original é da TaoLiveAIGC.\n- Resultados com a mesma seed variam um pouco entre execuções (não-determinismo da GPU).",
   "en": "- The TaoMate file is the ComfyUI conversion published by drbaph (SHA-256 checked against the file in use); the original LoRA is by TaoLiveAIGC.\n- Results with the same seed vary slightly between runs (GPU non-determinism)."
- }
+ },
+ "kind": "video"
 }

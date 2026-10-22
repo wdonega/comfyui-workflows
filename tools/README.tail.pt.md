@@ -1,5 +1,5 @@
-Tempos e VRAM medidos na RTX 5060 Ti 16 GB com os parâmetros descritos no README de cada pasta
-(o tempo é da execução no ComfyUI, sem fila). "Download" é o total de modelos do workflow, contando
+Tempos medidos na RTX 5060 Ti 16 GB com os parâmetros descritos no README de cada pasta
+(execução no ComfyUI, sem fila; o pico de VRAM está no README de cada pasta). "Download" é o total de modelos do workflow, contando
 arquivos compartilhados com outros.
 
 ## Instalar um workflow
@@ -36,7 +36,7 @@ python3 tools/gen.py      # regera README.md, README_ptBR.md e install.sh a part
 ```
 
 Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `workflow.api.json` e
-`components.json` (copie um existente como modelo; textos traduzíveis são `{"pt": ..., "en": ...}`) e rode o gerador.
+`components.json` (copie um existente como modelo; textos traduzíveis são `{"pt": ..., "en": ...}`; `kind` é `image`, `video` ou `audio`) e rode o gerador.
 
 ---
 

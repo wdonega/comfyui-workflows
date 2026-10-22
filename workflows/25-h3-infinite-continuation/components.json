@@ -127,5 +127,6 @@
  "notes": {
   "pt": "- Os exemplos do autor usam **SageAttention** (`PathchSageAttentionKJ`), que não estava instalado; aqui foi trocado pela atenção do comfy-kitchen + MiniMax LowVRAM Attention + Chunk FeedForward (KJNodes), e funcionou em 16 GB.\n- Não use o mesmo retrato de estúdio como último frame se quiser que a cena termine no cenário: o clipe é obrigado a chegar nele (foi o que aconteceu no teste).\n- O tempo da tabela soma os três passos (553 + 732 + 115 s).",
   "en": "- The author's examples use **SageAttention** (`PathchSageAttentionKJ`), which was not installed; here it was replaced by comfy-kitchen attention + MiniMax LowVRAM Attention + Chunk FeedForward (KJNodes), and it worked on 16 GB.\n- Do not use the same studio portrait as the last frame if you want the scene to end on location: the clip is forced to reach it (that is what happened in the test).\n- The time in the table adds up the three steps (553 + 732 + 115 s)."
- }
+ },
+ "kind": "video"
 }

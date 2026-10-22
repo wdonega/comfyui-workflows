@@ -109,5 +109,6 @@
  "notes": {
   "pt": "- Comparado ao TaoMate 3 steps na mesma cena: 1008 s contra 524 s. Vale como alternativa de estética, não de velocidade.\n- O autor avisa que, em 4 steps com movimento rápido, o v4 pode deixar rastro; 6–8 steps resolvem.\n- O LoRA foi feito para T2V/I2V; aqui foi aplicado no Ref2VA e funcionou.",
   "en": "- Compared with TaoMate 3 steps on the same scene: 1008 s vs 524 s. Worth it as an aesthetic alternative, not for speed.\n- The author warns that at 4 steps with fast motion v4 can leave trails; 6–8 steps fix it.\n- The LoRA was made for T2V/I2V; here it was applied to Ref2VA and worked."
- }
+ },
+ "kind": "video"
 }

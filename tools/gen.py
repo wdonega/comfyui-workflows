@@ -38,7 +38,10 @@ L = {
         "models": "Models", "folder": "Folder (`models/…`)", "role": "Role", "size": "Size",
         "link": "link", "page_lnk": "page",
         "usage": "How to use", "notes": "Notes",
-        "tbl": ["Workflow", "Item", "Family", "What it does", "Status", "Test time", "VRAM", "Download", "License"],
+        "tbl": ["Workflow", "Item", "Family", "What it does", "Test time", "Download", "License"],
+        "tested": "Every workflow below was tested on the setup described above; times are from those runs.",
+        "kinds": {"image": "Image", "video": "Video", "audio": "Audio"},
+        "none": "_No tested workflows yet._",
     },
     "pt": {
         "switch": "Idioma: [English](README.md) · **Português**",
@@ -60,7 +63,10 @@ L = {
         "models": "Modelos", "folder": "Pasta (`models/…`)", "role": "Papel", "size": "Tamanho",
         "link": "link", "page_lnk": "página",
         "usage": "Como usar", "notes": "Observações",
-        "tbl": ["Workflow", "Item", "Família", "O que faz", "Status", "Tempo do teste", "VRAM", "Download", "Licença"],
+        "tbl": ["Workflow", "Item", "Família", "O que faz", "Tempo do teste", "Download", "Licença"],
+        "tested": "Todos os workflows abaixo foram testados no setup descrito acima; os tempos são dessas execuções.",
+        "kinds": {"image": "Imagem", "video": "Vídeo", "audio": "Áudio"},
+        "none": "_Nenhum workflow testado ainda._",
     },
 }
 
@@ -196,19 +202,25 @@ def main():
         print(f"ok  {folder.name}")
     for lang, fname in LANGS.items():
         s = L[lang]
-        table = ["| " + " | ".join(s["tbl"]) + " |", "|" + "---|" * len(s["tbl"])]
-        for name, c, total in rows:
-            t = c.get("test", {})
-            table.append(
-                f"| [{tr(c['title'], lang)}](workflows/{name}/{fname}) | {c.get('plan', '—')} | {c.get('family', '—')} "
-                f"| {tr(c['short'], lang)} | {s['status'].get(c['status'], c['status'])} "
-                f"| {fmt_time(t['time_s']) + ' · ' + tr(t['clip'], lang) if t else '—'} "
-                f"| {str(round(t['vram_mib'] / 1024, 1)) + ' GB' if t.get('vram_mib') else '—'} | {gb(total)} "
-                f"| {tr(c['license']['short'], lang)} |")
+        table = [s["tested"], ""]
+        for kind, label in s["kinds"].items():
+            table += [f"### {label}", ""]
+            items = [r for r in rows if r[1].get("kind", "video") == kind]
+            if not items:
+                table += [s["none"], ""]
+                continue
+            table += ["| " + " | ".join(s["tbl"]) + " |", "|" + "---|" * len(s["tbl"])]
+            for name, c, total in items:
+                t = c.get("test", {})
+                table.append(
+                    f"| [{tr(c['title'], lang)}](workflows/{name}/{fname}) | {c.get('plan', '—')} | {c.get('family', '—')} "
+                    f"| {tr(c['short'], lang)} | {fmt_time(t['time_s']) + ' · ' + tr(t['clip'], lang) if t else '—'} "
+                    f"| {gb(total)} | {tr(c['license']['short'], lang)} |")
+            table.append("")
         head = (ROOT / "tools" / f"README.head.{lang}.md").read_text().strip()
         tail = (ROOT / "tools" / f"README.tail.{lang}.md").read_text().strip()
         logo = '<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="100%"></p>'
-        (ROOT / fname).write_text(logo + "\n\n" + s["switch"] + "\n\n" + head + "\n\n" + "\n".join(table) + "\n\n" + tail + "\n")
+        (ROOT / fname).write_text(logo + "\n\n" + s["switch"] + "\n\n" + head + "\n\n" + "\n".join(table).rstrip() + "\n\n" + tail + "\n")
         print(f"ok  {fname}")
 
 

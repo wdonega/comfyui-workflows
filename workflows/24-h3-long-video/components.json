@@ -97,5 +97,6 @@
  "notes": {
   "pt": "- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.\n- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.\n- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.",
   "en": "- The log with each segment's prompts goes to `output/h3_prompt_logs/`.\n- The author recommends strong LLMs (27B dense or DeepSeek) to split timed dialogue; qwen3.8-flash-next (local llama.cpp) got it right in the test.\n- For the UI workflow with the author's original layout (subgraph), see `example_workflows/` in the node's repository."
- }
+ },
+ "kind": "video"
 }

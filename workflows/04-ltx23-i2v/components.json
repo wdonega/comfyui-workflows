@@ -105,5 +105,6 @@
  "notes": {
   "pt": "- Diferenças para o template oficial: em vez do checkpoint `ltx-2.3-22b-dev-fp8` + LoRA destilado + Gemma FP4, usa o transformer destilado do Kijai, os VAEs separados e o Gemma FP8 (a mesma pilha do Face Swap #17, para baixar uma vez só). O ramo opcional que melhora o prompt com o Gemma (desligado no template) foi removido.\n- KJNodes entra só pelo `VAELoaderKJ`.\n- Muito mais rápido que o MiniMax H3: 111 s para ~5 s de vídeo.",
   "en": "- Differences from the official template: instead of the `ltx-2.3-22b-dev-fp8` checkpoint + distilled LoRA + FP4 Gemma, it uses Kijai's distilled transformer, the split VAEs and FP8 Gemma (the same stack as Face Swap #17, so it is downloaded once). The optional Gemma prompt-enhancer branch (off in the template) was removed.\n- KJNodes is only needed for `VAELoaderKJ`.\n- Much faster than MiniMax H3: 111 s for ~5 s of video."
- }
+ },
+ "kind": "video"
 }

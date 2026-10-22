@@ -5,7 +5,8 @@ outra instalação: o workflow (interface e API), a lista de componentes com pas
 download fixado em commit e página, e um `install.sh` que instala tudo sozinho.
 
 Ambiente dos testes: ComfyUI v0.37.0 (`1568e6c`) em Docker (`yanwk/comfyui-boot` cu130), Python 3.13,
-torch 2.13 + CUDA 13.0, **RTX 5060 Ti 16 GB**, 61 GB de RAM.
+torch 2.13 + CUDA 13.0, **RTX 5060 Ti 16 GB**, 61 GB de RAM. A GPU ficou dedicada ao ComfyUI durante os testes:
+nada mais rodava nela.
 
 ## O que tem aqui
 

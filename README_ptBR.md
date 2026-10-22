@@ -9,7 +9,8 @@ outra instalação: o workflow (interface e API), a lista de componentes com pas
 download fixado em commit e página, e um `install.sh` que instala tudo sozinho.
 
 Ambiente dos testes: ComfyUI v0.37.0 (`1568e6c`) em Docker (`yanwk/comfyui-boot` cu130), Python 3.13,
-torch 2.13 + CUDA 13.0, **RTX 5060 Ti 16 GB**, 61 GB de RAM.
+torch 2.13 + CUDA 13.0, **RTX 5060 Ti 16 GB**, 61 GB de RAM. A GPU ficou dedicada ao ComfyUI durante os testes:
+nada mais rodava nela.
 
 ## O que tem aqui
 
@@ -26,22 +27,34 @@ tools/                 gerador e conversores (ver tools/README_ptBR.md)
 
 ## Workflows
 
-| Workflow | Item | Família | O que faz | Status | Tempo do teste | VRAM | Download | Licença |
-|---|---|---|---|---|---|---|---|---|
-| [H3 Turbo v4 (larryvrh)](workflows/02-h3-turbo-v4/README_ptBR.md) | #2 | MiniMax H3 | LoRA turbo de 4–8 steps com sampler próprio (alternativa ao TaoMate) | ✅ testado | 16min 48s · 15 s | 15.2 GB | 40.85 GB | MiniMax H3 Community (⚠️ território) |
-| [LTX 2.3 · imagem para vídeo com áudio](workflows/04-ltx23-i2v/README_ptBR.md) | #4 | LTX 2.3 | Imagem → vídeo com áudio e fala em 2 estágios (rápido) | ✅ testado | 1min 51s · 4,8 s | 15.5 GB | 43.35 GB | LTX-2 Community (grátis < US$ 10 mi) |
-| [Wan 2.2 5B · texto/imagem para vídeo](workflows/06-wan22-5b-ti2v/README_ptBR.md) | #6 | Wan 2.2 | Vídeo 720p de 5 s a partir de texto (ou imagem), cabe nativo em 16 GB | ✅ testado | 9min 12s · 5 s | 15.1 GB | 18.14 GB | Apache-2.0 (livre) |
-| [H3 Character Swap (Relay 2.0)](workflows/14-h3-character-swap/README_ptBR.md) | #14 | MiniMax H3 | Troca o personagem de um vídeo mantendo performance, cena e áudio | ✅ testado | 14min 28s · 4 s | — | 46.33 GB | MiniMax H3 Community (⚠️ território) |
-| [Bernini-R · transferência de estilo (anime / real)](workflows/16-bernini-r-style-transfer/README_ptBR.md) | #16 + #56 | Wan 2.2 (Bernini-R) | Edita vídeo com o Bernini-R; LoRAs de estilo anime e real-life | ✅ testado | 18min 45s · 4,9 s | 11.4 GB | 39.15 GB | Apache-2.0 (livre) |
-| [LTX 2.3 · Face Swap (head swap)](workflows/17-ltx23-face-swap/README_ptBR.md) | #17 | LTX 2.3 | Troca a cabeça/rosto de uma pessoa num vídeo mantendo corpo, roupa, movimento e áudio | ✅ testado | 8min 42s · 4 s | 15.5 GB | 44.71 GB | LTX-2 Community (grátis < US$ 10 mi) |
-| [H3 HR Endless Sampler (Gemma 4 dirige os chunks)](workflows/23-h3-hr-endless-sampler/README_ptBR.md) | #23 | MiniMax H3 | Vídeo longo em chunks; Gemma 4 local planeja a produção e escreve o prompt de cada chunk | ✅ testado | 18min 38s · 6,6 s | 15.2 GB | 50.11 GB | MiniMax H3 Community (⚠️ território) |
-| [H3 Long Video (prompt dividido por LLM)](workflows/24-h3-long-video/README_ptBR.md) | #24 | MiniMax H3 | Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM | ✅ testado | 11min 27s · 16 s | 15.3 GB | 44.43 GB | MiniMax H3 Community (⚠️ território) |
-| [Herrgott's H3 Infinite Continuation (v1.4)](workflows/25-h3-infinite-continuation/README_ptBR.md) | #25 | MiniMax H3 | Encadeia clipes FL2VA com handover seguro e junta tudo sem emenda visível | ✅ testado | 23min 20s · 8,7 s (2 clipes) | 15.3 GB | 42.47 GB | MiniMax H3 Community (⚠️ território) |
-| [H3 Realism People](workflows/59-h3-realism-people/README_ptBR.md) | #59 | MiniMax H3 | LoRA de realismo para pessoas (gatilho r34l1sm) | ✅ testado | 2min 14s · 5 s | 15.2 GB | 42.69 GB | MiniMax H3 Community (⚠️ território) |
-| [H3 Ref2VA · TaoMate 3 steps](workflows/h3-ref2va-taomate-3step/README_ptBR.md) | base | MiniMax H3 | Vídeo+áudio a partir de imagem de referência em 3 steps | ✅ testado | 8min 44s · 15 s | 15.2 GB | 42.55 GB | MiniMax H3 Community (⚠️ território) |
+Todos os workflows abaixo foram testados no setup descrito acima; os tempos são dessas execuções.
 
-Tempos e VRAM medidos na RTX 5060 Ti 16 GB com os parâmetros descritos no README de cada pasta
-(o tempo é da execução no ComfyUI, sem fila). "Download" é o total de modelos do workflow, contando
+### Imagem
+
+_Nenhum workflow testado ainda._
+
+### Vídeo
+
+| Workflow | Item | Família | O que faz | Tempo do teste | Download | Licença |
+|---|---|---|---|---|---|---|
+| [H3 Turbo v4 (larryvrh)](workflows/02-h3-turbo-v4/README_ptBR.md) | #2 | MiniMax H3 | LoRA turbo de 4–8 steps com sampler próprio (alternativa ao TaoMate) | 16min 48s · 15 s | 40.85 GB | MiniMax H3 Community (⚠️ território) |
+| [LTX 2.3 · imagem para vídeo com áudio](workflows/04-ltx23-i2v/README_ptBR.md) | #4 | LTX 2.3 | Imagem → vídeo com áudio e fala em 2 estágios (rápido) | 1min 51s · 4,8 s | 43.35 GB | LTX-2 Community (grátis < US$ 10 mi) |
+| [Wan 2.2 5B · texto/imagem para vídeo](workflows/06-wan22-5b-ti2v/README_ptBR.md) | #6 | Wan 2.2 | Vídeo 720p de 5 s a partir de texto (ou imagem), cabe nativo em 16 GB | 9min 12s · 5 s | 18.14 GB | Apache-2.0 (livre) |
+| [H3 Character Swap (Relay 2.0)](workflows/14-h3-character-swap/README_ptBR.md) | #14 | MiniMax H3 | Troca o personagem de um vídeo mantendo performance, cena e áudio | 14min 28s · 4 s | 46.33 GB | MiniMax H3 Community (⚠️ território) |
+| [Bernini-R · transferência de estilo (anime / real)](workflows/16-bernini-r-style-transfer/README_ptBR.md) | #16 + #56 | Wan 2.2 (Bernini-R) | Edita vídeo com o Bernini-R; LoRAs de estilo anime e real-life | 18min 45s · 4,9 s | 39.15 GB | Apache-2.0 (livre) |
+| [LTX 2.3 · Face Swap (head swap)](workflows/17-ltx23-face-swap/README_ptBR.md) | #17 | LTX 2.3 | Troca a cabeça/rosto de uma pessoa num vídeo mantendo corpo, roupa, movimento e áudio | 8min 42s · 4 s | 44.71 GB | LTX-2 Community (grátis < US$ 10 mi) |
+| [H3 HR Endless Sampler (Gemma 4 dirige os chunks)](workflows/23-h3-hr-endless-sampler/README_ptBR.md) | #23 | MiniMax H3 | Vídeo longo em chunks; Gemma 4 local planeja a produção e escreve o prompt de cada chunk | 18min 38s · 6,6 s | 50.11 GB | MiniMax H3 Community (⚠️ território) |
+| [H3 Long Video (prompt dividido por LLM)](workflows/24-h3-long-video/README_ptBR.md) | #24 | MiniMax H3 | Vídeos longos em segmentos encadeados, com o prompt dividido por um LLM | 11min 27s · 16 s | 44.43 GB | MiniMax H3 Community (⚠️ território) |
+| [Herrgott's H3 Infinite Continuation (v1.4)](workflows/25-h3-infinite-continuation/README_ptBR.md) | #25 | MiniMax H3 | Encadeia clipes FL2VA com handover seguro e junta tudo sem emenda visível | 23min 20s · 8,7 s (2 clipes) | 42.47 GB | MiniMax H3 Community (⚠️ território) |
+| [H3 Realism People](workflows/59-h3-realism-people/README_ptBR.md) | #59 | MiniMax H3 | LoRA de realismo para pessoas (gatilho r34l1sm) | 2min 14s · 5 s | 42.69 GB | MiniMax H3 Community (⚠️ território) |
+| [H3 Ref2VA · TaoMate 3 steps](workflows/h3-ref2va-taomate-3step/README_ptBR.md) | base | MiniMax H3 | Vídeo+áudio a partir de imagem de referência em 3 steps | 8min 44s · 15 s | 42.55 GB | MiniMax H3 Community (⚠️ território) |
+
+### Áudio
+
+_Nenhum workflow testado ainda._
+
+Tempos medidos na RTX 5060 Ti 16 GB com os parâmetros descritos no README de cada pasta
+(execução no ComfyUI, sem fila; o pico de VRAM está no README de cada pasta). "Download" é o total de modelos do workflow, contando
 arquivos compartilhados com outros.
 
 ## Instalar um workflow
@@ -78,7 +91,7 @@ python3 tools/gen.py      # regera README.md, README_ptBR.md e install.sh a part
 ```
 
 Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `workflow.api.json` e
-`components.json` (copie um existente como modelo; textos traduzíveis são `{"pt": ..., "en": ...}`) e rode o gerador.
+`components.json` (copie um existente como modelo; textos traduzíveis são `{"pt": ..., "en": ...}`; `kind` é `image`, `video` ou `audio`) e rode o gerador.
 
 ---
 

@@ -1,5 +1,5 @@
-Times and VRAM measured on the RTX 5060 Ti 16 GB with the parameters described in each folder's README
-(time is the execution inside ComfyUI, without queue). "Download" is the workflow's total model size,
+Times measured on the RTX 5060 Ti 16 GB with the parameters described in each folder's README
+(execution inside ComfyUI, without queue; peak VRAM is in each folder's README). "Download" is the workflow's total model size,
 counting files shared with other workflows.
 
 ## Installing a workflow
@@ -36,7 +36,7 @@ python3 tools/gen.py      # regenerates README.md, README_ptBR.md and install.sh
 ```
 
 To add a workflow: create `workflows/<folder>/` with `workflow.json`, `workflow.api.json` and
-`components.json` (copy an existing one as a template; translatable texts are `{"pt": ..., "en": ...}`)
+`components.json` (copy an existing one as a template; translatable texts are `{"pt": ..., "en": ...}`; `kind` is `image`, `video` or `audio`)
 and run the generator.
 
 ---

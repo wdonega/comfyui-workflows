@@ -120,5 +120,6 @@
  "notes": {
   "pt": "- O template original usa os pesos FP8 (15,6 GB cada); aqui foram usados os INT8 convrot (14,5 GB cada).\n- O LoRA de real-life foi baixado, mas só o de anime foi testado.\n- Bernini-R tem suporte nativo no core do ComfyUI v0.37 (não precisa de custom node).",
   "en": "- The original template uses the FP8 weights (15.6 GB each); the INT8 convrot ones (14.5 GB each) were used here.\n- The real-life LoRA was downloaded, but only the anime one was tested.\n- Bernini-R is natively supported in ComfyUI v0.37 core (no custom node needed)."
- }
+ },
+ "kind": "video"
 }

@@ -112,5 +112,6 @@
  "notes": {
   "pt": "- No teste curto (5 s) o resultado ficou mais natural e menos saturado que o base, sem artefatos.",
   "en": "- In the short test (5 s) the result looked more natural and less saturated than the base, with no artifacts."
- }
+ },
+ "kind": "video"
 }

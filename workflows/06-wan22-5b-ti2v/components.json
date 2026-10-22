@@ -71,5 +71,6 @@
  "notes": {
   "pt": "- Plano original sugeria GGUF para 16 GB; o 5B em fp16 roda nativo (pico de 15,5 GB), sem custom node.\n- O `umt5_xxl_fp8_e4m3fn_scaled` é o mesmo arquivo usado pelo Wan Animate 2 e pelo Bernini-R (SHA-256 idêntico).",
   "en": "- The original plan suggested GGUF for 16 GB; the 5B in fp16 runs natively (15.5 GB peak), no custom node.\n- `umt5_xxl_fp8_e4m3fn_scaled` is the same file used by Wan Animate 2 and Bernini-R (identical SHA-256)."
- }
+ },
+ "kind": "video"
 }
