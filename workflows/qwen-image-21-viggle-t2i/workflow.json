@@ -1,0 +1,1286 @@
+{
+ "id": "2c7b6694-2628-577c-878e-dd26c6a2f88e",
+ "revision": 0,
+ "last_node_id": 92,
+ "last_link_id": 19,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "UNETLoader",
+   "pos": [
+    25,
+    70
+   ],
+   "size": [
+    335,
+    95
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "unet_name",
+     "name": "unet_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "unet_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "tipo_peso",
+     "name": "weight_dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "weight_dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MODELO",
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      13
+     ]
+    }
+   ],
+   "title": "Qwen Image 2.1 · INT8",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "UNETLoader",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "qwen_image_2.1_int8_convrot.safetensors",
+    "default"
+   ],
+   "color": "#355F5A",
+   "bgcolor": "#203A37"
+  },
+  {
+   "id": 2,
+   "type": "CLIPLoader",
+   "pos": [
+    385,
+    70
+   ],
+   "size": [
+    335,
+    125
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip_name",
+     "name": "clip_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "clip_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "type",
+     "name": "type",
+     "type": "COMBO",
+     "widget": {
+      "name": "type"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "device",
+     "name": "device",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "device"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "clip",
+     "name": "CLIP",
+     "type": "CLIP",
+     "slot_index": 0,
+     "links": [
+      1
+     ]
+    }
+   ],
+   "title": "Text Encoder · INT8",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "CLIPLoader",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "qwen3vl_8b_int8_convrot.safetensors",
+    "qwen_image",
+    "default"
+   ],
+   "color": "#355F5A",
+   "bgcolor": "#203A37"
+  },
+  {
+   "id": 3,
+   "type": "VAELoader",
+   "pos": [
+    745,
+    70
+   ],
+   "size": [
+    300,
+    75
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "vae_name",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "vae",
+     "name": "VAE",
+     "type": "VAE",
+     "slot_index": 0,
+     "links": [
+      18
+     ]
+    }
+   ],
+   "title": "Qwen 2.1 VAE",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "VAELoader",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "qwen_image_2.1_vae_bf16.safetensors"
+   ],
+   "color": "#355F5A",
+   "bgcolor": "#203A37"
+  },
+  {
+   "id": 4,
+   "type": "TextEncodeQwenImage21",
+   "pos": [
+    331.32684635078726,
+    336.0841516504075
+   ],
+   "size": [
+    627.3850681214446,
+    469.0371331680328
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 1
+    },
+    {
+     "localized_name": "images.image_1",
+     "name": "images.image_1",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": null
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "shape": 7,
+     "type": "VAE",
+     "link": null
+    },
+    {
+     "localized_name": "prompt",
+     "name": "prompt",
+     "type": "STRING",
+     "widget": {
+      "name": "prompt"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "negative_prompt",
+     "name": "negative_prompt",
+     "type": "STRING",
+     "widget": {
+      "name": "negative_prompt"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "resolution",
+     "name": "resolution",
+     "type": "INT",
+     "widget": {
+      "name": "resolution"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "positive",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      5
+     ]
+    },
+    {
+     "localized_name": "negative",
+     "name": "negative",
+     "type": "CONDITIONING",
+     "slot_index": 1,
+     "links": [
+      6
+     ]
+    },
+    {
+     "localized_name": "latent",
+     "name": "latent",
+     "type": "LATENT",
+     "slot_index": 2,
+     "links": null
+    }
+   ],
+   "title": "Image Prompt",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "TextEncodeQwenImage21",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "Ultra-realistic photo of an old lighthouse keeper in a thick wool sweater standing on a rocky cliff at sunset, the lighthouse behind him, seagulls in the sky, warm golden light, natural skin texture, 16:9.",
+    "",
+    1024
+   ],
+   "color": "#223",
+   "bgcolor": "#335"
+  },
+  {
+   "id": 5,
+   "type": "EmptyLatentImage",
+   "pos": [
+    25,
+    570
+   ],
+   "size": [
+    285,
+    125
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "largura",
+     "name": "width",
+     "type": "INT",
+     "widget": {
+      "name": "width"
+     },
+     "link": 2
+    },
+    {
+     "localized_name": "altura",
+     "name": "height",
+     "type": "INT",
+     "widget": {
+      "name": "height"
+     },
+     "link": 3
+    },
+    {
+     "localized_name": "tamanho_do_lote",
+     "name": "batch_size",
+     "type": "INT",
+     "widget": {
+      "name": "batch_size"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "LATENT",
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      7
+     ]
+    }
+   ],
+   "title": "Canvas · automatic size",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "EmptyLatentImage",
+    "ue_properties": {
+     "widget_ue_connectable": {
+      "width": true,
+      "height": true
+     },
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    2048,
+    2048,
+    1
+   ],
+   "color": "#284854",
+   "bgcolor": "#1d333d"
+  },
+  {
+   "id": 6,
+   "type": "KSampler",
+   "pos": [
+    1031.6341541033498,
+    342.30730849132874
+   ],
+   "size": [
+    380,
+    275
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "modelo",
+     "name": "model",
+     "type": "MODEL",
+     "link": 4
+    },
+    {
+     "localized_name": "positivo",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 5
+    },
+    {
+     "localized_name": "negativo",
+     "name": "negative",
+     "type": "CONDITIONING",
+     "link": 6
+    },
+    {
+     "localized_name": "imagem_latente",
+     "name": "latent_image",
+     "type": "LATENT",
+     "link": 7
+    },
+    {
+     "localized_name": "semente",
+     "name": "seed",
+     "type": "INT",
+     "widget": {
+      "name": "seed"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "passos",
+     "name": "steps",
+     "type": "INT",
+     "widget": {
+      "name": "steps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "cfg",
+     "name": "cfg",
+     "type": "FLOAT",
+     "widget": {
+      "name": "cfg"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "nome_do_sampler",
+     "name": "sampler_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "sampler_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "agendador",
+     "name": "scheduler",
+     "type": "COMBO",
+     "widget": {
+      "name": "scheduler"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "denoise",
+     "name": "denoise",
+     "type": "FLOAT",
+     "widget": {
+      "name": "denoise"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "LATENT",
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      17
+     ]
+    }
+   ],
+   "title": "Sampler",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "KSampler",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    314159268,
+    "fixed",
+    4,
+    1,
+    "euler",
+    "simple",
+    1
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 8,
+   "type": "SaveImage",
+   "pos": [
+    1053.8814417810872,
+    793.5728650844047
+   ],
+   "size": [
+    490.5831705713283,
+    325.761234122986
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "imagens",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 19
+    },
+    {
+     "localized_name": "prefixo_do_arquivo",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "imagens",
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "SaveImage",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "qwen21/viggle_t2i"
+   ],
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 9,
+   "type": "QwenImage21Cache",
+   "pos": [
+    775,
+    855
+   ],
+   "size": [
+    210,
+    115
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 11
+    },
+    {
+     "localized_name": "device",
+     "name": "device",
+     "type": "COMBO",
+     "widget": {
+      "name": "device"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "dtype",
+     "name": "dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MODELO",
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      4
+     ]
+    }
+   ],
+   "title": "Prefix Cache",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "QwenImage21Cache",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "auto",
+    "default"
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 11,
+   "type": "ModelAttentionBackend",
+   "pos": [
+    355,
+    855
+   ],
+   "size": [
+    210,
+    85
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 12
+    },
+    {
+     "localized_name": "attention",
+     "name": "attention",
+     "type": "COMBO",
+     "widget": {
+      "name": "attention"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      14
+     ]
+    }
+   ],
+   "title": "Kitchen Attention",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "ModelAttentionBackend",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "comfy kitchen attention"
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 14,
+   "type": "LoraLoaderModelOnly",
+   "pos": [
+    1070,
+    70
+   ],
+   "size": [
+    345,
+    125
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "modelo",
+     "name": "model",
+     "type": "MODEL",
+     "link": 13
+    },
+    {
+     "localized_name": "nome_do_lora",
+     "name": "lora_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "lora_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "força_modelo",
+     "name": "strength_model",
+     "type": "FLOAT",
+     "widget": {
+      "name": "strength_model"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MODELO",
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      12
+     ]
+    }
+   ],
+   "title": "Viggle Turbo · 4 steps",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "LoraLoaderModelOnly",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors",
+    1
+   ],
+   "color": "#355F5A",
+   "bgcolor": "#203A37"
+  },
+  {
+   "id": 15,
+   "type": "ModelSamplingFlux",
+   "pos": [
+    565,
+    855
+   ],
+   "size": [
+    210,
+    175
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "modelo",
+     "name": "model",
+     "type": "MODEL",
+     "link": 14
+    },
+    {
+     "localized_name": "deslocamento_máx",
+     "name": "max_shift",
+     "type": "FLOAT",
+     "widget": {
+      "name": "max_shift"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "deslocamento_base",
+     "name": "base_shift",
+     "type": "FLOAT",
+     "widget": {
+      "name": "base_shift"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "largura",
+     "name": "width",
+     "type": "INT",
+     "widget": {
+      "name": "width"
+     },
+     "link": 15
+    },
+    {
+     "localized_name": "altura",
+     "name": "height",
+     "type": "INT",
+     "widget": {
+      "name": "height"
+     },
+     "link": 16
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "MODELO",
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      11
+     ]
+    }
+   ],
+   "title": "Automatic Shift",
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "ModelSamplingFlux",
+    "ue_properties": {
+     "widget_ue_connectable": {
+      "width": true,
+      "height": true
+     },
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    0.6935483870967742,
+    0.5,
+    2048,
+    2048
+   ],
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 20,
+   "type": "ResolutionSelector",
+   "pos": [
+    22.852507338457563,
+    349.21737659100125
+   ],
+   "size": [
+    285,
+    170
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "preview",
+     "name": "preview",
+     "shape": 7,
+     "type": "RESOLUTION_PREVIEW",
+     "link": null
+    },
+    {
+     "localized_name": "proporção_de_aspecto",
+     "name": "aspect_ratio",
+     "type": "COMBO",
+     "widget": {
+      "name": "aspect_ratio"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "megapixels",
+     "name": "megapixels",
+     "type": "FLOAT",
+     "widget": {
+      "name": "megapixels"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "múltiplo",
+     "name": "multiple",
+     "type": "INT",
+     "widget": {
+      "name": "multiple"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "largura",
+     "name": "width",
+     "type": "INT",
+     "links": [
+      2,
+      15
+     ]
+    },
+    {
+     "localized_name": "altura",
+     "name": "height",
+     "type": "INT",
+     "links": [
+      3,
+      16
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "ResolutionSelector",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    }
+   },
+   "widgets_values": [
+    "16:9 (Widescreen)",
+    2,
+    64
+   ],
+   "color": "#284854",
+   "bgcolor": "#1d333d"
+  },
+  {
+   "id": 90,
+   "type": "MarkdownNote",
+   "pos": [
+    -331.5715363032092,
+    30.56808983420882
+   ],
+   "size": [
+    307.89541460172427,
+    457.3335850022312
+   ],
+   "flags": {
+    "collapsed": false,
+    "pinned": true
+   },
+   "order": 4,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "Downloads & Storage · expand",
+   "properties": {
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "version": "7.8",
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "## Model downloads and folders\n\n\n**Diffusion · INT8:** [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/5dc5850eb514a3685f6a03a2641728a8f7549c69/diffusion_models/qwen_image_2.1_int8_convrot.safetensors?download=true)\n→ `ComfyUI/models/diffusion_models/`\n\n**Text encoder:** [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/5dc5850eb514a3685f6a03a2641728a8f7549c69/text_encoders/qwen3vl_8b_int8_convrot.safetensors?download=true)\n→ `ComfyUI/models/text_encoders/`\n\n**VAE:** [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/5dc5850eb514a3685f6a03a2641728a8f7549c69/vae/qwen_image_2.1_vae_bf16.safetensors?download=true)\n→ `ComfyUI/models/vae/`\n\n**Viggle four-step LoRA:** [Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors](https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo/resolve/bafc91e4cc934f5fb1406b22496a0bed9b99c548/Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors?download=true)\n→ `ComfyUI/models/loras/`\n\n\n**Credits:** Qwen · Comfy-Org · Viggle. Workflow layout and tests: Tensor Alchemist.\n[Model license](https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE) · [Viggle model card](https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo)\nThe Qwen model license limits model use to research/evaluation unless separately licensed."
+   ],
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 92,
+   "type": "VAEDecode",
+   "pos": [
+    1061.3129244660513,
+    718.2729472545632
+   ],
+   "size": [
+    247.37072816042996,
+    65.25270361078321
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "amostras",
+     "name": "samples",
+     "type": "LATENT",
+     "link": 17
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 18
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGEM",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      19
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.37.0",
+    "Node name for S&R": "VAEDecode",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    }
+   },
+   "widgets_values": [],
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  }
+ ],
+ "links": [
+  [
+   1,
+   2,
+   0,
+   4,
+   0,
+   "CLIP"
+  ],
+  [
+   2,
+   20,
+   0,
+   5,
+   0,
+   "INT"
+  ],
+  [
+   3,
+   20,
+   1,
+   5,
+   1,
+   "INT"
+  ],
+  [
+   4,
+   9,
+   0,
+   6,
+   0,
+   "MODEL"
+  ],
+  [
+   5,
+   4,
+   0,
+   6,
+   1,
+   "CONDITIONING"
+  ],
+  [
+   6,
+   4,
+   1,
+   6,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   7,
+   5,
+   0,
+   6,
+   3,
+   "LATENT"
+  ],
+  [
+   11,
+   15,
+   0,
+   9,
+   0,
+   "MODEL"
+  ],
+  [
+   12,
+   14,
+   0,
+   11,
+   0,
+   "MODEL"
+  ],
+  [
+   13,
+   1,
+   0,
+   14,
+   0,
+   "MODEL"
+  ],
+  [
+   14,
+   11,
+   0,
+   15,
+   0,
+   "MODEL"
+  ],
+  [
+   15,
+   20,
+   0,
+   15,
+   3,
+   "INT"
+  ],
+  [
+   16,
+   20,
+   1,
+   15,
+   4,
+   "INT"
+  ],
+  [
+   17,
+   6,
+   0,
+   92,
+   0,
+   "LATENT"
+  ],
+  [
+   18,
+   3,
+   0,
+   92,
+   1,
+   "VAE"
+  ],
+  [
+   19,
+   92,
+   0,
+   8,
+   0,
+   "IMAGE"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 1,
+   "title": "1. Models",
+   "bounding": [
+    0,
+    0,
+    1440,
+    250
+   ],
+   "color": "#3f789e",
+   "flags": {}
+  },
+  {
+   "id": 2,
+   "title": "2. Resolution & Prompt",
+   "bounding": [
+    0,
+    270,
+    990,
+    730
+   ],
+   "color": "#6b5b91",
+   "flags": {}
+  },
+  {
+   "id": 3,
+   "title": "3. Sampling",
+   "bounding": [
+    1010,
+    270,
+    430,
+    370
+   ],
+   "color": "#775c1e",
+   "flags": {}
+  },
+  {
+   "id": 4,
+   "title": "4. Image Output",
+   "bounding": [
+    1010,
+    660,
+    548.2707642951054,
+    513.4637226647698
+   ],
+   "color": "#526c78",
+   "flags": {}
+  }
+ ],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 1.4864362802414406,
+   "offset": [
+    -387.829563748366,
+    -163.7178955940784
+   ]
+  },
+  "frontendVersion": "1.53.6",
+  "tensor_alchemist": {
+   "title": "Qwen Image 2.1 - INT8 Model and Encoder - Viggle 4-Step Generate v1.1",
+   "version": "1.1",
+   "source_case": "P12_Turbo4_INT8_Storyboard_2048",
+   "source_workflow_sha256": "f807facff0c5771d3d5be95430f0a8405d4547432ee3471a1119d2d43286cf9d",
+   "style_reference": "MiniMax H3 Director.json",
+   "style_reference_sha256": "5dbdd6063cd38af99bd12107f0e2ef4063147e0852768fee3d1848bc5a08f618",
+   "scope": "INT8 diffusion and INT8 text encoder; original Viggle v0.1 four-step generation workflow.",
+   "validation": "TARGET PREFLIGHT VALIDATED + GRAPH LINKS VALIDATED + UI LOAD TESTED + ACTUAL API EXPORT MATCH; no fresh generation executed for this encoder-only update",
+   "base_case_execution": "Prior generation workflow used W4A8 encoding; historical execution does not constitute execution validation of this derivative.",
+   "model_downloads": [
+    {
+     "file": "qwen_image_2.1_int8_convrot.safetensors",
+     "download_url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/5dc5850eb514a3685f6a03a2641728a8f7549c69/diffusion_models/qwen_image_2.1_int8_convrot.safetensors?download=true",
+     "storage_folder": "ComfyUI/models/diffusion_models/",
+     "local_sha256": "cb74113cb03faecd79611b01fd7fd642f0aa60d6f0b95086abee214d75eaa57d",
+     "revision": "5dc5850eb514a3685f6a03a2641728a8f7549c69"
+    },
+    {
+     "file": "qwen3vl_8b_int8_convrot.safetensors",
+     "download_url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/5dc5850eb514a3685f6a03a2641728a8f7549c69/text_encoders/qwen3vl_8b_int8_convrot.safetensors?download=true",
+     "storage_folder": "ComfyUI/models/text_encoders/",
+     "local_sha256": "8bfd0f6e12abf2d2d697ecc888e5e90b0d6741d6708f05799f53afa560452e8f",
+     "revision": "5dc5850eb514a3685f6a03a2641728a8f7549c69"
+    },
+    {
+     "file": "qwen_image_2.1_vae_bf16.safetensors",
+     "download_url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/5dc5850eb514a3685f6a03a2641728a8f7549c69/vae/qwen_image_2.1_vae_bf16.safetensors?download=true",
+     "storage_folder": "ComfyUI/models/vae/",
+     "local_sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9",
+     "revision": "5dc5850eb514a3685f6a03a2641728a8f7549c69"
+    },
+    {
+     "file": "Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors",
+     "download_url": "https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo/resolve/bafc91e4cc934f5fb1406b22496a0bed9b99c548/Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors?download=true",
+     "storage_folder": "ComfyUI/models/loras/",
+     "local_sha256": "5c494dce662a95898d0988831af733b203ceced9116a82aa099c997f96ea1a3a",
+     "revision": "bafc91e4cc934f5fb1406b22496a0bed9b99c548"
+    }
+   ],
+   "automatic_shift": {
+    "base_shift": 0.5,
+    "max_shift": 0.6935483870967742,
+    "reason": "Native Flux anchors reparameterized to the Viggle 256..8192 schedule."
+   },
+   "previous_version_execution": {
+    "case": "C02_Compact_Generate_Wide",
+    "dimensions": [
+     2048,
+     1152
+    ],
+    "seconds": 67.7311,
+    "scope": "Previous W4A8 encoder variant only. Not an execution test of this INT8 encoder derivative."
+   }
+  },
+  "ue_links": [],
+  "links_added_by_ue": []
+ },
+ "version": 0.4
+}

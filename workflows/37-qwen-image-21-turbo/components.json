@@ -1,0 +1,76 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "Qwen-Image 2.1 Turbo",
+  "en": "Qwen-Image 2.1 Turbo"
+ },
+ "short": {
+  "pt": "A versão turbo do Qwen-Image 2.1: mesma qualidade, 2,4x mais rápida",
+  "en": "Turbo Qwen-Image 2.1: same quality, 2.4x faster"
+ },
+ "plan": "#37",
+ "family": "Qwen-Image 2.1",
+ "summary": {
+  "pt": "O template oficial `image_qwen_image_2_1_turbo_t2i` com o modelo turbo em INT8 da Comfy-Org. Reaproveita o text encoder e o VAE do Qwen-Image 2.1. O ramo opcional que reescreve o prompt com o Qwen3.5 9B (desligado no template) foi removido.",
+  "en": "The official `image_qwen_image_2_1_turbo_t2i` template with Comfy-Org's INT8 turbo model. Reuses the Qwen-Image 2.1 text encoder and VAE. The optional branch that rewrites the prompt with Qwen3.5 9B (off in the template) was removed."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "Prompt do teste (igual nos modelos de imagem da comparação): café-livraria com um gato tricolor e uma placa escrita \"OPEN DAILY 8-20\", seed 20261022, 1024x1024.",
+   "en": "Test prompt (same for every image model compared): bookstore café with a calico cat and a sign reading \"OPEN DAILY 8-20\", seed 20261022, 1024x1024."
+  },
+  "clip": "1024²",
+  "time_s": 10,
+  "vram_mib": 15647,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Qwen Research License",
+  "url": "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE",
+  "short": {
+   "pt": "Qwen Research (só pesquisa)",
+   "en": "Qwen Research (research only)"
+  },
+  "summary": {
+   "pt": "**Só pesquisa e avaliação.** Qualquer uso comercial (inclusive assets de produto grátis publicado) exige licença da Alibaba (model-business@notice.qwencloud.com). Ao redistribuir os pesos, manter o aviso de licença.",
+   "en": "**Research and evaluation only.** Any commercial use (including assets of a free published product) needs a license from Alibaba (model-business@notice.qwencloud.com). Keep the license notice when redistributing the weights."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Qwen-Image-2.1:diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors",
+   "role": {
+    "pt": "Qwen-Image 2.1 Turbo (INT8)",
+    "en": "Qwen-Image 2.1 Turbo (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Qwen-Image-2.1:text_encoders/qwen3vl_8b_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "text encoder Qwen3-VL 8B (INT8)",
+    "en": "Qwen3-VL 8B text encoder (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Qwen-Image-2.1:vae/qwen_image_2.1_vae_bf16.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "VAE do Qwen-Image 2.1",
+    "en": "Qwen-Image 2.1 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Prompt no nó de texto; resolução no **ResolutionSelector**.\n2. Para reativar o reescritor de prompt do template original, baixe `qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors` (Comfy-Org/Qwen-Image-2.1) e use o template do ComfyUI.",
+  "en": "1. Prompt in the text node; resolution in **ResolutionSelector**.\n2. To bring back the original template's prompt rewriter, download `qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors` (Comfy-Org/Qwen-Image-2.1) and use the ComfyUI template."
+ },
+ "notes": {
+  "pt": "Comparação na mesma seed/prompt (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. Todos acertaram o texto da placa.",
+  "en": "Same seed/prompt comparison (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. All rendered the sign text correctly."
+ }
+}

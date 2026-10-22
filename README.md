@@ -31,7 +31,17 @@ Every workflow below was tested on the setup described above; times are from tho
 
 ### Image
 
-_No tested workflows yet._
+| Workflow | Family | What it does | Test time | Download | License |
+|---|---|---|---|---|---|
+| [Qwen-Image 2.1 Turbo](workflows/37-qwen-image-21-turbo/README.md) | Qwen-Image 2.1 | Turbo Qwen-Image 2.1: same quality, 2.4x faster | 10s · 1024² | 17.28 GB | Qwen Research (research only) |
+| [Krea 2 Turbo](workflows/38-krea2-turbo/README.md) | Krea 2 | Text to image with a cinematic look, 8 steps | 23s · 1024² | 18.61 GB | Krea 2 Community (free < US$ 1M) |
+| [Flux 3 Klein (distilled)](workflows/39-flux3-klein/README.md) | Flux 3 | Detail-rich text to image, with a prompt upsampler | 21s · 1024² | 17.75 GB | FLUX Kommunity (free < US$ 5M) |
+| [MOSS-Image (SFT)](workflows/40-moss-image/README.md) | MOSS-Image | Text to image with a free license (Apache-2.0) | 35s · 1024² | 13.01 GB | Apache-2.0 (free) |
+| [SeedVR2 · 4x upscale](workflows/42-seedvr2-upscale/README.md) | SeedVR2 | 4x image upscale in 1 step (a video version exists too) | 23s · 1024² → 4096² | 3.96 GB | Apache-2.0 (free) |
+| [Qwen-Image 2.1 · instruction editing](workflows/qwen-image-21-edit/README.md) | Qwen-Image 2.1 | Edits a photo from text, with up to 10 reference images | 1min 17s · 896x1152 | 17.28 GB | Qwen Research (research only) |
+| [Qwen-Image 2.1 · text to image](workflows/qwen-image-21-t2i/README.md) | Qwen-Image 2.1 | The official Qwen-Image 2.1 template (25 steps) | 26s · 1024² | 17.28 GB | Qwen Research (research only) |
+| [Qwen-Image 2.1 · Viggle 4-step (editing)](workflows/qwen-image-21-viggle-edit/README.md) | Qwen-Image 2.1 | Instruction editing in 4 steps, up to 3 references, up to 4 MP output | 1min 23s · 2752x1536 | 17.62 GB | Qwen Research (research only) |
+| [Qwen-Image 2.1 · Viggle 4-step (text to image)](workflows/qwen-image-21-viggle-t2i/README.md) | Qwen-Image 2.1 | Qwen-Image 2.1 in 4 steps with Viggle's turbo LoRA, up to 2 MP | 11s · 1920x1088 | 17.62 GB | Qwen Research (research only) |
 
 ### Video
 
@@ -48,11 +58,14 @@ _No tested workflows yet._
 | [H3 Long Video (LLM-split prompt)](workflows/24-h3-long-video/README.md) | MiniMax H3 | Long videos from chained segments, with the prompt split by an LLM | 11min 27s · 16 s | 44.43 GB | MiniMax H3 Community (⚠️ territory) |
 | [Herrgott's H3 Infinite Continuation (v1.4)](workflows/25-h3-infinite-continuation/README.md) | MiniMax H3 | Chains FL2VA clips with safe handover and joins them without visible seams | 23min 20s · 8.7 s (2 clips) | 42.47 GB | MiniMax H3 Community (⚠️ territory) |
 | [H3 Realism People](workflows/59-h3-realism-people/README.md) | MiniMax H3 | Realism LoRA for people (trigger r34l1sm) | 2min 14s · 5 s | 42.69 GB | MiniMax H3 Community (⚠️ territory) |
+| [H3 Director · TaoMate 3-step (timeline)](workflows/h3-director-3step/README.md) | MiniMax H3 | 15 s video with audio, built on a timeline of segments | 10min 10s · 15 s | 63.53 GB | MiniMax H3 Community (⚠️ territory) |
 | [H3 Ref2VA · TaoMate 3 steps](workflows/h3-ref2va-taomate-3step/README.md) | MiniMax H3 | Video+audio from a reference image in 3 steps | 8min 44s · 15 s | 42.55 GB | MiniMax H3 Community (⚠️ territory) |
 
 ### Audio
 
-_No tested workflows yet._
+| Workflow | Family | What it does | Test time | Download | License |
+|---|---|---|---|---|---|
+| [MiniMax Music 3 · songs with lyrics](workflows/minimax-music3/README.md) | MiniMax Music 3 | Generates a song of up to a few minutes from style + lyrics | 2min 26s · 60 s | 14.33 GB | MiniMax-Music3 Community |
 
 Times measured on the RTX 5060 Ti 16 GB with the parameters described in each folder's README
 (execution inside ComfyUI, without queue; peak VRAM is in each folder's README). "Download" is the workflow's total model size,

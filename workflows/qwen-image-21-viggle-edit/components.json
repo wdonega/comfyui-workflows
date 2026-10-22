@@ -1,0 +1,83 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "Qwen-Image 2.1 · Viggle 4 steps (edição)",
+  "en": "Qwen-Image 2.1 · Viggle 4-step (editing)"
+ },
+ "short": {
+  "pt": "Edição por instrução em 4 steps, até 3 referências, saída de até 4 MP",
+  "en": "Instruction editing in 4 steps, up to 3 references, up to 4 MP output"
+ },
+ "family": "Qwen-Image 2.1",
+ "summary": {
+  "pt": "Workflow de Tensor Alchemist: Qwen-Image 2.1 Edit com o LoRA turbo da Viggle (4 steps). Um **PrimitiveInt** escolhe quantas referências entram (1 a 3).",
+  "en": "Tensor Alchemist's workflow: Qwen-Image 2.1 Edit with Viggle's turbo LoRA (4 steps). A **PrimitiveInt** picks how many references are used (1 to 3)."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "retrato + camisa de referência (2 imagens): roupa trocada; o enquadramento 16:9 de 4 MP cortou parte do rosto",
+   "en": "portrait + reference shirt (2 images): outfit swapped; the 16:9 4 MP framing cropped part of the face"
+  },
+  "clip": "2752x1536",
+  "time_s": 83,
+  "vram_mib": 15751,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Qwen Research License",
+  "url": "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE",
+  "short": {
+   "pt": "Qwen Research (só pesquisa)",
+   "en": "Qwen Research (research only)"
+  },
+  "summary": {
+   "pt": "**Só pesquisa e avaliação.** Qualquer uso comercial (inclusive assets de produto grátis publicado) exige licença da Alibaba (model-business@notice.qwencloud.com). Ao redistribuir os pesos, manter o aviso de licença.",
+   "en": "**Research and evaluation only.** Any commercial use (including assets of a free published product) needs a license from Alibaba (model-business@notice.qwencloud.com). Keep the license notice when redistributing the weights."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Qwen-Image-2.1:diffusion_models/qwen_image_2.1_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "Qwen-Image 2.1 (INT8)",
+    "en": "Qwen-Image 2.1 (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Qwen-Image-2.1:text_encoders/qwen3vl_8b_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "text encoder Qwen3-VL 8B (INT8)",
+    "en": "Qwen3-VL 8B text encoder (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Qwen-Image-2.1:vae/qwen_image_2.1_vae_bf16.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "VAE do Qwen-Image 2.1",
+    "en": "Qwen-Image 2.1 VAE"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "Viggle/Qwen-Image-2.1-viggle-turbo:Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors@bafc91e4cc934f5fb1406b22496a0bed9b99c548",
+   "role": {
+    "pt": "LoRA Viggle turbo 4 steps",
+    "en": "Viggle turbo 4-step LoRA"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Imagem principal no primeiro **LoadImage**; referências nos outros dois; o **PrimitiveInt** diz quantas usar.\n2. As três entradas precisam ter um arquivo válido mesmo quando desligadas (use qualquer imagem).\n3. Ajuste a proporção no **ResolutionSelector** para não cortar o rosto (ex.: 3:4 para retratos).",
+  "en": "1. Main image in the first **LoadImage**; references in the other two; the **PrimitiveInt** says how many to use.\n2. All three inputs need a valid file even when switched off (any image will do).\n3. Set the aspect ratio in **ResolutionSelector** so the face is not cropped (e.g. 3:4 for portraits)."
+ },
+ "notes": {
+  "pt": "- Créditos: layout e testes do workflow por Tensor Alchemist; LoRA da Viggle.",
+  "en": "- Credits: workflow layout and tests by Tensor Alchemist; LoRA by Viggle."
+ }
+}

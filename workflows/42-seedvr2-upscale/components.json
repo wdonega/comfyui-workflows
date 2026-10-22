@@ -1,0 +1,68 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "SeedVR2 · upscale 4x",
+  "en": "SeedVR2 · 4x upscale"
+ },
+ "short": {
+  "pt": "Upscale de imagem 4x em 1 step (também há versão para vídeo)",
+  "en": "4x image upscale in 1 step (a video version exists too)"
+ },
+ "plan": "#42",
+ "family": "SeedVR2",
+ "summary": {
+  "pt": "O template oficial `utility_seedvr2_3b_int8_upscale_image`, com suporte nativo no ComfyUI (o custom node do plano não foi necessário). Restaura e amplia 4x em um único passo de difusão, com VAE em blocos.",
+  "en": "The official `utility_seedvr2_3b_int8_upscale_image` template, natively supported in ComfyUI (the planned custom node was not needed). Restores and upscales 4x in a single diffusion step, with a tiled VAE."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "imagem 1024x1024 do MOSS-Image → 4096x4096: pelos e bigodes nítidos, sem artefatos",
+   "en": "1024x1024 MOSS-Image image → 4096x4096: sharp fur and whiskers, no artifacts"
+  },
+  "clip": "1024² → 4096²",
+  "time_s": 23,
+  "vram_mib": 7831,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/SeedVR2:diffusion_models/seedvr2_3b_int8_convrot.safetensors",
+   "role": {
+    "pt": "SeedVR2 3B (INT8)",
+    "en": "SeedVR2 3B (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/SeedVR2:vae/seedvr2_ema_vae_fp16.safetensors",
+   "role": {
+    "pt": "VAE do SeedVR2",
+    "en": "SeedVR2 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Imagem no **LoadImage** (`input.png`).\n2. Fator no **ResizeImageMaskNode** (`multiplier` 4). Para vídeo, use o template `utility_seedvr2_3b_int8_upscale_video`.",
+  "en": "1. Image in **LoadImage** (`input.png`).\n2. Factor in **ResizeImageMaskNode** (`multiplier` 4). For video, use the `utility_seedvr2_3b_int8_upscale_video` template."
+ },
+ "notes": {
+  "pt": "- O nó `ImageCompare` do template (comparador visual da interface) foi removido da versão API.\n- Só 7,8 GB de pico de VRAM: cabe com folga em 16 GB.",
+  "en": "- The template's `ImageCompare` node (a UI-only visual comparer) was removed from the API version.\n- Only 7.8 GB peak VRAM: fits comfortably in 16 GB."
+ }
+}

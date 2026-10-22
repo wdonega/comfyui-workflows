@@ -349,5 +349,149 @@
   "page": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged",
   "sha256": "e40321bd36b9709991dae2530eb4ac303dd168276980d3e9bc4b6e2b75fed156",
   "size": 1409400960
+ },
+ {
+  "repo": "Comfy-Org/Qwen-Image-2.1",
+  "path": "diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors",
+  "revision": "0217efd1d9c9452e84f6448903d6e21bfa171ffd",
+  "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/0217efd1d9c9452e84f6448903d6e21bfa171ffd/diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1",
+  "sha256": "8144a0182964aa8403ad6dbc011db837304167d235161b9aabaa8532e967314c",
+  "size": 7256787829
+ },
+ {
+  "repo": "Comfy-Org/Krea-2",
+  "path": "diffusion_models/krea2_turbo_int8_convrot.safetensors",
+  "revision": "1171f4dc7e325bf3734586942e737872506c73e1",
+  "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/1171f4dc7e325bf3734586942e737872506c73e1/diffusion_models/krea2_turbo_int8_convrot.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/Krea-2",
+  "sha256": "8e4eeda70dd5037ab1ba2bef6b417f9f901e26093117cf397f741fc1fdaaf3f1",
+  "size": 13492686496
+ },
+ {
+  "repo": "Comfy-Org/Krea-2",
+  "path": "vae/qwen_image_vae.safetensors",
+  "revision": "1171f4dc7e325bf3734586942e737872506c73e1",
+  "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/1171f4dc7e325bf3734586942e737872506c73e1/vae/qwen_image_vae.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/Krea-2",
+  "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f",
+  "size": 253806246
+ },
+ {
+  "repo": "black-forest-labs/flux-3-image-klein-comfy",
+  "path": "diffusion_models/flux3-image-klein-int8-convrot.safetensors",
+  "revision": "feef60b0aaf63a4773ace96636ebbcf43b881312",
+  "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/feef60b0aaf63a4773ace96636ebbcf43b881312/diffusion_models/flux3-image-klein-int8-convrot.safetensors",
+  "page": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+  "sha256": "847d8933548afd93df4af2cac2498e70891bf28d9dae06d695f536992e168fe2",
+  "size": 5827874779
+ },
+ {
+  "repo": "black-forest-labs/flux-3-image-klein-comfy",
+  "path": "text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+  "revision": "feef60b0aaf63a4773ace96636ebbcf43b881312",
+  "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/feef60b0aaf63a4773ace96636ebbcf43b881312/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+  "page": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+  "sha256": "32de113cbf8282b02cbff0794b637b9d6676da09314a1db5a30bcea9bf4ee01c",
+  "size": 4858559240
+ },
+ {
+  "repo": "black-forest-labs/flux-3-image-klein-comfy",
+  "path": "text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+  "revision": "feef60b0aaf63a4773ace96636ebbcf43b881312",
+  "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/feef60b0aaf63a4773ace96636ebbcf43b881312/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+  "page": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+  "sha256": "e5d85a7421d197bf5a12474511936ecabce19a833252f16e9310a983194a4458",
+  "size": 6724090780
+ },
+ {
+  "repo": "black-forest-labs/flux-3-image-klein-comfy",
+  "path": "vae/flux2-vae.safetensors",
+  "revision": "feef60b0aaf63a4773ace96636ebbcf43b881312",
+  "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/feef60b0aaf63a4773ace96636ebbcf43b881312/vae/flux2-vae.safetensors",
+  "page": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+  "sha256": "868fe7b343cc8f3a19dbcfcafbc3d5f888802be3f89bd81b65b3621a066ce8f3",
+  "size": 336211292
+ },
+ {
+  "repo": "Comfy-Org/MOSS-Image",
+  "path": "diffusion_models/moss_image_sft_int8_convrot.safetensors",
+  "revision": "24147db865fcdc207270f844777587223fed8d6e",
+  "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/24147db865fcdc207270f844777587223fed8d6e/diffusion_models/moss_image_sft_int8_convrot.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/MOSS-Image",
+  "sha256": "b4d1475bc7eeffd7b809e82ea13a1fba1fb85c4e18365af3813722faa5c0fe4f",
+  "size": 5413698958
+ },
+ {
+  "repo": "Comfy-Org/MOSS-Image",
+  "path": "text_encoders/qwen3.5_9b_w4a8_gptq.safetensors",
+  "revision": "24147db865fcdc207270f844777587223fed8d6e",
+  "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/24147db865fcdc207270f844777587223fed8d6e/text_encoders/qwen3.5_9b_w4a8_gptq.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/MOSS-Image",
+  "sha256": "4cc6a1543ad2061806da46f35f90cadb4801dcba246c44782cf42ec0feb6407c",
+  "size": 7343591088
+ },
+ {
+  "repo": "Comfy-Org/MOSS-Image",
+  "path": "vae/flux2-vae_small.safetensors",
+  "revision": "24147db865fcdc207270f844777587223fed8d6e",
+  "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/24147db865fcdc207270f844777587223fed8d6e/vae/flux2-vae_small.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/MOSS-Image",
+  "sha256": "d8d52ba036475f5fb07c8b435e176d3d97ebfa82f0d1a1c317f9cc1e25bd013b",
+  "size": 249521340
+ },
+ {
+  "repo": "Comfy-Org/SeedVR2",
+  "path": "diffusion_models/seedvr2_3b_int8_convrot.safetensors",
+  "revision": "df48879708206a403d2a61acd55578c2e80fd233",
+  "url": "https://huggingface.co/Comfy-Org/SeedVR2/resolve/df48879708206a403d2a61acd55578c2e80fd233/diffusion_models/seedvr2_3b_int8_convrot.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/SeedVR2",
+  "sha256": "c3dec8bcc5916843a8a858572970597462e1f2dc598d6dfd818f6cd40f53a157",
+  "size": 3458259704
+ },
+ {
+  "repo": "Comfy-Org/SeedVR2",
+  "path": "vae/seedvr2_ema_vae_fp16.safetensors",
+  "revision": "df48879708206a403d2a61acd55578c2e80fd233",
+  "url": "https://huggingface.co/Comfy-Org/SeedVR2/resolve/df48879708206a403d2a61acd55578c2e80fd233/vae/seedvr2_ema_vae_fp16.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/SeedVR2",
+  "sha256": "20678548f420d98d26f11442d3528f8b8c94e57ee046ef93dbb7633da8612ca1",
+  "size": 501324814
+ },
+ {
+  "repo": "Comfy-Org/MiniMax-Music-3",
+  "path": "diffusion_models/minimax_music3_dit_fp16.safetensors",
+  "revision": "9e364ccd290a401561091fb441ed19cd7de92550",
+  "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/9e364ccd290a401561091fb441ed19cd7de92550/diffusion_models/minimax_music3_dit_fp16.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/MiniMax-Music-3",
+  "sha256": "45494a2b6b69af115902ff28eaf54118d19067aa54da01000f3e3efce7ba0e34",
+  "size": 4914197682
+ },
+ {
+  "repo": "Comfy-Org/MiniMax-Music-3",
+  "path": "text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+  "revision": "9e364ccd290a401561091fb441ed19cd7de92550",
+  "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/9e364ccd290a401561091fb441ed19cd7de92550/text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/MiniMax-Music-3",
+  "sha256": "010b7416d2336a08c711bc22ee65849c9623069ddb7d89bec011a75699e52014",
+  "size": 9196611886
+ },
+ {
+  "repo": "Comfy-Org/MiniMax-Music-3",
+  "path": "vae/minimax_music3_dav.safetensors",
+  "revision": "9e364ccd290a401561091fb441ed19cd7de92550",
+  "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/9e364ccd290a401561091fb441ed19cd7de92550/vae/minimax_music3_dav.safetensors",
+  "page": "https://huggingface.co/Comfy-Org/MiniMax-Music-3",
+  "sha256": "2a32155b769be01445fcc2a8663b910fc9e1751e18dc1c3ec528064512d9ef0c",
+  "size": 216696128
+ },
+ {
+  "repo": "Viggle/Qwen-Image-2.1-viggle-turbo",
+  "path": "Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors",
+  "revision": "bafc91e4cc934f5fb1406b22496a0bed9b99c548",
+  "url": "https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo/resolve/bafc91e4cc934f5fb1406b22496a0bed9b99c548/Qwen-Image-2.1-viggle-turbo-4step-lora-r64.safetensors",
+  "page": "https://huggingface.co/Viggle/Qwen-Image-2.1-viggle-turbo",
+  "sha256": "5c494dce662a95898d0988831af733b203ceced9116a82aa099c997f96ea1a3a",
+  "size": 339832808
  }
 ]

@@ -1,0 +1,75 @@
+{
+ "kind": "audio",
+ "title": {
+  "pt": "MiniMax Music 3 · música com letra",
+  "en": "MiniMax Music 3 · songs with lyrics"
+ },
+ "short": {
+  "pt": "Gera uma música de até alguns minutos a partir de estilo + letra",
+  "en": "Generates a song of up to a few minutes from style + lyrics"
+ },
+ "family": "MiniMax Music 3",
+ "summary": {
+  "pt": "O template oficial `audio_minimax_music_3` com o exemplo original (lo-fi hip-hop, 78 BPM, com letra). Gera a faixa inteira, com voz, a partir de uma descrição de estilo e da letra com marcações de seção.",
+  "en": "The official `audio_minimax_music_3` template with the original example (lo-fi hip-hop, 78 BPM, with lyrics). Generates the whole track, vocals included, from a style description and lyrics with section tags."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "exemplo do template: 60 s de MP3 estéreo 44,1 kHz, volume consistente (−16 a −20 dB)",
+   "en": "template example: 60 s stereo MP3 at 44.1 kHz, consistent loudness (−16 to −20 dB)"
+  },
+  "clip": "60 s",
+  "time_s": 146,
+  "vram_mib": 14859,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "MiniMax-Music3 Community License",
+  "url": "https://huggingface.co/MiniMaxAI/MiniMax-Music3/blob/main/LICENSE",
+  "short": {
+   "pt": "MiniMax-Music3 Community",
+   "en": "MiniMax-Music3 Community"
+  },
+  "summary": {
+   "pt": "Uso pessoal e comercial; **sem restrição de território**. Produto comercial deve exibir \"MiniMax-Music3\" e há teto de receita para uso sem autorização. A MiniMax não reivindica as músicas geradas (são suas). Serviço que gera músicas para terceiros precisa de salvaguardas contra mau uso.",
+   "en": "Personal and commercial use; **no territory restriction**. Commercial products must display \"MiniMax-Music3\" and there is a revenue cap for use without authorization. MiniMax claims no rights over the generated music (it is yours). A service generating music for others needs safeguards against misuse."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/MiniMax-Music-3:diffusion_models/minimax_music3_dit_fp16.safetensors",
+   "role": {
+    "pt": "Music 3 DiT (fp16)",
+    "en": "Music 3 DiT (fp16)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/MiniMax-Music-3:text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+   "role": {
+    "pt": "text encoder (INT8)",
+    "en": "text encoder (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/MiniMax-Music-3:vae/minimax_music3_dav.safetensors",
+   "role": {
+    "pt": "VAE de áudio (DAV)",
+    "en": "audio VAE (DAV)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "No **MiniMaxMusic3TextEncode**: a descrição de estilo (gênero, BPM, tom, clima) e a letra com seções (`[Intro]`, `[Verse]`, `[Chorus]`…). A duração sai do próprio texto; 30 steps, CFG 1,7.",
+  "en": "In **MiniMaxMusic3TextEncode**: the style description (genre, BPM, key, mood) and the lyrics with sections (`[Intro]`, `[Verse]`, `[Chorus]`…). Length comes from the text itself; 30 steps, CFG 1.7."
+ },
+ "notes": {
+  "pt": "- A licença original é a MiniMax-Music3 Community (o card da Comfy-Org diz Apache-2.0, mas vale o LICENSE do repositório da MiniMax).",
+  "en": "- The original license is the MiniMax-Music3 Community License (the Comfy-Org card says Apache-2.0, but the MiniMax repository's LICENSE applies)."
+ }
+}

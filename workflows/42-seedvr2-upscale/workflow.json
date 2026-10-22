@@ -1,0 +1,653 @@
+{
+ "last_node_id": 12,
+ "last_link_id": 17,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "LoadImage",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      4
+     ]
+    },
+    {
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 1,
+     "links": [
+      5
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "LoadImage"
+   },
+   "widgets_values": [
+    "input.png"
+   ]
+  },
+  {
+   "id": 2,
+   "type": "SaveImage",
+   "pos": [
+    3780,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 1
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SaveImage"
+   },
+   "widgets_values": [
+    "seedvr2/upscaled"
+   ]
+  },
+  {
+   "id": 3,
+   "type": "VAEEncodeTiled",
+   "pos": [
+    1680,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "pixels",
+     "type": "IMAGE",
+     "link": 2
+    },
+    {
+     "name": "vae",
+     "type": "VAE",
+     "link": 3
+    }
+   ],
+   "outputs": [
+    {
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      9,
+      17
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAEEncodeTiled"
+   },
+   "widgets_values": [
+    512,
+    128,
+    4096,
+    8
+   ]
+  },
+  {
+   "id": 4,
+   "type": "JoinImageWithAlpha",
+   "pos": [
+    420,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 4
+    },
+    {
+     "name": "alpha",
+     "type": "MASK",
+     "link": 5
+    }
+   ],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      12
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JoinImageWithAlpha"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 5,
+   "type": "VAELoader",
+   "pos": [
+    0,
+    260
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "VAE",
+     "type": "VAE",
+     "slot_index": 0,
+     "links": [
+      3,
+      11
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "seedvr2_ema_vae_fp16.safetensors"
+   ]
+  },
+  {
+   "id": 6,
+   "type": "UNETLoader",
+   "pos": [
+    0,
+    520
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      6,
+      16
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UNETLoader"
+   },
+   "widgets_values": [
+    "seedvr2_3b_int8_convrot.safetensors",
+    "default"
+   ]
+  },
+  {
+   "id": 7,
+   "type": "KSampler",
+   "pos": [
+    2520,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model",
+     "type": "MODEL",
+     "link": 6
+    },
+    {
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 7
+    },
+    {
+     "name": "negative",
+     "type": "CONDITIONING",
+     "link": 8
+    },
+    {
+     "name": "latent_image",
+     "type": "LATENT",
+     "link": 9
+    }
+   ],
+   "outputs": [
+    {
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      10
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "KSampler"
+   },
+   "widgets_values": [
+    959948902156062,
+    "fixed",
+    1,
+    1,
+    "euler",
+    "simple",
+    1
+   ]
+  },
+  {
+   "id": 8,
+   "type": "VAEDecodeTiled",
+   "pos": [
+    2940,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "samples",
+     "type": "LATENT",
+     "link": 10
+    },
+    {
+     "name": "vae",
+     "type": "VAE",
+     "link": 11
+    }
+   ],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      14
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAEDecodeTiled"
+   },
+   "widgets_values": [
+    512,
+    128,
+    4096,
+    8
+   ]
+  },
+  {
+   "id": 9,
+   "type": "ResizeImageMaskNode",
+   "pos": [
+    840,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "input",
+     "type": "IMAGE",
+     "link": 12
+    }
+   ],
+   "outputs": [
+    {
+     "name": "resized",
+     "type": "COMFY_MATCHTYPE_V3",
+     "slot_index": 0,
+     "links": [
+      13,
+      15
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "ResizeImageMaskNode"
+   },
+   "widgets_values": [
+    "scale by multiplier",
+    4,
+    "lanczos"
+   ]
+  },
+  {
+   "id": 10,
+   "type": "SeedVR2Preprocess",
+   "pos": [
+    1260,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "resized_images",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 13
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      2
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2Preprocess"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 11,
+   "type": "SeedVR2PostProcessing",
+   "pos": [
+    3360,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 14
+    },
+    {
+     "name": "original_resized_images",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 15
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      1
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2PostProcessing"
+   },
+   "widgets_values": [
+    "none"
+   ]
+  },
+  {
+   "id": 12,
+   "type": "SeedVR2Conditioning",
+   "pos": [
+    2100,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model",
+     "type": "MODEL",
+     "link": 16
+    },
+    {
+     "name": "vae_conditioning",
+     "type": "LATENT",
+     "link": 17
+    }
+   ],
+   "outputs": [
+    {
+     "name": "positive",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      7
+     ]
+    },
+    {
+     "name": "negative",
+     "type": "CONDITIONING",
+     "slot_index": 1,
+     "links": [
+      8
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2Conditioning"
+   },
+   "widgets_values": []
+  }
+ ],
+ "links": [
+  [
+   1,
+   11,
+   0,
+   2,
+   0,
+   "IMAGE"
+  ],
+  [
+   2,
+   10,
+   0,
+   3,
+   0,
+   "IMAGE"
+  ],
+  [
+   3,
+   5,
+   0,
+   3,
+   1,
+   "VAE"
+  ],
+  [
+   4,
+   1,
+   0,
+   4,
+   0,
+   "IMAGE"
+  ],
+  [
+   5,
+   1,
+   1,
+   4,
+   1,
+   "MASK"
+  ],
+  [
+   6,
+   6,
+   0,
+   7,
+   0,
+   "MODEL"
+  ],
+  [
+   7,
+   12,
+   0,
+   7,
+   1,
+   "CONDITIONING"
+  ],
+  [
+   8,
+   12,
+   1,
+   7,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   9,
+   3,
+   0,
+   7,
+   3,
+   "LATENT"
+  ],
+  [
+   10,
+   7,
+   0,
+   8,
+   0,
+   "LATENT"
+  ],
+  [
+   11,
+   5,
+   0,
+   8,
+   1,
+   "VAE"
+  ],
+  [
+   12,
+   4,
+   0,
+   9,
+   0,
+   "IMAGE"
+  ],
+  [
+   13,
+   9,
+   0,
+   10,
+   0,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   14,
+   8,
+   0,
+   11,
+   0,
+   "IMAGE"
+  ],
+  [
+   15,
+   9,
+   0,
+   11,
+   1,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   16,
+   6,
+   0,
+   12,
+   0,
+   "MODEL"
+  ],
+  [
+   17,
+   3,
+   0,
+   12,
+   1,
+   "LATENT"
+  ]
+ ],
+ "groups": [],
+ "config": {},
+ "extra": {},
+ "version": 0.4
+}

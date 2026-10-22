@@ -1,0 +1,76 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "MOSS-Image (SFT)",
+  "en": "MOSS-Image (SFT)"
+ },
+ "short": {
+  "pt": "Texto para imagem de licença livre (Apache-2.0)",
+  "en": "Text to image with a free license (Apache-2.0)"
+ },
+ "plan": "#40",
+ "family": "MOSS-Image",
+ "summary": {
+  "pt": "O template oficial `image_moss_image_t2i` com o MOSS-Image SFT em INT8 (25 steps, `er_sde`, CFG 2,5) e o Qwen3.5 9B W4A8 como text encoder e expansor de prompt. Precisa do ComfyUI ≥ 0.42. **Apache-2.0**: a melhor opção da lista para assets de projetos publicados.",
+  "en": "The official `image_moss_image_t2i` template with MOSS-Image SFT in INT8 (25 steps, `er_sde`, CFG 2.5) and Qwen3.5 9B W4A8 as text encoder and prompt expander. Needs ComfyUI ≥ 0.42. **Apache-2.0**: the best option on this list for assets of published projects."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "Prompt do teste (igual nos modelos de imagem da comparação): café-livraria com um gato tricolor e uma placa escrita \"OPEN DAILY 8-20\", seed 20261022, 1024x1024.",
+   "en": "Test prompt (same for every image model compared): bookstore café with a calico cat and a sign reading \"OPEN DAILY 8-20\", seed 20261022, 1024x1024."
+  },
+  "clip": "1024²",
+  "time_s": 35,
+  "vram_mib": 13045,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir os pesos. As saídas são suas.",
+   "en": "Apache-2.0: free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing the weights. The outputs are yours."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/MOSS-Image:diffusion_models/moss_image_sft_int8_convrot.safetensors",
+   "role": {
+    "pt": "MOSS-Image SFT (INT8)",
+    "en": "MOSS-Image SFT (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/MOSS-Image:text_encoders/qwen3.5_9b_w4a8_gptq.safetensors",
+   "role": {
+    "pt": "text encoder Qwen3.5 9B (W4A8)",
+    "en": "Qwen3.5 9B text encoder (W4A8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/MOSS-Image:vae/flux2-vae_small.safetensors",
+   "role": {
+    "pt": "VAE do Flux 2 (small)",
+    "en": "Flux 2 VAE (small)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "Prompt no **PrimitiveStringMultiline**; o template expande o prompt (pensado para pedidos curtos, inclusive em chinês). Existe uma versão rápida de 8 steps da comunidade (`lodestones/MOSS-Image-SFT-8-steps-dmd`), não testada aqui.",
+  "en": "Prompt in **PrimitiveStringMultiline**; the template expands the prompt (designed for short requests, including in Chinese). There is a community 8-step fast version (`lodestones/MOSS-Image-SFT-8-steps-dmd`), not tested here."
+ },
+ "notes": {
+  "pt": "Comparação na mesma seed/prompt (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. Todos acertaram o texto da placa.",
+  "en": "Same seed/prompt comparison (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. All rendered the sign text correctly."
+ }
+}

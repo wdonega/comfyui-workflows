@@ -1,0 +1,77 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "Krea 2 Turbo",
+  "en": "Krea 2 Turbo"
+ },
+ "short": {
+  "pt": "Texto para imagem com visual cinematográfico, 8 steps",
+  "en": "Text to image with a cinematic look, 8 steps"
+ },
+ "plan": "#38",
+ "family": "Krea 2",
+ "summary": {
+  "pt": "O template oficial `image_krea2_turbo_t2i_int8` (8 steps, CFG 1). O próprio text encoder (Qwen3-VL 4B) expande o prompt antes de gerar. Usa o Qwen3-VL 4B em INT8 (o mesmo arquivo do Flux 3 Klein) no lugar do FP8 do template.",
+  "en": "The official `image_krea2_turbo_t2i_int8` template (8 steps, CFG 1). The text encoder itself (Qwen3-VL 4B) expands the prompt before generating. Uses Qwen3-VL 4B in INT8 (the same file as Flux 3 Klein) instead of the template's FP8."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "Prompt do teste (igual nos modelos de imagem da comparação): café-livraria com um gato tricolor e uma placa escrita \"OPEN DAILY 8-20\", seed 20261022, 1024x1024.",
+   "en": "Test prompt (same for every image model compared): bookstore café with a calico cat and a sign reading \"OPEN DAILY 8-20\", seed 20261022, 1024x1024."
+  },
+  "clip": "1024²",
+  "time_s": 23,
+  "vram_mib": 15477,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Krea 2 Community License",
+  "url": "https://huggingface.co/krea/Krea-2-Turbo",
+  "short": {
+   "pt": "Krea 2 Community (grátis < US$ 1 mi)",
+   "en": "Krea 2 Community (free < US$ 1M)"
+  },
+  "summary": {
+   "pt": "Uso pessoal e comercial grátis para quem fatura menos de US$ 1 mi/ano (empresa e afiliadas); acima disso, Enterprise License. Deploy acessível a terceiros exige filtro de conteúdo e aviso de que a imagem é gerada por IA. As saídas são suas.",
+   "en": "Free personal and commercial use for those under US$ 1M/year in revenue (company and affiliates); above that, an Enterprise License. Deployments reachable by others need content filtering and an AI-generated disclosure. The outputs are yours."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Krea-2:diffusion_models/krea2_turbo_int8_convrot.safetensors",
+   "role": {
+    "pt": "Krea 2 Turbo (INT8)",
+    "en": "Krea 2 Turbo (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "black-forest-labs/flux-3-image-klein-comfy:text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+   "role": {
+    "pt": "text encoder Qwen3-VL 4B (INT8; repositório gated da BFL, mesmo arquivo do Krea-2)",
+    "en": "Qwen3-VL 4B text encoder (INT8; BFL gated repo, same file as in Krea-2)"
+   },
+   "page": "https://huggingface.co/Comfy-Org/Krea-2"
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Krea-2:vae/qwen_image_vae.safetensors",
+   "role": {
+    "pt": "VAE do Qwen-Image",
+    "en": "Qwen-Image VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Prompt no **PrimitiveStringMultiline** do usuário; a chave de expansão de prompt vem ligada.\n2. Os 9 LoRAs de estilo oficiais (`Comfy-Org/Krea-2/loras`: aquarela, anime retrô, desenho infantil, tarô…) entram num **LoraLoaderModelOnly** depois do modelo; o template tinha um, desligado, que foi removido.",
+  "en": "1. Prompt in the user **PrimitiveStringMultiline**; the prompt expansion switch is on.\n2. The 9 official style LoRAs (`Comfy-Org/Krea-2/loras`: watercolor, retro anime, kids' drawing, tarot…) go in a **LoraLoaderModelOnly** after the model; the template had one, switched off, which was removed."
+ },
+ "notes": {
+  "pt": "Comparação na mesma seed/prompt (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. Todos acertaram o texto da placa.",
+  "en": "Same seed/prompt comparison (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. All rendered the sign text correctly."
+ }
+}

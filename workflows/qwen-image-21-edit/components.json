@@ -1,0 +1,75 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "Qwen-Image 2.1 · edição por instrução",
+  "en": "Qwen-Image 2.1 · instruction editing"
+ },
+ "short": {
+  "pt": "Edita uma foto por texto, com até 10 imagens de referência",
+  "en": "Edits a photo from text, with up to 10 reference images"
+ },
+ "family": "Qwen-Image 2.1",
+ "summary": {
+  "pt": "O template oficial `image_qwen_image_2_1_image_edit` com o exemplo original: vestir a pessoa da imagem 1 com a camisa da imagem 2 (\"Replace costumes for the character\"). As imagens de exemplo vêm do repositório Comfy-Org/workflow_templates.",
+  "en": "The official `image_qwen_image_2_1_image_edit` template with the original example: dress the person in image 1 in the shirt from image 2 (\"Replace costumes for the character\"). Example images come from the Comfy-Org/workflow_templates repository."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "exemplo original: roupa trocada pela camisa jeans de referência, rosto e pose preservados",
+   "en": "original example: outfit replaced with the reference denim shirt, face and pose kept"
+  },
+  "clip": "896x1152",
+  "time_s": 77,
+  "vram_mib": 15583,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Qwen Research License",
+  "url": "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE",
+  "short": {
+   "pt": "Qwen Research (só pesquisa)",
+   "en": "Qwen Research (research only)"
+  },
+  "summary": {
+   "pt": "**Só pesquisa e avaliação.** Qualquer uso comercial (inclusive assets de produto grátis publicado) exige licença da Alibaba (model-business@notice.qwencloud.com). Ao redistribuir os pesos, manter o aviso de licença.",
+   "en": "**Research and evaluation only.** Any commercial use (including assets of a free published product) needs a license from Alibaba (model-business@notice.qwencloud.com). Keep the license notice when redistributing the weights."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Qwen-Image-2.1:diffusion_models/qwen_image_2.1_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "Qwen-Image 2.1 (INT8)",
+    "en": "Qwen-Image 2.1 (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Qwen-Image-2.1:text_encoders/qwen3vl_8b_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "text encoder Qwen3-VL 8B (INT8)",
+    "en": "Qwen3-VL 8B text encoder (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Qwen-Image-2.1:vae/qwen_image_2.1_vae_bf16.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "VAE do Qwen-Image 2.1",
+    "en": "Qwen-Image 2.1 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Imagem a editar no primeiro **LoadImage** (`image_1`); referências nos seguintes, citadas no prompt como `<image1>`, `<image2>`…\n2. Imagens de exemplo: [portrait_model_denim.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/portrait_model_denim.png) e [clothing_light_blue_denim_shirt.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/clothing_light_blue_denim_shirt.png) → coloque em `ComfyUI/input/`.",
+  "en": "1. Image to edit in the first **LoadImage** (`image_1`); references in the next ones, referred to in the prompt as `<image1>`, `<image2>`…\n2. Example images: [portrait_model_denim.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/portrait_model_denim.png) and [clothing_light_blue_denim_shirt.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/clothing_light_blue_denim_shirt.png) → put them in `ComfyUI/input/`."
+ },
+ "notes": {
+  "pt": "- O ramo opcional de reescrita de prompt (Qwen3.5 9B, desligado no template) foi removido.",
+  "en": "- The optional prompt-rewriting branch (Qwen3.5 9B, off in the template) was removed."
+ }
+}

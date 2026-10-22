@@ -1,0 +1,84 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "Flux 3 Klein (destilado)",
+  "en": "Flux 3 Klein (distilled)"
+ },
+ "short": {
+  "pt": "Texto para imagem rico em detalhes, com upsampler de prompt",
+  "en": "Detail-rich text to image, with a prompt upsampler"
+ },
+ "plan": "#39",
+ "family": "Flux 3",
+ "summary": {
+  "pt": "O template oficial `image_flux3_klein_distilled_t2i` em INT8, com o upsampler de prompt (Qwen3.5 9B W4A8) ligado como no original. Precisa do ComfyUI ≥ 0.42 (suporte ao Flux 3 Image). O editor de layout opcional do template foi removido da versão API.",
+  "en": "The official `image_flux3_klein_distilled_t2i` template in INT8, with the prompt upsampler (Qwen3.5 9B W4A8) on as in the original. Needs ComfyUI ≥ 0.42 (Flux 3 Image support). The template's optional layout editor was removed from the API version."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "Prompt do teste (igual nos modelos de imagem da comparação): café-livraria com um gato tricolor e uma placa escrita \"OPEN DAILY 8-20\", seed 20261022, 1024x1024.",
+   "en": "Test prompt (same for every image model compared): bookstore café with a calico cat and a sign reading \"OPEN DAILY 8-20\", seed 20261022, 1024x1024."
+  },
+  "clip": "1024²",
+  "time_s": 21,
+  "vram_mib": 15421,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "FLUX Kommunity License",
+  "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+  "short": {
+   "pt": "FLUX Kommunity (grátis < US$ 5 mi)",
+   "en": "FLUX Kommunity (free < US$ 5M)"
+  },
+  "summary": {
+   "pt": "Uso não comercial grátis; uso comercial grátis para \"Qualifying Users\" (receita anual < US$ 5 mi) que mantenham filtros de conteúdo. A BFL não reivindica as saídas. Proibido usar saídas para treinar modelo concorrente. Repositório gated: aceite os termos no Hugging Face e use HF_TOKEN.",
+   "en": "Free non-commercial use; free commercial use for \"Qualifying Users\" (annual revenue < US$ 5M) who keep content filters. BFL claims no rights over the outputs. Outputs may not be used to train competing models. Gated repository: accept the terms on Hugging Face and use HF_TOKEN."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "black-forest-labs/flux-3-image-klein-comfy:diffusion_models/flux3-image-klein-int8-convrot.safetensors",
+   "role": {
+    "pt": "Flux 3 Image Klein (INT8)",
+    "en": "Flux 3 Image Klein (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "black-forest-labs/flux-3-image-klein-comfy:text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+   "role": {
+    "pt": "text encoder Qwen3-VL 4B (INT8)",
+    "en": "Qwen3-VL 4B text encoder (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "black-forest-labs/flux-3-image-klein-comfy:text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+   "role": {
+    "pt": "upsampler de prompt Qwen3.5 9B (W4A8)",
+    "en": "Qwen3.5 9B prompt upsampler (W4A8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "black-forest-labs/flux-3-image-klein-comfy:vae/flux2-vae.safetensors",
+   "role": {
+    "pt": "VAE do Flux 2",
+    "en": "Flux 2 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Prompt curto no **PrimitiveStringMultiline**; o upsampler transforma em uma descrição detalhada.\n2. 16 steps, CFG 1, `euler`. Para desligar o upsampler, troque a chave do template (economiza tempo e VRAM).",
+  "en": "1. Short prompt in **PrimitiveStringMultiline**; the upsampler turns it into a detailed caption.\n2. 16 steps, CFG 1, `euler`. To turn the upsampler off, flip the template's switch (saves time and VRAM)."
+ },
+ "notes": {
+  "pt": "Comparação na mesma seed/prompt (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. Todos acertaram o texto da placa.",
+  "en": "Same seed/prompt comparison (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. All rendered the sign text correctly."
+ }
+}

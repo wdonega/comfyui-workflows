@@ -1,0 +1,75 @@
+{
+ "kind": "image",
+ "title": {
+  "pt": "Qwen-Image 2.1 · texto para imagem",
+  "en": "Qwen-Image 2.1 · text to image"
+ },
+ "short": {
+  "pt": "O template oficial do Qwen-Image 2.1 (25 steps)",
+  "en": "The official Qwen-Image 2.1 template (25 steps)"
+ },
+ "family": "Qwen-Image 2.1",
+ "summary": {
+  "pt": "O template oficial `image_qwen_image_2_1_t2i`, com o prompt de exemplo original (retrato editorial de moda). O ramo opcional de reescrita de prompt (desligado no template) foi removido.",
+  "en": "The official `image_qwen_image_2_1_t2i` template, with the original example prompt (fashion editorial portrait). The optional prompt-rewriting branch (off in the template) was removed."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "prompt original do template, 1024x1024, 25 steps `euler`",
+   "en": "original template prompt, 1024x1024, 25 `euler` steps"
+  },
+  "clip": "1024²",
+  "time_s": 26,
+  "vram_mib": null,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-22"
+ },
+ "license": {
+  "name": "Qwen Research License",
+  "url": "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE",
+  "short": {
+   "pt": "Qwen Research (só pesquisa)",
+   "en": "Qwen Research (research only)"
+  },
+  "summary": {
+   "pt": "**Só pesquisa e avaliação.** Qualquer uso comercial (inclusive assets de produto grátis publicado) exige licença da Alibaba (model-business@notice.qwencloud.com). Ao redistribuir os pesos, manter o aviso de licença.",
+   "en": "**Research and evaluation only.** Any commercial use (including assets of a free published product) needs a license from Alibaba (model-business@notice.qwencloud.com). Keep the license notice when redistributing the weights."
+  }
+ },
+ "nodes": [],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Comfy-Org/Qwen-Image-2.1:diffusion_models/qwen_image_2.1_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "Qwen-Image 2.1 (INT8)",
+    "en": "Qwen-Image 2.1 (INT8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/Qwen-Image-2.1:text_encoders/qwen3vl_8b_int8_convrot.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "text encoder Qwen3-VL 8B (INT8)",
+    "en": "Qwen3-VL 8B text encoder (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Comfy-Org/Qwen-Image-2.1:vae/qwen_image_2.1_vae_bf16.safetensors@5dc5850eb514a3685f6a03a2641728a8f7549c69",
+   "role": {
+    "pt": "VAE do Qwen-Image 2.1",
+    "en": "Qwen-Image 2.1 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "Prompt no nó de texto; tamanho no **ResolutionSelector** (o modelo suporta até 2048x2048 nativo).",
+  "en": "Prompt in the text node; size in **ResolutionSelector** (the model natively supports up to 2048x2048)."
+ },
+ "notes": {
+  "pt": "Comparação na mesma seed/prompt (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. Todos acertaram o texto da placa.",
+  "en": "Same seed/prompt comparison (RTX 5060 Ti): Qwen 2.1 24 s · Qwen 2.1 Turbo 10 s · Krea 2 Turbo 23 s · Flux 3 Klein 21 s · MOSS-Image 35 s. All rendered the sign text correctly."
+ }
+}
