@@ -25,31 +25,35 @@ U = 7            # px por unidade da grade
 GAP = 1.5        # espaço entre letras (unidades)
 SPACE = 4        # espaço entre palavras (unidades)
 SKEW = -14       # graus
-PAD_X, PAD_Y = 40, 34
-YELLOW, WHITE, BG = "#F2FF59", "#F5F5F0", "#141414"
+PAD_X, PAD_Y = 24, 18
+MAGENTA, WHITE, SHADOW = "#FF2ECF", "#FFFFFF", "#000000"
+SHADOW_OFFSET = 0.55  # sombra: cópia em preto deslocada para a direita e para baixo (unidades)
 
 
-def word(text, x0, color):
+def word(text, x0, color, dx=0.0, dy=0.0):
     rects, x = [], x0
     for ch in text:
         w, parts = GLYPHS[ch]
         for (rx, ry, rw, rh) in parts:
-            rects.append(f'<rect x="{(x + rx) * U:.1f}" y="{ry * U:.1f}" width="{rw * U:.1f}" height="{rh * U:.1f}" rx="{0.35 * U:.1f}" fill="{color}"/>')
+            rects.append(f'<rect x="{(x + rx + dx) * U:.1f}" y="{(ry + dy) * U:.1f}" width="{rw * U:.1f}" height="{rh * U:.1f}" rx="{0.35 * U:.1f}" fill="{color}"/>')
         x += w + GAP
     return rects, x - GAP
 
 
 def main():
-    a, end_a = word("COMFYUI", 0, YELLOW)
+    a, end_a = word("COMFYUI", 0, MAGENTA)
     b, end_b = word("WORKFLOWS", end_a + SPACE, WHITE)
-    text_w, text_h = end_b * U, 8 * U
+    o = SHADOW_OFFSET
+    sa, _ = word("COMFYUI", 0, SHADOW, o, o)
+    sb, _ = word("WORKFLOWS", end_a + SPACE, SHADOW, o, o)
+    text_w, text_h = (end_b + o) * U, (8 + o) * U
     slant = text_h * 0.25  # deslocamento horizontal do skew de -14° (tan 14° ≈ 0.25)
     width, height = int(text_w + slant + 2 * PAD_X), int(text_h + 2 * PAD_Y)
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="ComfyUI Workflows">',
         "<title>ComfyUI Workflows</title>",
-        f'<rect width="{width}" height="{height}" rx="18" fill="{BG}"/>',
         f'<g transform="translate({PAD_X + slant:.1f} {PAD_Y}) skewX({SKEW})">',
+        *sa, *sb,  # sombra primeiro, por trás
         *a, *b,
         "</g>",
         "</svg>",
