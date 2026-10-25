@@ -44,9 +44,12 @@ O mesmo quadro de um vídeo caseiro dos anos 1990, gerado pelo script com os pad
 - Para o upscale: ComfyUI com os modelos do SeedVR2. Instale com o
   [`install.sh` do workflow do SeedVR2](../../workflows/42-seedvr2-upscale/README_ptBR.md#instalação)
   (3B, 3,5 GB). Os modelos 7B são opcionais e estão documentados no final desse README.
-- O script copia os arquivos para o ComfyUI com `docker cp`/`docker exec`. Os padrões são para um container chamado
-  `comfyui`; mude com `COMFY_URL` (padrão `http://localhost:8188`), `COMFY_CONTAINER` (padrão `comfyui`) e
-  `COMFY_OUTPUT` (pasta de saída do ComfyUI no host, padrão `/opt/appdata/comfyui/output`).
+- O script fala com o ComfyUI só pela API HTTP (envia cada bloco e baixa o resultado), então roda em qualquer
+  máquina que alcance o ComfyUI. Aponte com `COMFY_URL` (padrão `http://localhost:8188`), por exemplo
+  `COMFY_URL=http://llm2.lab:8188`.
+- A API não apaga arquivos, então os blocos usados ficam em `input/vhs_restore` e `output/vhs_restore` do ComfyUI.
+  Na máquina do ComfyUI, defina `COMFY_CONTAINER=comfyui` (nome do container Docker) e o script os remove com
+  `docker exec` depois de cada bloco; senão, limpe essas pastas de vez em quando.
 - Sem ComfyUI, `--upscale none` ainda faz toda a limpeza com ffmpeg.
 
 ## Como usar
@@ -142,4 +145,3 @@ não era 4n+1, e o `-shortest` na junção final); o script agora confere a cont
 - Rostos com borrado de movimento podem ganhar textura inventada (olhos estranhos, pele envelhecida) em alguns quadros.
 - Cada bloco passa pelo upscale separado; um pequeno salto entre blocos (a cada ~20 s) é possível.
 - O que a captura já perdeu (movimento dos campos, erros de tracking, vazamento de cor gravado) não volta.
-- O script precisa rodar na máquina do ComfyUI (usa `docker cp` e lê a pasta de saída do ComfyUI).

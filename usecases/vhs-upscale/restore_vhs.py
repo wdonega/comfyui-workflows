@@ -27,14 +27,14 @@ import subprocess
 import sys
 import tempfile
 import time
+import urllib.parse
 import urllib.request
+import uuid
 from collections import Counter
 from pathlib import Path
 
-COMFY_URL = os.environ.get('COMFY_URL', 'http://localhost:8188')
-COMFY_CONTAINER = os.environ.get('COMFY_CONTAINER', 'comfyui')
-COMFY_INPUT = '/root/ComfyUI/input'                                          # inside the container
-COMFY_OUTPUT = os.environ.get('COMFY_OUTPUT', '/opt/appdata/comfyui/output')  # on the host
+COMFY_URL = os.environ.get('COMFY_URL', 'http://localhost:8188').rstrip('/')
+COMFY_CONTAINER = os.environ.get('COMFY_CONTAINER')   # optional: local Docker container, used only to delete used chunks
 TEMPLATE = Path(__file__).with_name('seedvr2_video.api.json')
 EXTS = {'.mpg', '.mpeg', '.vob', '.avi', '.dv', '.mov', '.mp4', '.m4v', '.mkv', '.wmv', '.3gp', '.ts', '.m2ts', '.flv'}
 
@@ -149,15 +149,39 @@ def comfy(path, data=None):
     return json.loads(urllib.request.urlopen(req, timeout=30).read())
 
 
-def docker(*args):
-    run(['docker', *args])
+def upload(path, name):
+    """Sends a file to ComfyUI's input/vhs_restore folder (the /upload/image endpoint accepts any file)."""
+    b = uuid.uuid4().hex
+    body = b''.join([
+        f'--{b}\r\nContent-Disposition: form-data; name="subfolder"\r\n\r\nvhs_restore\r\n'.encode(),
+        f'--{b}\r\nContent-Disposition: form-data; name="overwrite"\r\n\r\ntrue\r\n'.encode(),
+        f'--{b}\r\nContent-Disposition: form-data; name="image"; filename="{name}"\r\n'
+        f'Content-Type: video/mp4\r\n\r\n'.encode(), Path(path).read_bytes(), f'\r\n--{b}--\r\n'.encode()])
+    req = urllib.request.Request(COMFY_URL + '/upload/image', data=body,
+                                 headers={'Content-Type': f'multipart/form-data; boundary={b}'})
+    d = json.loads(urllib.request.urlopen(req, timeout=300).read())
+    return f"{d['subfolder']}/{d['name']}" if d.get('subfolder') else d['name']
 
 
-def upscale_chunk(seg, name, W, H, model):
-    docker('exec', COMFY_CONTAINER, 'mkdir', '-p', f'{COMFY_INPUT}/vhs_restore')
-    docker('cp', str(seg), f'{COMFY_CONTAINER}:{COMFY_INPUT}/vhs_restore/{name}.mp4')
+def download(out, dest):
+    q = urllib.parse.urlencode({'filename': out['filename'], 'subfolder': out['subfolder'], 'type': out.get('type', 'output')})
+    with urllib.request.urlopen(f'{COMFY_URL}/view?{q}', timeout=300) as r, open(dest, 'wb') as f:
+        shutil.copyfileobj(r, f)
+
+
+def cleanup(*paths):
+    """The ComfyUI API cannot delete files; with COMFY_CONTAINER set, removes the used chunks through docker exec."""
+    if COMFY_CONTAINER:
+        try:
+            run(['docker', 'exec', COMFY_CONTAINER, 'rm', '-f', *paths])
+        except (OSError, subprocess.CalledProcessError):
+            pass
+
+
+def upscale_chunk(seg, name, W, H, model, dest):
+    remote = upload(seg, f'{name}.mp4')
     p = json.loads(TEMPLATE.read_text())
-    p['73']['inputs']['file'] = f'vhs_restore/{name}.mp4'
+    p['73']['inputs']['file'] = remote
     p['76']['inputs']['filename_prefix'] = f'vhs_restore/{name}'
     r = p['66:57']['inputs']
     for k in [k for k in r if k.startswith('resize_type.')]:
@@ -176,15 +200,14 @@ def upscale_chunk(seg, name, W, H, model):
         if h and h['status'].get('status_str') in ('success', 'error'):
             break
         time.sleep(5)
-    try:
-        docker('exec', COMFY_CONTAINER, 'rm', '-f', f'{COMFY_INPUT}/vhs_restore/{name}.mp4')
-    except subprocess.CalledProcessError:
-        pass
     if h['status']['status_str'] != 'success':
+        cleanup(f'/root/ComfyUI/input/{remote}')
         msg = [m[1].get('exception_message', '') for m in h['status']['messages'] if m[0] == 'execution_error']
         raise RuntimeError(f'ComfyUI error: {msg}')
     out = h['outputs']['76']['images'][0]
-    return Path(COMFY_OUTPUT, out['subfolder'], out['filename']), time.time() - t0
+    download(out, dest)
+    cleanup(f'/root/ComfyUI/input/{remote}', f"/root/ComfyUI/output/{out['subfolder']}/{out['filename']}")
+    return time.time() - t0
 
 
 def frame_count(f):
@@ -210,17 +233,16 @@ def upscale(cleaned, tmp, name, aspect, height, model, dur, crf, target):
                '-vf', f'trim=start_frame={s}:end_frame={e},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop={pad}',
                '-map', '0:v', '-map', '1:a', '-shortest', '-c:v', 'libx264', '-crf', '12', '-preset', 'fast',
                '-pix_fmt', 'yuv420p', '-c:a', 'aac', str(seg))
-        res, spent = upscale_chunk(seg, f'{name}_{os.getpid()}_{i:04d}', W, height, model)
+        res = tmp / f'res_{i:04d}.mp4'
+        spent = upscale_chunk(seg, f'{name}_{os.getpid()}_{i:04d}', W, height, model, res)
         local = tmp / f'up_{i:04d}.mp4'
         ffmpeg('-i', str(res), '-frames:v', str(real), '-an', '-c:v', 'libx264', '-crf', '12', '-preset', 'fast',
                '-pix_fmt', 'yuv420p', str(local))
         got = frame_count(local)
         if got != real:
             raise RuntimeError(f'chunk {i + 1}: expected {real} frames, SeedVR2 returned {got}')
-        try:
-            docker('exec', COMFY_CONTAINER, 'rm', '-f', f'/root/ComfyUI/output/{res.relative_to(COMFY_OUTPUT)}')
-        except subprocess.CalledProcessError:
-            pass
+        seg.unlink()
+        res.unlink()
         parts.append(local)
         log(f'  chunk {i + 1}/{n} done in {spent:.0f} s')
     lst = tmp / 'list.txt'
