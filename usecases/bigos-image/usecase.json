@@ -1,0 +1,7 @@
+{
+ "title": {"pt": "Bigos Image", "en": "Bigos Image"},
+ "short": {"pt": "App simples (PWA, feito para celular) que gera imagem, vídeo com som e música para quem não entende de IA: escreve o pedido, escolhe opções amigáveis e recebe PNG, MP4 ou MP3. Docker para x86 e ARM, licença AGPL-3.0",
+           "en": "Simple app (mobile-first PWA) that makes images, videos with sound and songs for people who know nothing about AI: type the request, pick friendly options and get a PNG, MP4 or MP3. Docker for x86 and ARM, AGPL-3.0 license"},
+ "workflows": ["qwen-image-21-t2i", "qwen-image-21-edit", "h3-director-3step", "minimax-music3"],
+ "url": "https://github.com/wdonega/bigos-image"
+}

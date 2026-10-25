@@ -81,10 +81,11 @@ counting files shared with other workflows.
 
 ## Use cases and scripts
 
-Complete jobs that combine workflows from this repo with ffmpeg and a script. Each folder has the script, the workflow it sends to ComfyUI and a README with the decisions and tests behind it.
+Complete jobs built on the models and workflows of this repo: scripts kept here (with the workflow they send to ComfyUI and a README with the decisions and tests behind them) and external projects.
 
-| Use case | What it does | Workflows used | Script |
+| Use case | What it does | Related workflows | Script / repository |
 |---|---|---|---|
+| [Bigos Image](https://github.com/wdonega/bigos-image) | Simple app (mobile-first PWA) that makes images, videos with sound and songs for people who know nothing about AI: type the request, pick friendly options and get a PNG, MP4 or MP3. Docker for x86 and ARM, AGPL-3.0 license | [Qwen-Image 2.1 · text to image](workflows/qwen-image-21-t2i/README.md), [Qwen-Image 2.1 · instruction editing](workflows/qwen-image-21-edit/README.md), [H3 Director · TaoMate 3-step (timeline)](workflows/h3-director-3step/README.md), [MiniMax Music 3 · songs with lyrics](workflows/minimax-music3/README.md) | [wdonega/bigos-image](https://github.com/wdonega/bigos-image) |
 | [VHS tape restoration](usecases/vhs-upscale/README.md) | Cleans old captures (borders, noise, color, audio) with ffmpeg and upscales them with SeedVR2, in batch | [SeedVR2 · 4x upscale](workflows/42-seedvr2-upscale/README.md) | [`restore_vhs.py`](usecases/vhs-upscale/restore_vhs.py) |
 
 ## Installing a workflow
@@ -129,4 +130,4 @@ and run the generator.
 Independent project, not affiliated with or endorsed by Comfy Org. The logo uses original lettering; "ComfyUI" is used only to say what these workflows are for.
 
 To add a use case: create `usecases/<folder>/` with the script, its README.md/README_ptBR.md (written by hand) and a
-`usecase.json` (`title`, `short`, `workflows` with the folder names used, `script`); the generator adds it to the table above.
+`usecase.json` (`title`, `short`, `workflows` with the folder names used, `script`, or `url` for an external project, which needs no README here); the generator adds it to the table above.

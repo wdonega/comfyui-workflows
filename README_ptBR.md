@@ -81,10 +81,11 @@ arquivos compartilhados com outros.
 
 ## Casos de uso e scripts
 
-Trabalhos completos que combinam workflows deste repositório com ffmpeg e um script. Cada pasta tem o script, o workflow que ele manda para o ComfyUI e um README com as decisões e os testes por trás.
+Trabalhos completos feitos com os modelos e workflows deste repositório: scripts mantidos aqui (com o workflow que mandam para o ComfyUI e um README com as decisões e os testes por trás) e projetos externos.
 
-| Caso de uso | O que faz | Workflows usados | Script |
+| Caso de uso | O que faz | Workflows relacionados | Script / repositório |
 |---|---|---|---|
+| [Bigos Image](https://github.com/wdonega/bigos-image) | App simples (PWA, feito para celular) que gera imagem, vídeo com som e música para quem não entende de IA: escreve o pedido, escolhe opções amigáveis e recebe PNG, MP4 ou MP3. Docker para x86 e ARM, licença AGPL-3.0 | [Qwen-Image 2.1 · texto para imagem](workflows/qwen-image-21-t2i/README_ptBR.md), [Qwen-Image 2.1 · edição por instrução](workflows/qwen-image-21-edit/README_ptBR.md), [H3 Director · TaoMate 3 steps (timeline)](workflows/h3-director-3step/README_ptBR.md), [MiniMax Music 3 · música com letra](workflows/minimax-music3/README_ptBR.md) | [wdonega/bigos-image](https://github.com/wdonega/bigos-image) |
 | [Restauração de fitas VHS](usecases/vhs-upscale/README_ptBR.md) | Limpa capturas antigas (bordas, ruído, cor, áudio) com ffmpeg e faz upscale com SeedVR2, em lote | [SeedVR2 · upscale 4x](workflows/42-seedvr2-upscale/README_ptBR.md) | [`restore_vhs.py`](usecases/vhs-upscale/restore_vhs.py) |
 
 ## Instalar um workflow
@@ -128,4 +129,4 @@ Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `work
 Projeto independente, sem afiliação nem endosso da Comfy Org. O logo usa letras próprias; "ComfyUI" aparece só para dizer para que servem estes workflows.
 
 Para adicionar um caso de uso: crie `usecases/<pasta>/` com o script, o README.md/README_ptBR.md (escritos à mão) e um
-`usecase.json` (`title`, `short`, `workflows` com os nomes das pastas usadas, `script`); o gerador inclui na tabela acima.
+`usecase.json` (`title`, `short`, `workflows` com os nomes das pastas usadas, `script`, ou `url` para um projeto externo, que dispensa README aqui); o gerador inclui na tabela acima.

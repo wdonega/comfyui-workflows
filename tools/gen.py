@@ -43,8 +43,8 @@ L = {
         "kinds": {"image": "Image", "video": "Video", "audio": "Audio"},
         "none": "_No tested workflows yet._",
         "uc_title": "Use cases and scripts",
-        "uc_intro": "Complete jobs that combine workflows from this repo with ffmpeg and a script. Each folder has the script, the workflow it sends to ComfyUI and a README with the decisions and tests behind it.",
-        "uc_tbl": ["Use case", "What it does", "Workflows used", "Script"],
+        "uc_intro": "Complete jobs built on the models and workflows of this repo: scripts kept here (with the workflow they send to ComfyUI and a README with the decisions and tests behind them) and external projects.",
+        "uc_tbl": ["Use case", "What it does", "Related workflows", "Script / repository"],
     },
     "pt": {
         "switch": "Idioma: [English](README.md) · **Português**",
@@ -71,8 +71,8 @@ L = {
         "kinds": {"image": "Imagem", "video": "Vídeo", "audio": "Áudio"},
         "none": "_Nenhum workflow testado ainda._",
         "uc_title": "Casos de uso e scripts",
-        "uc_intro": "Trabalhos completos que combinam workflows deste repositório com ffmpeg e um script. Cada pasta tem o script, o workflow que ele manda para o ComfyUI e um README com as decisões e os testes por trás.",
-        "uc_tbl": ["Caso de uso", "O que faz", "Workflows usados", "Script"],
+        "uc_intro": "Trabalhos completos feitos com os modelos e workflows deste repositório: scripts mantidos aqui (com o workflow que mandam para o ComfyUI e um README com as decisões e os testes por trás) e projetos externos.",
+        "uc_tbl": ["Caso de uso", "O que faz", "Workflows relacionados", "Script / repositório"],
     },
 }
 
@@ -193,15 +193,19 @@ def readme(c, models, total, lang):
 
 
 def usecases_table(s, lang, fname, workflows):
-    """Seção de casos de uso do README principal, a partir de usecases/<pasta>/usecase.json (os READMEs deles são escritos à mão)."""
+    """Seção de casos de uso do README principal, a partir de usecases/<pasta>/usecase.json (os READMEs deles são escritos à mão;
+    com "url", é um projeto externo e a linha aponta para ele)."""
     items = [(d.name, json.loads((d / "usecase.json").read_text())) for d in sorted((ROOT / "usecases").glob("*")) if (d / "usecase.json").exists()]
     if not items:
         return []
     r = [f"## {s['uc_title']}", "", s["uc_intro"], "", "| " + " | ".join(s["uc_tbl"]) + " |", "|" + "---|" * len(s["uc_tbl"])]
     for name, u in items:
         wfs = ", ".join(f"[{tr(workflows[w]['title'], lang)}](workflows/{w}/{fname})" for w in u["workflows"])
-        r.append(f"| [{tr(u['title'], lang)}](usecases/{name}/{fname}) | {tr(u['short'], lang)} | {wfs} "
-                 f"| [`{u['script']}`](usecases/{name}/{u['script']}) |")
+        if u.get("url"):                                   # projeto externo: o link vai direto para o repositório
+            link, script = u["url"], f"[{u['url'].split('github.com/')[-1]}]({u['url']})"
+        else:
+            link, script = f"usecases/{name}/{fname}", f"[`{u['script']}`](usecases/{name}/{u['script']})"
+        r.append(f"| [{tr(u['title'], lang)}]({link}) | {tr(u['short'], lang)} | {wfs} | {script} |")
     return r + [""]
 
 
