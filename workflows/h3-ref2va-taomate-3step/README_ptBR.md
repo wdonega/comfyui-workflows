@@ -11,7 +11,7 @@ Workflow base de referência-para-vídeo (Ref2VA) do MiniMax H3 com o LoRA TaoMa
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Download total | 42.55 GB |
 | Teste | 736x1280, 362 frames (15 s), 3 steps, mesma seed de uma geração anterior: mesma cena e qualidade |
-| Tempo | **8min 44s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Tempo | **8min 39s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Pico de VRAM | 15559 MiB |
 
 ## Arquivos desta pasta

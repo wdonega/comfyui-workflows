@@ -11,7 +11,7 @@ O template oficial `video_wan_animate2_distilled` (versão destilada, 10 steps `
 | Licença | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |
 | Download total | 24.91 GB |
 | Teste | personagem de corpo inteiro + vídeo-guia de uma criança correndo, 480x848, 81 frames, 10 steps: o personagem corre com as mesmas pernas, braços e aproximação da câmera do guia; o fundo é o da imagem do personagem. Com uma referência só de busto, só as expressões e a cabeça foram transferidas |
-| Tempo | **7min 42s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Tempo | **7min 02s** (RTX 5060 Ti 16 GB, 2026-10-23) |
 | Pico de VRAM | 15345 MiB |
 
 ## Arquivos desta pasta

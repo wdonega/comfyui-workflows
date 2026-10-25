@@ -11,7 +11,7 @@ The official `video_wan_animate2_distilled` template (distilled, 10 `lcm` steps,
 | License | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |
 | Total download | 24.91 GB |
 | Test | full-body character + driving video of a child running, 480x848, 81 frames, 10 steps: the character runs with the same legs, arms and approach to the camera as the guide; the background is the character image's. With a bust-only reference, only the expressions and head motion were transferred |
-| Time | **7min 42s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **7min 02s** (RTX 5060 Ti 16 GB, 2026-10-23) |
 | Peak VRAM | 15345 MiB |
 
 ## Files in this folder

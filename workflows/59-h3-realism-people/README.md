@@ -11,7 +11,7 @@ The base Ref2VA + TaoMate with fal's **Realism People** LoRA chained after TaoMa
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Total download | 42.69 GB |
 | Test | 736x1280, 122 frames (5 s), 3 steps; LoRA applied with no skipped keys (208/208) |
-| Time | **2min 14s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **1min 55s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15577 MiB |
 
 ## Files in this folder

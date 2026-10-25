@@ -11,7 +11,7 @@ The official `video_wan2_2_5B_ti2v` template unchanged: the 5B TI2V model in fp1
 | License | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |
 | Total download | 18.14 GB |
 | Test | template prompt (subway musician), 1280x704, 121 frames, 20 steps uni_pc, CFG 5: coherent scene, faithful to the prompt |
-| Time | **9min 12s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **9min 10s** (RTX 5060 Ti 16 GB, 2026-10-23) |
 | Peak VRAM | 15465 MiB |
 
 ## Files in this folder

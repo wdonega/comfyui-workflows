@@ -11,7 +11,7 @@ Workflow de head swap com o LTX 2.3 destilado e o LoRA **BFS head swap v3** do @
 | Licença | [LTX-2 Community License](https://github.com/Lightricks/LTX-2/blob/main/LICENSE) |
 | Download total | 44.71 GB |
 | Teste | fonte 4 s (97 frames, 736x1280, 24 fps) + 1 imagem de rosto, 8 steps (euler_ancestral_cfg_pp + bong_tangent): cabeça trocada, pose/câmera/cenário/roupa preservados; elementos do fundo que não estavam no prompt (monstro, fumaça) sumiram |
-| Tempo | **8min 42s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Tempo | **6min 45s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Pico de VRAM | 15821 MiB |
 
 ## Arquivos desta pasta

@@ -11,7 +11,7 @@ The base Ref2VA with the **MiniMax-H3 Turbo LoRA** (checkpoint `v4_step600_ema`,
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Total download | 40.85 GB |
 | Test | 736x1280, 362 frames (15 s), 6 steps, same scene/seed as the base workflow: coherent video, no artifacts, darker cinematography and more dramatic expressions; ~2x slower than TaoMate 3 steps |
-| Time | **16min 48s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **16min 34s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15603 MiB |
 
 ## Files in this folder

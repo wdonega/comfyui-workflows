@@ -20,10 +20,10 @@
    "en": "template prompt (subway musician), 1280x704, 121 frames, 20 steps uni_pc, CFG 5: coherent scene, faithful to the prompt"
   },
   "clip": "5 s",
-  "time_s": 552,
+  "time_s": 550,
   "vram_mib": 15465,
   "gpu": "RTX 5060 Ti 16 GB",
-  "date": "2026-10-22"
+  "date": "2026-10-23"
  },
  "license": {
   "name": "Apache-2.0",

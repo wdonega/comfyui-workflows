@@ -4,9 +4,10 @@
 install: the workflow (UI and API), the list of components with destination folder, commit-pinned
 download link and page, and an `install.sh` that installs everything on its own.
 
-Test environment: ComfyUI v0.37.0 (`1568e6c`) in Docker (`yanwk/comfyui-boot` cu130), Python 3.13,
+Test environment: ComfyUI v0.42.4 (`3f438ca6`) in Docker (`yanwk/comfyui-boot` cu130), Python 3.13,
 torch 2.13 + CUDA 13.0, **RTX 5060 Ti 16 GB**, 61 GB of RAM. The GPU was dedicated to ComfyUI during the tests:
-nothing else was running on it.
+nothing else was running on it. The first workflows were built on v0.37.0 and all of them were run again on v0.42.4
+(regression test); the times shown are from the latest run.
 
 ## What's here
 

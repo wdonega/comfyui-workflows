@@ -11,7 +11,7 @@ The official ComfyUI template `video_ltx2_3_i2v` (native nodes, no required cust
 | License | [LTX-2 Community License](https://github.com/Lightricks/LTX-2/blob/main/LICENSE) |
 | Total download | 43.35 GB |
 | Test | 704x1280, 25 fps, 121 frames (4.8 s), reference image + prompt with speech: identity kept, speech audible; cut from the studio portrait to the beach because image and prompt show different settings |
-| Time | **1min 51s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **1min 35s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15845 MiB |
 
 ## Files in this folder

@@ -11,7 +11,7 @@ Replaces `SamplerCustomAdvanced` with a chunked sampler with latent continuation
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Total download | 50.11 GB |
 | Test | 6 s, 0.5 MP (960x544), 39-frame chunks (5 chunks), 20 steps, 1 reference, 2 shots with a cut at 00:03.000 (landed on frame 72); identity kept. Of the total: H3 508 s, Gemma 377 s |
-| Time | **18min 38s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **16min 36s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15583 MiB |
 
 ## Files in this folder

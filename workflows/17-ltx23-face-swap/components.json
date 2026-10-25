@@ -20,7 +20,7 @@
    "en": "4 s source (97 frames, 736x1280, 24 fps) + 1 face image, 8 steps (euler_ancestral_cfg_pp + bong_tangent): head swapped, pose/camera/set/clothing kept; background elements missing from the prompt (monster, smoke) disappeared"
   },
   "clip": "4 s",
-  "time_s": 522,
+  "time_s": 405,
   "vram_mib": 15821,
   "gpu": "RTX 5060 Ti 16 GB",
   "date": "2026-10-22"

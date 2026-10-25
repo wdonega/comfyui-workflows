@@ -11,7 +11,7 @@ Makes videos of any length clip by clip: **Start** creates clip 1 (T2VA/I2VA/FL2
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Total download | 42.47 GB |
 | Test | 736x1280, 15 steps: Start 5 s (553 s) + Continue 5 s (732 s) + Stitch (115 s) = 8.7 s final. Auto Handover detected the forced ending and handed over the safe point: seamless join. The reference was used as first/last frame, hence the portrait at the end |
-| Time | **23min 20s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **22min 31s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15651 MiB |
 
 ## Files in this folder

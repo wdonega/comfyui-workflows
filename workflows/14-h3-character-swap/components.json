@@ -23,7 +23,7 @@
    "pt": "4 s",
    "en": "4 s"
   },
-  "time_s": 868,
+  "time_s": 776,
   "vram_mib": null,
   "gpu": "RTX 5060 Ti 16 GB",
   "date": "2026-10-22"
@@ -122,8 +122,8 @@
   "en": "1. Load `workflow.json`. In **LoadVideo**, one continuous shot (`source.mp4`); in **LoadImage**, the character reference (`reference.png`).\n2. In **Prepare Source**: `duration_seconds` 0 = the whole video (normalized to 24 fps and multiples of 32 px).\n3. In the SAM text (`subject`), describe the person to swap (e.g. `the man on the left`); check the mask in the preview.\n4. Keep 8 steps, `er_sde`, `normal` scheduler, CFG 1 and both LoRAs at 1.0.\n5. One person at a time: to swap two, run again using the output as the source."
  },
  "notes": {
-  "pt": "- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~14,5 min.\n- **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).\n- Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.\n- **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores.",
-  "en": "- Slow on 16 GB: ~76 s per step (8 steps per window of up to 124 frames) because the recipe targets 24 GB and offloads. 4 s of video took ~14.5 min.\n- **Do not stack it with TaoMate** (the author's recipe uses only the 8-step Turbo).\n- License: impersonating real people without consent is prohibited by the H3 license.\n- **Credits:** `workflow.json` and `workflow.api.json` are Akatz Labs' official examples ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistributed unchanged; parts derived from ComfyUI templates are MIT (Comfy Org). The LoRA and H3 Relay belong to their authors."
+  "pt": "- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~13 min.\n- **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).\n- Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.\n- **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores.",
+  "en": "- Slow on 16 GB: ~76 s per step (8 steps per window of up to 124 frames) because the recipe targets 24 GB and offloads. 4 s of video took ~13 min.\n- **Do not stack it with TaoMate** (the author's recipe uses only the 8-step Turbo).\n- License: impersonating real people without consent is prohibited by the H3 license.\n- **Credits:** `workflow.json` and `workflow.api.json` are Akatz Labs' official examples ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistributed unchanged; parts derived from ComfyUI templates are MIT (Comfy Org). The LoRA and H3 Relay belong to their authors."
  },
  "kind": "video"
 }

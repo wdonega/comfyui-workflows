@@ -11,7 +11,7 @@ Base MiniMax H3 reference-to-video (Ref2VA) workflow with the 3-step TaoMate LoR
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Total download | 42.55 GB |
 | Test | 736x1280, 362 frames (15 s), 3 steps, same seed as an earlier generation: same scene and quality |
-| Time | **8min 44s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **8min 39s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15559 MiB |
 
 ## Files in this folder

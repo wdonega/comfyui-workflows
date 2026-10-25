@@ -11,7 +11,7 @@ Workflow oficial do autor (akatz-ai) com o **H3 Relay 2.0**: o SAM 3.1 mascara a
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Download total | 46.33 GB |
 | Teste | fonte 4 s (96 frames, 736x1280, 24 fps), subject `boy`, receita do autor (8 steps, er_sde, CFG 1, LoRAs 1.0): identidade trocada, pose/cena/tempo preservados; roupa não veio da referência |
-| Tempo | **14min 28s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Tempo | **12min 56s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Pico de VRAM | não medido |
 
 ## Arquivos desta pasta
@@ -82,7 +82,7 @@ Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, au
 
 ## Observações
 
-- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~14,5 min.
+- Lento em 16 GB: ~76 s por step (8 steps por janela de até 124 frames) porque a receita foi feita para 24 GB e faz offload. 4 s de vídeo levaram ~13 min.
 - **Não empilhe com o TaoMate** (receita do autor usa só o Turbo 8 steps).
 - Licença: personificar pessoas reais sem consentimento é proibido pela licença do H3.
 - **Créditos:** `workflow.json` e `workflow.api.json` são os exemplos oficiais da Akatz Labs ([akatz-ai/MiniMax-H3-Character-Swap-LoRA](https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/tree/main/examples)), redistribuídos sem alterações; partes derivadas dos templates do ComfyUI são MIT (Comfy Org). LoRA e H3 Relay pertencem aos seus autores.

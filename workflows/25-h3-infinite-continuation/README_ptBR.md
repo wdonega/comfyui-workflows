@@ -11,7 +11,7 @@ Gera vídeos de qualquer duração clipe a clipe: o **Start** cria o clipe 1 (T2
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Download total | 42.47 GB |
 | Teste | 736x1280, 15 steps: Start 5 s (553 s) + Continue 5 s (732 s) + Stitch (115 s) = 8,7 s finais. O Auto Handover detectou o final forçado e passou o ponto seguro: emenda sem salto. Referência usada como primeiro/último frame, por isso o retrato no fim |
-| Tempo | **23min 20s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Tempo | **22min 31s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Pico de VRAM | 15651 MiB |
 
 ## Arquivos desta pasta

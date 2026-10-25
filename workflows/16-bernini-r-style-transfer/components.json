@@ -20,10 +20,10 @@
    "en": "4.9 s source (117 frames, 480x832), anime LoRA 1.0: character converted to anime (face and eyes), identical motion and framing; the background stayed mostly photographic"
   },
   "clip": "4,9 s",
-  "time_s": 1125,
+  "time_s": 1113,
   "vram_mib": 11663,
   "gpu": "RTX 5060 Ti 16 GB",
-  "date": "2026-10-22"
+  "date": "2026-10-23"
  },
  "license": {
   "name": "Apache-2.0",

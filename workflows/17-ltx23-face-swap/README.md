@@ -11,7 +11,7 @@ Head swap workflow with the distilled LTX 2.3 and @Alissonerdx's **BFS head swap
 | License | [LTX-2 Community License](https://github.com/Lightricks/LTX-2/blob/main/LICENSE) |
 | Total download | 44.71 GB |
 | Test | 4 s source (97 frames, 736x1280, 24 fps) + 1 face image, 8 steps (euler_ancestral_cfg_pp + bong_tangent): head swapped, pose/camera/set/clothing kept; background elements missing from the prompt (monster, smoke) disappeared |
-| Time | **8min 42s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **6min 45s** (RTX 5060 Ti 16 GB, 2026-10-22) |
 | Peak VRAM | 15821 MiB |
 
 ## Files in this folder

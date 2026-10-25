@@ -11,7 +11,7 @@ The official `video_bernini_r_video_editing` template (instruction-based video e
 | License | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |
 | Total download | 39.15 GB |
 | Test | 4.9 s source (117 frames, 480x832), anime LoRA 1.0: character converted to anime (face and eyes), identical motion and framing; the background stayed mostly photographic |
-| Time | **18min 45s** (RTX 5060 Ti 16 GB, 2026-10-22) |
+| Time | **18min 33s** (RTX 5060 Ti 16 GB, 2026-10-23) |
 | Peak VRAM | 11663 MiB |
 
 ## Files in this folder
