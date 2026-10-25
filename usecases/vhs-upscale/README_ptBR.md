@@ -118,6 +118,9 @@ Numa fonte tão degradada, os 7B preservam o borrado em vez de reconstruir, e re
 linhas de detalhe real) e custa ~1,5× mais.
 
 **Script completo:** 3 s de uma captura com limpeza + upscale 720p levaram 391 s de ponta a ponta (380 s no ComfyUI).
+A junção dos blocos foi testada forçando blocos de 41 quadros (`RESTORE_VHS_CHUNK_FRAMES=41`): 90 quadros em 3 blocos,
+o último completado, saíram com exatamente 90 quadros em 467 s. A primeira versão perdia quadros (SeedVR2 com bloco que
+não era 4n+1, e o `-shortest` na junção final); o script agora confere a contagem de quadros de cada bloco e do vídeo final.
 
 ## Limitações
 

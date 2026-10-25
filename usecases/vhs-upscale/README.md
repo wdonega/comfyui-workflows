@@ -114,7 +114,10 @@ On a source this degraded, the 7B models keep the blur instead of rebuilding it,
 generation model (Wan 2.2) adds texture by changing the people. **3B, one pass, 720p** is the default; 1080p looks the
 same (VHS has ~250 lines of real detail) and costs ~1.5× more.
 
-**Full script:** 3 s of a capture with cleanup + 720p upscale took 391 s end to end (380 s in ComfyUI).
+**Full script:** 3 s of a capture with cleanup + 720p upscale took 391 s end to end (380 s in ComfyUI). Chunk joining was
+tested by forcing 41-frame chunks (`RESTORE_VHS_CHUNK_FRAMES=41`): 90 frames in 3 chunks, the last one padded, came
+out as exactly 90 frames in 467 s. The first version lost frames (SeedVR2 with a non-4n+1 chunk, and `-shortest` in
+the final join); the script now checks the frame count of every chunk and of the final video.
 
 ## Limitations
 
