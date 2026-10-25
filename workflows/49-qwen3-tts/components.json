@@ -64,7 +64,216 @@
    "page": "https://github.com/flybirdxx/ComfyUI-Qwen-TTS"
   }
  ],
- "models": [],
+ "models": [
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:model.safetensors@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "Qwen3-TTS 1.7B CustomVoice (vozes prontas)",
+    "en": "Qwen3-TTS 1.7B CustomVoice (built-in voices)"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:speech_tokenizer/model.safetensors@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "Tokenizador de fala (cópia do modelo)",
+    "en": "Speech tokenizer (model's copy)"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:vocab.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:merges.txt@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:config.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:generation_config.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:preprocessor_config.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:tokenizer_config.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:speech_tokenizer/config.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:speech_tokenizer/configuration.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice:speech_tokenizer/preprocessor_config.json@0c0e3051f131929182e2c023b9537f8b1c68adfe",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:model.safetensors@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "Qwen3-TTS 1.7B Base (clonagem)",
+    "en": "Qwen3-TTS 1.7B Base (cloning)"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:speech_tokenizer/model.safetensors@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "Tokenizador de fala (cópia do modelo)",
+    "en": "Speech tokenizer (model's copy)"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:vocab.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:merges.txt@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:config.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:generation_config.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:preprocessor_config.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:tokenizer_config.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:speech_tokenizer/config.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:speech_tokenizer/configuration.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer",
+   "hf": "Qwen/Qwen3-TTS-12Hz-1.7B-Base:speech_tokenizer/preprocessor_config.json@fd4b254389122332181a7c3db7f27e918eec64e3",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-Tokenizer-12Hz",
+   "hf": "Qwen/Qwen3-TTS-Tokenizer-12Hz:model.safetensors@7dd38ad4e9bad454aae9cd937d0cd577604fe229",
+   "role": {
+    "pt": "Tokenizador de fala 12 Hz",
+    "en": "12 Hz speech tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-Tokenizer-12Hz",
+   "hf": "Qwen/Qwen3-TTS-Tokenizer-12Hz:config.json@7dd38ad4e9bad454aae9cd937d0cd577604fe229",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-Tokenizer-12Hz",
+   "hf": "Qwen/Qwen3-TTS-Tokenizer-12Hz:configuration.json@7dd38ad4e9bad454aae9cd937d0cd577604fe229",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "qwen-tts/Qwen3-TTS-Tokenizer-12Hz",
+   "hf": "Qwen/Qwen3-TTS-Tokenizer-12Hz:preprocessor_config.json@7dd38ad4e9bad454aae9cd937d0cd577604fe229",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  }
+ ],
  "usage": {
   "pt": "1. Os modelos baixam sozinhos no primeiro uso para `models/qwen-tts/` (`Qwen3-TTS-12Hz-1.7B-CustomVoice`, `-Base` e o tokenizer, ~4,5 GB cada). Para baixar antes: `python3 download_models.py` na pasta do nó.\n2. Dependências pip do `requirements.txt` **sem** `onnxruntime-openvino` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. `attention` = `sdpa` se o SageAttention não estiver instalado; `language` = `Portuguese`.",
   "en": "1. The models download themselves on first use to `models/qwen-tts/` (`Qwen3-TTS-12Hz-1.7B-CustomVoice`, `-Base` and the tokenizer, ~4.5 GB each). To download ahead of time: `python3 download_models.py` in the node folder.\n2. Pip dependencies from `requirements.txt` **without** `onnxruntime-openvino` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. `attention` = `sdpa` if SageAttention is not installed; `language` = `Portuguese`."

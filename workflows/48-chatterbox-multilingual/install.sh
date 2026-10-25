@@ -114,4 +114,10 @@ clone_node() {
 
 comfy_root "${1:-}"
 clone_node https://github.com/filliptm/ComfyUI_Fill-ChatterBox f7d7a16187430abcaf91a3039b9c83aa9960816a
+fetch_model chatterbox/chatterbox_multilingual t3_mtl23ls_v2.safetensors https://huggingface.co/ResembleAI/chatterbox/resolve/5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18/t3_mtl23ls_v2.safetensors b1237586127ce98e7800a68e49938eb5092846862aabcb6e17b2fda7889a6c75 2143989752
+fetch_model chatterbox/chatterbox_multilingual s3gen.pt https://huggingface.co/ResembleAI/chatterbox/resolve/5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18/s3gen.pt 9b9ff07e60b20c136e2b1b3d7563a24604e8d2c4c267888d1ee929dd0151d2a3 1057165844
+fetch_model chatterbox/chatterbox_multilingual ve.pt https://huggingface.co/ResembleAI/chatterbox/resolve/5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18/ve.pt 4b16d836bc598509860f6fa068165a8bb5e9ac84f05582dfcf278a5a372879f1 5698626
+fetch_model chatterbox/chatterbox_multilingual conds.pt https://huggingface.co/ResembleAI/chatterbox/resolve/5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18/conds.pt 6552d70568833628ba019c6b03459e77fe71ca197d5c560cef9411bee9d87f4e 107374
+fetch_model chatterbox/chatterbox_multilingual Cangjie5_TC.json https://huggingface.co/ResembleAI/chatterbox/resolve/5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18/Cangjie5_TC.json - 1920163
+fetch_model chatterbox/chatterbox_multilingual grapheme_mtl_merged_expanded_v1.json https://huggingface.co/ResembleAI/chatterbox/resolve/5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18/grapheme_mtl_merged_expanded_v1.json - 69989
 log "pronto / done. Reinicie o ComfyUI se instalou custom nodes novos / restart ComfyUI if new custom nodes were installed."

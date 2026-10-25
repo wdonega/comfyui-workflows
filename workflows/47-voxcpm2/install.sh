@@ -114,4 +114,11 @@ clone_node() {
 
 comfy_root "${1:-}"
 clone_node https://github.com/Saganaki22/ComfyUI-VoxCPM2 0e52a6cd006769e030d0e1ae907ffebbbfac4f5f
+fetch_model tts/VoxCPM/VoxCPM2 model.safetensors https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/model.safetensors f7f964cfa9da23653baec6e6f7750719977ad944ed9f95fe52fe3a620506891d 4580080592
+fetch_model tts/VoxCPM/VoxCPM2 audiovae.pth https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/audiovae.pth 94b5d51e107e0507d4acc976cfdadb64edd6fd06d1f751dadbf2fd1594274bf1 376951122
+fetch_model tts/VoxCPM/VoxCPM2 tokenizer.json https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/tokenizer.json - 3676772
+fetch_model tts/VoxCPM/VoxCPM2 config.json https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/config.json - 4336
+fetch_model tts/VoxCPM/VoxCPM2 special_tokens_map.json https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/special_tokens_map.json - 1632
+fetch_model tts/VoxCPM/VoxCPM2 tokenization_voxcpm2.py https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/tokenization_voxcpm2.py - 2895
+fetch_model tts/VoxCPM/VoxCPM2 tokenizer_config.json https://huggingface.co/openbmb/VoxCPM2/resolve/32279effe8c19989596f05d353d1447f51d9e915/tokenizer_config.json - 5059
 log "pronto / done. Reinicie o ComfyUI se instalou custom nodes novos / restart ComfyUI if new custom nodes were installed."

@@ -46,13 +46,62 @@
    "page": "https://github.com/filliptm/ComfyUI_Fill-ChatterBox"
   }
  ],
- "models": [],
+ "models": [
+  {
+   "dest": "chatterbox/chatterbox_multilingual",
+   "hf": "ResembleAI/chatterbox:t3_mtl23ls_v2.safetensors@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+   "role": {
+    "pt": "T3 multilíngue v2 (texto → tokens de fala)",
+    "en": "Multilingual T3 v2 (text → speech tokens)"
+   }
+  },
+  {
+   "dest": "chatterbox/chatterbox_multilingual",
+   "hf": "ResembleAI/chatterbox:s3gen.pt@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+   "role": {
+    "pt": "S3Gen (tokens → áudio)",
+    "en": "S3Gen (tokens → audio)"
+   }
+  },
+  {
+   "dest": "chatterbox/chatterbox_multilingual",
+   "hf": "ResembleAI/chatterbox:ve.pt@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+   "role": {
+    "pt": "Codificador de voz",
+    "en": "Voice encoder"
+   }
+  },
+  {
+   "dest": "chatterbox/chatterbox_multilingual",
+   "hf": "ResembleAI/chatterbox:conds.pt@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+   "role": {
+    "pt": "Voz padrão",
+    "en": "Default voice"
+   }
+  },
+  {
+   "dest": "chatterbox/chatterbox_multilingual",
+   "hf": "ResembleAI/chatterbox:Cangjie5_TC.json@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "chatterbox/chatterbox_multilingual",
+   "hf": "ResembleAI/chatterbox:grapheme_mtl_merged_expanded_v1.json@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  }
+ ],
  "usage": {
   "pt": "1. Os modelos baixam sozinhos no primeiro uso para `models/chatterbox/chatterbox_multilingual/` ([ResembleAI/chatterbox](https://huggingface.co/ResembleAI/chatterbox)).\n2. Dependências pip do `requirements.txt` do nó (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. Use **temperatura 0,6**; em 0,8 ele alucinou depois do fim da frase.",
   "en": "1. The models download themselves on first use to `models/chatterbox/chatterbox_multilingual/` ([ResembleAI/chatterbox](https://huggingface.co/ResembleAI/chatterbox)).\n2. Pip dependencies from the node's `requirements.txt` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.).\n3. Use **temperature 0.6**; at 0.8 it hallucinated after the end of the sentence."
  },
  "notes": {
-  "pt": "- O download automático deixa uma cópia de ~3 GB em `~/.cache/huggingface/hub/models--ResembleAI--chatterbox` além da pasta `models/chatterbox`; a cópia do cache pode ser apagada.\n- O repositório do nó não declara licença.\n- A voz de referência dos testes é sintética (voz \"Serena\" do Qwen3-TTS, 12,8 s em PT); nenhuma voz real foi clonada. Clonar a voz de alguém exige o consentimento dessa pessoa (direito de imagem/voz e LGPD).",
-  "en": "- The automatic download leaves a ~3 GB copy in `~/.cache/huggingface/hub/models--ResembleAI--chatterbox` besides the `models/chatterbox` folder; the cache copy can be deleted.\n- The node repository declares no license.\n- The test reference voice is synthetic (Qwen3-TTS \"Serena\" voice, 12.8 s in PT); no real voice was cloned. Cloning someone's voice requires that person's consent."
+  "pt": "- O repositório do nó não declara licença.\n- A voz de referência dos testes é sintética (voz \"Serena\" do Qwen3-TTS, 12,8 s em PT); nenhuma voz real foi clonada. Clonar a voz de alguém exige o consentimento dessa pessoa (direito de imagem/voz e LGPD).",
+  "en": "- The node repository declares no license.\n- The test reference voice is synthetic (Qwen3-TTS \"Serena\" voice, 12.8 s in PT); no real voice was cloned. Cloning someone's voice requires that person's consent."
  }
 }

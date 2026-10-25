@@ -70,9 +70,9 @@ Every workflow below was tested on the setup described above; times are from tho
 |---|---|---|---|---|---|
 | [ACE-Step 1.5 Turbo · music](workflows/32-ace-step-15-turbo/README.md) | ACE-Step 1.5 | Songs with lyrics in 8 steps; 30 s in 16 s | 16s · 30 s | 10.03 GB | MIT (free) |
 | [Fish Audio Drama 3 · voice cloning](workflows/46-fish-drama3-voice-clone/README.md) | Fish Audio Drama 3 | Expressive 35B TTS with cloning, cues like [laughs] and multiple speakers | 1min 04s · 8.6 s | 44.34 GB | Fish Audio Community (commercial < US$ 500K) |
-| [VoxCPM2 · TTS, voice design and cloning](workflows/47-voxcpm2/README.md) | VoxCPM2 | 2B TTS in 30 languages, 48 kHz: voice from a description or cloned | 1min 33s · 2 × ~8 s | 0 MB | Apache-2.0 (free) |
-| [Chatterbox Multilingual · TTS with cloning (23 languages)](workflows/48-chatterbox-multilingual/README.md) | Chatterbox | Light, fast TTS with cloning, Portuguese included | 11s · 8.6 s | 0 MB | MIT (free) |
-| [Qwen3-TTS · built-in voices and cloning](workflows/49-qwen3-tts/README.md) | Qwen3-TTS | 1.7B TTS in 10 languages (PT included): 9 built-in voices, cloning and voice design | 1min 29s · 12.8 s + 7.5 s | 0 MB | Apache-2.0 (free) |
+| [VoxCPM2 · TTS, voice design and cloning](workflows/47-voxcpm2/README.md) | VoxCPM2 | 2B TTS in 30 languages, 48 kHz: voice from a description or cloned | 1min 33s · 2 × ~8 s | 4.96 GB | Apache-2.0 (free) |
+| [Chatterbox Multilingual · TTS with cloning (23 languages)](workflows/48-chatterbox-multilingual/README.md) | Chatterbox | Light, fast TTS with cloning, Portuguese included | 11s · 8.6 s | 3.21 GB | MIT (free) |
+| [Qwen3-TTS · built-in voices and cloning](workflows/49-qwen3-tts/README.md) | Qwen3-TTS | 1.7B TTS in 10 languages (PT included): 9 built-in voices, cloning and voice design | 1min 29s · 12.8 s + 7.5 s | 9.75 GB | Apache-2.0 (free) |
 | [MiniMax Music 3 · songs with lyrics](workflows/minimax-music3/README.md) | MiniMax Music 3 | Generates a song of up to a few minutes from style + lyrics | 2min 26s · 60 s | 14.33 GB | MiniMax-Music3 Community |
 
 Times measured on the RTX 5060 Ti 16 GB with the parameters described in each folder's README

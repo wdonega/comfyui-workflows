@@ -114,4 +114,30 @@ clone_node() {
 
 comfy_root "${1:-}"
 clone_node https://github.com/flybirdxx/ComfyUI-Qwen-TTS a1328c8a731eff82cf4c205b31bdfb7f29d817f4
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice model.safetensors https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/model.safetensors 38b1d5971bdbd982b561cccec982669a53b0537c3cf5e9bd4778ed07bb2f5137 3833402552
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer model.safetensors https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/model.safetensors 836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258 682293092
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice vocab.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/vocab.json - 2776833
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice merges.txt https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/merges.txt - 1671839
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/config.json - 4908
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice generation_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/generation_config.json - 245
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice preprocessor_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/preprocessor_config.json - 127
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice tokenizer_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/tokenizer_config.json - 7344
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/config.json - 2336
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer configuration.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/configuration.json - 76
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-CustomVoice/speech_tokenizer preprocessor_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/preprocessor_config.json - 234
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base model.safetensors https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/model.safetensors 38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c 3857413744
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer model.safetensors https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/speech_tokenizer/model.safetensors 836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258 682293092
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base vocab.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/vocab.json - 2776833
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base merges.txt https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/merges.txt - 1671839
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/config.json - 4494
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base generation_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/generation_config.json - 245
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base preprocessor_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/preprocessor_config.json - 127
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base tokenizer_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/tokenizer_config.json - 7344
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/speech_tokenizer/config.json - 2336
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer configuration.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/speech_tokenizer/configuration.json - 76
+fetch_model qwen-tts/Qwen3-TTS-12Hz-1.7B-Base/speech_tokenizer preprocessor_config.json https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base/resolve/fd4b254389122332181a7c3db7f27e918eec64e3/speech_tokenizer/preprocessor_config.json - 234
+fetch_model qwen-tts/Qwen3-TTS-Tokenizer-12Hz model.safetensors https://huggingface.co/Qwen/Qwen3-TTS-Tokenizer-12Hz/resolve/7dd38ad4e9bad454aae9cd937d0cd577604fe229/model.safetensors 836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258 682293092
+fetch_model qwen-tts/Qwen3-TTS-Tokenizer-12Hz config.json https://huggingface.co/Qwen/Qwen3-TTS-Tokenizer-12Hz/resolve/7dd38ad4e9bad454aae9cd937d0cd577604fe229/config.json - 2336
+fetch_model qwen-tts/Qwen3-TTS-Tokenizer-12Hz configuration.json https://huggingface.co/Qwen/Qwen3-TTS-Tokenizer-12Hz/resolve/7dd38ad4e9bad454aae9cd937d0cd577604fe229/configuration.json - 76
+fetch_model qwen-tts/Qwen3-TTS-Tokenizer-12Hz preprocessor_config.json https://huggingface.co/Qwen/Qwen3-TTS-Tokenizer-12Hz/resolve/7dd38ad4e9bad454aae9cd937d0cd577604fe229/preprocessor_config.json - 234
 log "pronto / done. Reinicie o ComfyUI se instalou custom nodes novos / restart ComfyUI if new custom nodes were installed."

@@ -46,7 +46,64 @@
    "page": "https://github.com/Saganaki22/ComfyUI-VoxCPM2"
   }
  ],
- "models": [],
+ "models": [
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:model.safetensors@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "VoxCPM2 2B (pesos)",
+    "en": "VoxCPM2 2B (weights)"
+   }
+  },
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:audiovae.pth@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "Audio VAE"
+   }
+  },
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:tokenizer.json@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:config.json@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:special_tokens_map.json@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:tokenization_voxcpm2.py@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  },
+  {
+   "dest": "tts/VoxCPM/VoxCPM2",
+   "hf": "openbmb/VoxCPM2:tokenizer_config.json@32279effe8c19989596f05d353d1447f51d9e915",
+   "role": {
+    "pt": "configuração / tokenizador",
+    "en": "config / tokenizer"
+   }
+  }
+ ],
  "usage": {
   "pt": "1. O modelo (~5 GB) baixa sozinho no primeiro uso para `models/tts/VoxCPM/VoxCPM2/` ([openbmb/VoxCPM2](https://huggingface.co/openbmb/VoxCPM2)).\n2. Dependências pip: `wetext inflect simplejson sortedcontainers soundfile` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.). **Não** instale o pacote `voxcpm` do PyPI (conflita com `dill`); o nó traz o código em `src/`.\n3. `enable_denoiser` e `enable_asr` exigem `modelscope`/`funasr` (não instalados); deixe desligados.",
   "en": "1. The model (~5 GB) downloads itself on first use to `models/tts/VoxCPM/VoxCPM2/` ([openbmb/VoxCPM2](https://huggingface.co/openbmb/VoxCPM2)).\n2. Pip dependencies: `wetext inflect simplejson sortedcontainers soundfile` (`PIP_USER=true python3.13 -m pip install --no-deps` só do que faltar; veja `requirements.txt` do nó. Não instalar `onnxruntime-openvino` se já houver `onnxruntime`.). Do **not** install the `voxcpm` PyPI package (conflicts with `dill`); the node ships the code in `src/`.\n3. `enable_denoiser` and `enable_asr` need `modelscope`/`funasr` (not installed); keep them off."
