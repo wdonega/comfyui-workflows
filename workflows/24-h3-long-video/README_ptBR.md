@@ -11,7 +11,7 @@ Gera vídeos mais longos que um único sampling do H3 encadeando segmentos que c
 | Licença | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Download total | 44.43 GB |
 | Teste | 16 s em 2 segmentos de 8 s, 960x544, 8 steps, 1 referência; LLM qwen3.8-flash-next (llama.cpp local, outra GPU) dividiu a história corretamente (fala no 2º segmento); emenda contínua, identidade consistente, áudio contínuo |
-| Tempo | **12min 05s** (RTX 5060 Ti 16 GB, 2026-10-25) |
+| Tempo | **11min 26s** (RTX 5060 Ti 16 GB, 2026-10-25) |
 | Pico de VRAM | 15659 MiB |
 
 ## Arquivos desta pasta
@@ -79,4 +79,4 @@ Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, au
 - O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.
 - O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.
 - Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.
-- Tempo medido na v0.42.4 com a placa em PCIe Gen2 e limitada a 150 W (era Gen3 e 180 W nos outros testes): na v0.37, com Gen3 e 180 W, levou 687 s. Nesta máquina a placa caiu do barramento três vezes neste workflow com Gen3/180 W e Gen2/180 W (riser).
+- Tempo medido na v0.42.4 com a placa limitada a 165 W (padrão 180 W). Nesta máquina, com 180 W, a placa (ligada por riser) caiu do barramento três vezes neste workflow, que é o de carga mais longa do repositório.

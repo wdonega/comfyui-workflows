@@ -11,7 +11,7 @@ Generates videos longer than a single H3 sampling by chaining segments that cont
 | License | [MiniMax H3 Community License](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE) |
 | Total download | 44.43 GB |
 | Test | 16 s in 2 segments of 8 s, 960x544, 8 steps, 1 reference; qwen3.8-flash-next (local llama.cpp, another GPU) split the story correctly (dialogue in segment 2); continuous join, consistent identity, continuous audio |
-| Time | **12min 05s** (RTX 5060 Ti 16 GB, 2026-10-25) |
+| Time | **11min 26s** (RTX 5060 Ti 16 GB, 2026-10-25) |
 | Peak VRAM | 15659 MiB |
 
 ## Files in this folder
@@ -79,4 +79,4 @@ Personal and commercial use allowed up to US$ 20M/year in revenue (above that, M
 - The log with each segment's prompts goes to `output/h3_prompt_logs/`.
 - The author recommends strong LLMs (27B dense or DeepSeek) to split timed dialogue; qwen3.8-flash-next (local llama.cpp) got it right in the test.
 - For the UI workflow with the author's original layout (subgraph), see `example_workflows/` in the node's repository.
-- Time measured on v0.42.4 with the card on PCIe Gen2 and limited to 150 W (the other tests used Gen3 and 180 W); on v0.37 with Gen3 and 180 W it took 687 s. On this machine the card fell off the bus three times in this workflow at Gen3/180 W and Gen2/180 W (riser).
+- Time measured on v0.42.4 with the card limited to 165 W (default 180 W). On this machine, at 180 W, the card (on a riser) fell off the bus three times in this workflow, the one with the longest sustained load in the repo.
