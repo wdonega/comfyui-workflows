@@ -23,10 +23,10 @@
    "pt": "16 s",
    "en": "16 s"
   },
-  "time_s": 687,
+  "time_s": 725,
   "vram_mib": 15659,
   "gpu": "RTX 5060 Ti 16 GB",
-  "date": "2026-10-22"
+  "date": "2026-10-25"
  },
  "license": {
   "name": "MiniMax H3 Community License",
@@ -95,8 +95,8 @@
   "en": "1. In **Ref Prompt Builder**, pick the reference images (`pictures`) and write the whole story; refer to `<Picture 1>` etc.\n2. In **H3 Prompt API**: `api_url` = an OpenAI-compatible server (`http://localhost:8080/v1` in this file; DeepSeek in the author's original), `model` from that server. Give `max_tokens` headroom if the model \"thinks\" before answering.\n3. In **H3 Long Video**: `total_seconds` (final length) and `segment_seconds` (length of each segment). More than one segment requires the Prompt API connected.\n4. `local_llm` = `auto`: it only unloads ComfyUI's models when the URL is localhost. If your LLM runs on another machine or GPU, use its address and nothing is unloaded."
  },
  "notes": {
-  "pt": "- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.\n- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.\n- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.",
-  "en": "- The log with each segment's prompts goes to `output/h3_prompt_logs/`.\n- The author recommends strong LLMs (27B dense or DeepSeek) to split timed dialogue; qwen3.8-flash-next (local llama.cpp) got it right in the test.\n- For the UI workflow with the author's original layout (subgraph), see `example_workflows/` in the node's repository."
+  "pt": "- O log com os prompts de cada segmento fica em `output/h3_prompt_logs/`.\n- O autor recomenda LLMs fortes (27B denso ou DeepSeek) para dividir falas cronometradas; o qwen3.8-flash-next (llama.cpp local) acertou no teste.\n- Para o workflow da interface com a organização original do autor (subgraph), veja `example_workflows/` no repositório do nó.\n- Tempo medido na v0.42.4 com a placa em PCIe Gen2 e limitada a 150 W (era Gen3 e 180 W nos outros testes): na v0.37, com Gen3 e 180 W, levou 687 s. Nesta máquina a placa caiu do barramento três vezes neste workflow com Gen3/180 W e Gen2/180 W (riser).",
+  "en": "- The log with each segment's prompts goes to `output/h3_prompt_logs/`.\n- The author recommends strong LLMs (27B dense or DeepSeek) to split timed dialogue; qwen3.8-flash-next (local llama.cpp) got it right in the test.\n- For the UI workflow with the author's original layout (subgraph), see `example_workflows/` in the node's repository.\n- Time measured on v0.42.4 with the card on PCIe Gen2 and limited to 150 W (the other tests used Gen3 and 180 W); on v0.37 with Gen3 and 180 W it took 687 s. On this machine the card fell off the bus three times in this workflow at Gen3/180 W and Gen2/180 W (riser)."
  },
  "kind": "video"
 }
