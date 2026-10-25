@@ -1,0 +1,113 @@
+{
+ "kind": "video",
+ "title": {
+  "pt": "LTX 2.3 · Clean Plate (remove pessoas do vídeo)",
+  "en": "LTX 2.3 · Clean Plate (removes people from video)"
+ },
+ "short": {
+  "pt": "Apaga pessoas e objetos em movimento e devolve o fundo vazio",
+  "en": "Erases people and moving objects and returns the empty background"
+ },
+ "plan": "#60",
+ "family": "LTX 2.3",
+ "summary": {
+  "pt": "O IC-LoRA **Clean Plate** da Lightricks no workflow vídeo-para-vídeo oficial do ComfyUI-LTXVideo: o vídeo original entra como referência e sai regenerado sem os elementos em movimento, mantendo o fundo estático. Sem máscara: é um modelo de quadro inteiro.",
+  "en": "Lightricks' **Clean Plate** IC-LoRA in ComfyUI-LTXVideo's official video-to-video workflow: the original video goes in as reference and comes out regenerated without the moving elements, keeping the static background. No mask: it is a full-frame model."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "4 s (97 frames) de um garoto correndo numa rua com um monstro e fumaça ao fundo: garoto, monstro e fumaça removidos; rua, carros, árvores, reflexos e movimento de câmera preservados",
+   "en": "4 s (97 frames) of a boy running down a street with a monster and smoke behind him: boy, monster and smoke removed; street, cars, trees, reflections and camera motion kept"
+  },
+  "clip": "4 s",
+  "time_s": 219,
+  "vram_mib": 15791,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-24"
+ },
+ "license": {
+  "name": "LTX-2 Community License",
+  "url": "https://github.com/Lightricks/LTX-2/blob/main/LICENSE",
+  "short": {
+   "pt": "LTX-2 Community (grátis < US$ 10 mi)",
+   "en": "LTX-2 Community (free < US$ 10M)"
+  },
+  "summary": {
+   "pt": "Uso pessoal e comercial grátis para pessoas e empresas com receita anual abaixo de US$ 10 mi; acima disso, licença comercial paga da Lightricks. **Sem restrição de território.** A Lightricks não reivindica as saídas (são suas). Não pode usar saídas para treinar modelos concorrentes. O text encoder Gemma 3 segue os Gemma Terms of Use do Google (política de uso proibido; saídas livres).",
+   "en": "Free personal and commercial use for individuals and companies with annual revenue under US$ 10M; above that, a paid commercial license from Lightricks. **No territory restrictions.** Lightricks claims no rights over the outputs (they are yours). Outputs may not be used to train competing models. The Gemma 3 text encoder follows Google's Gemma Terms of Use (prohibited-use policy; outputs are free)."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-LTXVideo",
+   "url": "https://github.com/Lightricks/ComfyUI-LTXVideo",
+   "commit": "220e1d45aa0469f518e982102fca4dca92a61862",
+   "page": "https://github.com/Lightricks/ComfyUI-LTXVideo"
+  },
+  {
+   "name": "KJNodes",
+   "registry": "comfyui-kjnodes",
+   "version": "1.5.0",
+   "page": "https://github.com/kijai/ComfyUI-KJNodes"
+  }
+ ],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Kijai/LTX2.3_comfy:diffusion_models/ltx-2.3-22b-distilled_transformer_only_fp8_input_scaled_v3.safetensors",
+   "role": {
+    "pt": "LTX 2.3 22B destilado, só transformer (FP8 com escala de ativação)",
+    "en": "LTX 2.3 22B distilled, transformer only (FP8 with activation scales)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Kijai/LTX2.3_comfy:vae/LTX23_video_vae_bf16.safetensors",
+   "role": {
+    "pt": "VAE de vídeo",
+    "en": "video VAE"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Kijai/LTX2.3_comfy:vae/LTX23_audio_vae_bf16.safetensors",
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/ltx-2:split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
+   "role": {
+    "pt": "text encoder Gemma 3 12B (FP8)",
+    "en": "Gemma 3 12B text encoder (FP8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Kijai/LTX2.3_comfy:text_encoders/ltx-2.3_text_projection_bf16.safetensors",
+   "role": {
+    "pt": "projeção de texto do LTX 2.3",
+    "en": "LTX 2.3 text projection"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "Lightricks/LTX-2.3-22b-IC-LoRA-Clean-Plate:ltx-2.3-22b-ic-lora-clean-plate-1.0.safetensors",
+   "role": {
+    "pt": "IC-LoRA Clean Plate 1.0 (gated: aceite a licença)",
+    "en": "Clean Plate 1.0 IC-LoRA (gated: accept the license)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. **LoadVideo**: o vídeo original (`source.mp4`) **com trilha de áudio** (o workflow codifica o áudio; acrescente uma muda se não houver). Dimensões múltiplas de 32 e frames 8k+1.\n2. Prompt positivo: descreva a **cena vazia** desejada, não \"remova X\"; cite o que não pode aparecer. Negativo: as pessoas/objetos a remover.\n3. O ramo de imagem inicial (`first_frame.png`) vem em bypass; o arquivo só precisa existir.",
+  "en": "1. **LoadVideo**: the original video (`source.mp4`) **with an audio track** (the workflow encodes audio; add a silent one if there is none). Dimensions divisible by 32 and 8k+1 frames.\n2. Positive prompt: describe the desired **empty scene**, not \"remove X\"; name what must not appear. Negative: the people/objects to remove.\n3. The first-frame branch (`first_frame.png`) is bypassed; the file just has to exist."
+ },
+ "notes": {
+  "pt": "- Mudanças em relação ao workflow oficial (que usa o IC-LoRA \"instant shave\" de exemplo): pilha do Kijai com o transformer **destilado** (sem o LoRA de destilação), Gemma FP8 local e o LoRA Clean Plate.\n- Não serve quando a pessoa ocupa quase todo o quadro (ex.: pernas em primeira pessoa).\n- Dependências pip do ComfyUI-LTXVideo: só `OpenImageIO` e `ninja` faltavam (`PIP_USER=true python3.13 -m pip install OpenImageIO ninja`).",
+  "en": "- Changes from the official workflow (which uses the example \"instant shave\" IC-LoRA): Kijai stack with the **distilled** transformer (no distillation LoRA), local FP8 Gemma and the Clean Plate LoRA.\n- Not for cases where the person fills most of the frame (e.g. first-person legs).\n- ComfyUI-LTXVideo pip dependencies: only `OpenImageIO` and `ninja` were missing (`PIP_USER=true python3.13 -m pip install OpenImageIO ninja`)."
+ }
+}

@@ -88,3 +88,4 @@ Uso pessoal e comercial liberados até US$ 20 mi/ano de receita (acima disso, au
 - O template do autor usa o nó **Spectrum** (`comfyui-spectrum-minimax-h3`, acelerador opcional). A versão mais recente dele está marcada (Flagged) no registro do ComfyUI; este workflow foi testado **sem** ele.
 - O Gemma divide a GPU com o H3: neste teste ele levou 377 s dos 1118 s. `cache_gemma_preproduction` reaproveita o planejamento quando só a seed muda.
 - O nó baixa o Gemma sozinho se faltar; o install.sh já deixa no lugar.
+- **Efeito colateral:** o `pytorch_memory_fraction` (0,85) fica valendo para o **processo inteiro** do ComfyUI depois que o workflow termina. Na regressão, o Wan Animate 2 rodado em seguida deu falta de memória (limite de 13,2 GB numa placa de 16 GB). Reinicie o ComfyUI depois de usar o HR Endless, ou use 1.0.

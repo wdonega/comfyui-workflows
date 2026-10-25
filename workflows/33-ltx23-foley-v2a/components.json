@@ -1,0 +1,119 @@
+{
+ "kind": "video",
+ "title": {
+  "pt": "LTX 2.3 · Foley (som para vídeo mudo)",
+  "en": "LTX 2.3 · Foley (sound for silent video)"
+ },
+ "short": {
+  "pt": "Gera efeitos sonoros sincronizados para um vídeo sem áudio",
+  "en": "Generates synchronized sound effects for a silent video"
+ },
+ "plan": "#33",
+ "family": "LTX 2.3",
+ "summary": {
+  "pt": "O workflow oficial da Lightricks para o LoRA **Foley V2A**: o vídeo entra como latente fixo e só o áudio é gerado (máscara por tempo), com o guiador multimodal do ComfyUI-LTXVideo (CFG 6 no áudio, 30 steps). Usa o transformer **dev** (o LoRA foi treinado nele).",
+  "en": "Lightricks' official workflow for the **Foley V2A** LoRA: the video goes in as a fixed latent and only the audio is generated (time mask), with ComfyUI-LTXVideo's multimodal guider (CFG 6 on audio, 30 steps). Uses the **dev** transformer (the LoRA was trained on it)."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "vídeo mudo de 7 s (169 frames, garoto correndo na chuva) + prompt de chuva e passos: áudio de 7 s a 48 kHz, contínuo do início ao fim (média −10 a −15 dB); a sincronia dos passos precisa ser conferida ouvindo",
+   "en": "7 s silent video (169 frames, a boy running in the rain) + rain and footsteps prompt: 7 s 48 kHz audio, continuous from start to end (mean −10 to −15 dB); footstep sync has to be checked by ear"
+  },
+  "clip": "7 s",
+  "time_s": 1929,
+  "vram_mib": 15621,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-24"
+ },
+ "license": {
+  "name": "LTX-2 Community License",
+  "url": "https://github.com/Lightricks/LTX-2/blob/main/LICENSE",
+  "short": {
+   "pt": "LTX-2 Community (grátis < US$ 10 mi)",
+   "en": "LTX-2 Community (free < US$ 10M)"
+  },
+  "summary": {
+   "pt": "Uso pessoal e comercial grátis para pessoas e empresas com receita anual abaixo de US$ 10 mi; acima disso, licença comercial paga da Lightricks. **Sem restrição de território.** A Lightricks não reivindica as saídas (são suas). Não pode usar saídas para treinar modelos concorrentes. O text encoder Gemma 3 segue os Gemma Terms of Use do Google (política de uso proibido; saídas livres).",
+   "en": "Free personal and commercial use for individuals and companies with annual revenue under US$ 10M; above that, a paid commercial license from Lightricks. **No territory restrictions.** Lightricks claims no rights over the outputs (they are yours). Outputs may not be used to train competing models. The Gemma 3 text encoder follows Google's Gemma Terms of Use (prohibited-use policy; outputs are free)."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-LTXVideo",
+   "url": "https://github.com/Lightricks/ComfyUI-LTXVideo",
+   "commit": "220e1d45aa0469f518e982102fca4dca92a61862",
+   "page": "https://github.com/Lightricks/ComfyUI-LTXVideo"
+  },
+  {
+   "name": "VideoHelperSuite",
+   "registry": "comfyui-videohelpersuite",
+   "version": "1.7.9",
+   "page": "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
+  },
+  {
+   "name": "KJNodes",
+   "registry": "comfyui-kjnodes",
+   "version": "1.5.0",
+   "page": "https://github.com/kijai/ComfyUI-KJNodes"
+  }
+ ],
+ "models": [
+  {
+   "dest": "diffusion_models",
+   "hf": "Kijai/LTX2.3_comfy:diffusion_models/ltx-2.3-22b-dev_transformer_only_int8_convrot.safetensors",
+   "role": {
+    "pt": "LTX 2.3 22B dev, só transformer (INT8)",
+    "en": "LTX 2.3 22B dev, transformer only (INT8)"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Kijai/LTX2.3_comfy:vae/LTX23_video_vae_bf16.safetensors",
+   "role": {
+    "pt": "VAE de vídeo",
+    "en": "video VAE"
+   }
+  },
+  {
+   "dest": "vae",
+   "hf": "Kijai/LTX2.3_comfy:vae/LTX23_audio_vae_bf16.safetensors",
+   "role": {
+    "pt": "VAE de áudio",
+    "en": "audio VAE"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Comfy-Org/ltx-2:split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
+   "role": {
+    "pt": "text encoder Gemma 3 12B (FP8)",
+    "en": "Gemma 3 12B text encoder (FP8)"
+   }
+  },
+  {
+   "dest": "text_encoders",
+   "hf": "Kijai/LTX2.3_comfy:text_encoders/ltx-2.3_text_projection_bf16.safetensors",
+   "role": {
+    "pt": "projeção de texto do LTX 2.3",
+    "en": "LTX 2.3 text projection"
+   }
+  },
+  {
+   "dest": "loras",
+   "hf": "Lightricks/LTX-2.3-22b-LoRA-Foley-V2A:ltx-2.3-22b-lora-foley-v2a-1.0.safetensors",
+   "role": {
+    "pt": "LoRA Foley V2A 1.0 (gated: aceite a licença)",
+    "en": "Foley V2A 1.0 LoRA (gated: accept the license)"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. **VHS LoadVideo**: o vídeo **sem áudio** (`muted_video.mp4`); o número de frames é arredondado para 8k+1.\n2. Prompt positivo: descreva os sons e quando acontecem (\"passos em sincronia com cada passada\"); o negativo do exemplo já exclui música e fala.\n3. LoRA com força 0,8–1,0. O vídeo sai com o áudio gerado.",
+  "en": "1. **VHS LoadVideo**: the video **without audio** (`muted_video.mp4`); the frame count is rounded to 8k+1.\n2. Positive prompt: describe the sounds and when they happen (\"footsteps in sync with each stride\"); the example's negative already excludes music and speech.\n3. LoRA strength 0.8–1.0. The video comes out with the generated audio."
+ },
+ "notes": {
+  "pt": "- Lento: 30 steps no modelo dev, ~32 min para 7 s.\n- Mudanças em relação ao workflow oficial: pilha de modelos do Kijai (dev INT8 + VAEs + Gemma FP8) no lugar do checkpoint completo; os dois nós `ArbitraryCode` (que executam Python digitado no workflow) trocados por `ComfyMathExpression` + `ImageFromBatch` nativos; `VideoSave_LTX` trocado por `CreateVideo` + `SaveVideo`.\n- Dependências pip do ComfyUI-LTXVideo: só `OpenImageIO` e `ninja` faltavam (`PIP_USER=true python3.13 -m pip install OpenImageIO ninja`).",
+  "en": "- Slow: 30 steps on the dev model, ~32 min for 7 s.\n- Changes from the official workflow: Kijai's model stack (dev INT8 + VAEs + FP8 Gemma) instead of the full checkpoint; the two `ArbitraryCode` nodes (which run Python typed into the workflow) replaced by native `ComfyMathExpression` + `ImageFromBatch`; `VideoSave_LTX` replaced by `CreateVideo` + `SaveVideo`.\n- ComfyUI-LTXVideo pip dependencies: only `OpenImageIO` and `ninja` were missing (`PIP_USER=true python3.13 -m pip install OpenImageIO ninja`)."
+ }
+}

@@ -556,5 +556,32 @@
   "page": "https://huggingface.co/PedroMarinhoDev/Qwen3-ASR-ComfyUI",
   "sha256": "958ac49a7015ad546206e87fbcf390ac567b81d1cc7d613a1255a41033b8345f",
   "size": 4076192608
+ },
+ {
+  "repo": "Lightricks/LTX-2.3-22b-LoRA-Foley-V2A",
+  "path": "ltx-2.3-22b-lora-foley-v2a-1.0.safetensors",
+  "revision": "4f42751a30658d79595a27258ea9fb4f4308dcb5",
+  "url": "https://huggingface.co/Lightricks/LTX-2.3-22b-LoRA-Foley-V2A/resolve/4f42751a30658d79595a27258ea9fb4f4308dcb5/ltx-2.3-22b-lora-foley-v2a-1.0.safetensors",
+  "page": "https://huggingface.co/Lightricks/LTX-2.3-22b-LoRA-Foley-V2A",
+  "sha256": "1bc16020f3937f1dc4957b24c713bc04ec550d6502db8c3e1dd822c412e1fb85",
+  "size": 226709270
+ },
+ {
+  "repo": "Lightricks/LTX-2.3-22b-IC-LoRA-Clean-Plate",
+  "path": "ltx-2.3-22b-ic-lora-clean-plate-1.0.safetensors",
+  "revision": "c2ab69ffe3e21410293bdee99d7d8ca0bc5a9ad0",
+  "url": "https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Clean-Plate/resolve/c2ab69ffe3e21410293bdee99d7d8ca0bc5a9ad0/ltx-2.3-22b-ic-lora-clean-plate-1.0.safetensors",
+  "page": "https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Clean-Plate",
+  "sha256": "a1b573a9649df549901ae6c5571a6d305d0620aed8953f39536e34da4ca01d6a",
+  "size": 327309305
+ },
+ {
+  "repo": "Kijai/LTX2.3_comfy",
+  "path": "diffusion_models/ltx-2.3-22b-dev_transformer_only_int8_convrot.safetensors",
+  "revision": "6d980fde0d330f2fed6ff8dfdfddb06d88a004e5",
+  "url": "https://huggingface.co/Kijai/LTX2.3_comfy/resolve/6d980fde0d330f2fed6ff8dfdfddb06d88a004e5/diffusion_models/ltx-2.3-22b-dev_transformer_only_int8_convrot.safetensors",
+  "page": "https://huggingface.co/Kijai/LTX2.3_comfy",
+  "sha256": "6f4b86bd840cb83179e9021306a63119c3b4e664248292c4103613a2d4a4484c",
+  "size": 21505993064
  }
 ]

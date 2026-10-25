@@ -88,3 +88,4 @@ Personal and commercial use allowed up to US$ 20M/year in revenue (above that, M
 - The author's template uses the **Spectrum** node (`comfyui-spectrum-minimax-h3`, optional accelerator). Its latest version is Flagged in the ComfyUI registry; this workflow was tested **without** it.
 - Gemma shares the GPU with H3: in this test it took 377 s of the 1118 s. `cache_gemma_preproduction` reuses the planning when only the seed changes.
 - The node downloads Gemma by itself if missing; install.sh already puts it in place.
+- **Side effect:** `pytorch_memory_fraction` (0.85) stays in effect for the **whole** ComfyUI process after the workflow finishes. In the regression run, Wan Animate 2 run afterwards ran out of memory (13.2 GB limit on a 16 GB card). Restart ComfyUI after using HR Endless, or use 1.0.

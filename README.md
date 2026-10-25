@@ -57,7 +57,9 @@ Every workflow below was tested on the setup described above; times are from tho
 | [H3 HR Endless Sampler (Gemma 4 directs the chunks)](workflows/23-h3-hr-endless-sampler/README.md) | MiniMax H3 | Long video in chunks; a local Gemma 4 plans the production and writes each chunk's prompt | 18min 38s · 6.6 s | 50.11 GB | MiniMax H3 Community (⚠️ territory) |
 | [H3 Long Video (LLM-split prompt)](workflows/24-h3-long-video/README.md) | MiniMax H3 | Long videos from chained segments, with the prompt split by an LLM | 11min 27s · 16 s | 44.43 GB | MiniMax H3 Community (⚠️ territory) |
 | [Herrgott's H3 Infinite Continuation (v1.4)](workflows/25-h3-infinite-continuation/README.md) | MiniMax H3 | Chains FL2VA clips with safe handover and joins them without visible seams | 23min 20s · 8.7 s (2 clips) | 42.47 GB | MiniMax H3 Community (⚠️ territory) |
+| [LTX 2.3 · Foley (sound for silent video)](workflows/33-ltx23-foley-v2a/README.md) | LTX 2.3 | Generates synchronized sound effects for a silent video | 32min 09s · 7 s | 39.07 GB | LTX-2 Community (free < US$ 10M) |
 | [H3 Realism People](workflows/59-h3-realism-people/README.md) | MiniMax H3 | Realism LoRA for people (trigger r34l1sm) | 2min 14s · 5 s | 42.69 GB | MiniMax H3 Community (⚠️ territory) |
+| [LTX 2.3 · Clean Plate (removes people from video)](workflows/60-ltx23-clean-plate/README.md) | LTX 2.3 | Erases people and moving objects and returns the empty background | 3min 39s · 4 s | 42.68 GB | LTX-2 Community (free < US$ 10M) |
 | [H3 Director · TaoMate 3-step (timeline)](workflows/h3-director-3step/README.md) | MiniMax H3 | 15 s video with audio, built on a timeline of segments | 10min 10s · 15 s | 63.53 GB | MiniMax H3 Community (⚠️ territory) |
 | [H3 Ref2VA · TaoMate 3 steps](workflows/h3-ref2va-taomate-3step/README.md) | MiniMax H3 | Video+audio from a reference image in 3 steps | 8min 44s · 15 s | 42.55 GB | MiniMax H3 Community (⚠️ territory) |
 
