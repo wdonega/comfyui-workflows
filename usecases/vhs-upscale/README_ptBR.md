@@ -16,6 +16,15 @@ alterado.
 | Limpeza + upscale 720p (3B) | ~110–130× a duração do vídeo na GPU: **~2 h por minuto de fita** |
 | Teste | duas capturas MPEG-2 padrão DVD (720x480 NTSC, 4:3, 9–10 s), RTX 5060 Ti 16 GB, 2026-10-25 |
 
+## Resultado
+
+O mesmo quadro de um vídeo caseiro dos anos 1990: a captura original da fita VHS em DVD (redimensionada para o mesmo
+tamanho com lanczos) e a saída padrão do script (cor `normalize`, SeedVR2 3B, 720p).
+
+![Captura VHS vs SeedVR2 3B 720p](assets/compare.jpg)
+
+![Detalhe do rosto: original vs SeedVR2 3B](assets/compare_face.jpg)
+
 ## Arquivos desta pasta
 
 | Arquivo | O que é |
@@ -24,6 +33,7 @@ alterado.
 | `seedvr2_video.api.json` | Workflow de vídeo do SeedVR2 (formato API) que o script preenche e manda para o ComfyUI |
 | `seedvr2_video.json` | O mesmo workflow para arrastar na interface do ComfyUI |
 | `usecase.json` | Fonte da linha deste caso de uso no README principal |
+| `assets/` | Imagens de comparação acima |
 
 ## Requisitos
 

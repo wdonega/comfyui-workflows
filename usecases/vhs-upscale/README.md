@@ -15,6 +15,15 @@ in chunks, joins everything back with the processed audio and saves a modern MP4
 | Cleanup + 720p upscale (3B) | ~110–130× the video length on the GPU: **~2 h per minute of tape** |
 | Test | two DVD-style MPEG-2 captures (720x480 NTSC, 4:3, 9–10 s), RTX 5060 Ti 16 GB, 2026-10-25 |
 
+## Result
+
+Same frame of a home video from the 1990s: the original DVD capture of the VHS tape (resized to the same size with
+lanczos) and the script's default output (`normalize` color, SeedVR2 3B, 720p).
+
+![VHS capture vs SeedVR2 3B 720p](assets/compare.jpg)
+
+![Face detail: original vs SeedVR2 3B](assets/compare_face.jpg)
+
 ## Files in this folder
 
 | File | What it is |
@@ -23,6 +32,7 @@ in chunks, joins everything back with the processed audio and saves a modern MP4
 | `seedvr2_video.api.json` | SeedVR2 video workflow (API format) that the script fills in and sends to ComfyUI |
 | `seedvr2_video.json` | Same workflow to drag into the ComfyUI interface |
 | `usecase.json` | Source of this use case's row in the main README |
+| `assets/` | Comparison images above |
 
 ## Requirements
 
