@@ -50,7 +50,7 @@ fetch_model() {
     local auth=()
     [[ -n "${HF_TOKEN:-}" && "$url" == https://huggingface.co/* ]] && auth=(-H "Authorization: Bearer $HF_TOKEN")
     curl -fL --progress-bar --retry 3 -C - "${auth[@]}" -o "$target.part" "$url" \
-        || die "falha ao baixar $url (repo gated? aceite a licença na página e exporte HF_TOKEN)"
+        || die "falha ao baixar $url. Se a rede caiu, rode de novo: o download continua de onde parou. Se o repo for gated, aceite a licença na página e exporte HF_TOKEN / download failed: rerun to resume; gated repos need HF_TOKEN"
     if [[ "$sha" != "-" ]]; then
         [[ "$(sha256sum "$target.part" | cut -d' ' -f1)" == "$sha" ]] || { rm -f "$target.part"; die "$file: SHA-256 não confere"; }
     fi

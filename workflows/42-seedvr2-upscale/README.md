@@ -64,3 +64,23 @@ Apache-2.0: free personal and commercial use, with no revenue or territory limit
 
 - The template's `ImageCompare` node (a UI-only visual comparer) was removed from the API version.
 - Only 7.8 GB peak VRAM: fits comfortably in 16 GB.
+
+### 7B models (optional)
+
+The [Comfy-Org/SeedVR2](https://huggingface.co/Comfy-Org/SeedVR2) repo (Apache-2.0) also has SeedVR2 **7B**, regular and *sharp*. They work in this same workflow by changing the **UNETLoader** `unet_name`; they are not in `install.sh`. To download, into `models/diffusion_models/`:
+
+| File | Size | SHA-256 |
+|---|---|---|
+| [`seedvr2_7b_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/SeedVR2/resolve/df48879708206a403d2a61acd55578c2e80fd233/diffusion_models/seedvr2_7b_int8_convrot.safetensors) | 8.33 GB | `5aa0d25fc9d35e449b659d0c9a5dcb22e2a4fa04032101b95a39da42b32c1be6` |
+| [`seedvr2_7b_sharp_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/SeedVR2/resolve/df48879708206a403d2a61acd55578c2e80fd233/diffusion_models/seedvr2_7b_sharp_int8_convrot.safetensors) | 8.33 GB | `db48be2f1cc7e36b01a2aa529810f5d9c6a971edd29be225cf1b0eb18d51c366` |
+
+Test (2026-10-25, official video template `utility_seedvr2_3b_int8_upscale_video`, 3 s of a VHS capture 640x480 → 960x720, `lab` color correction, automatic temporal chunks):
+
+| Model | Time | Peak VRAM | Sharpness (Laplacian variance) |
+|---|---|---|---|
+| input (lanczos) | — | — | 65 |
+| 3B INT8 | 329 s | 7.5 GB | **221** |
+| 7B INT8 | 392 s | 10.8 GB | 119 |
+| 7B *sharp* INT8 | 438 s | 10.9 GB | 109 |
+
+On a heavily degraded source (VHS), the 7B models were more conservative than the 3B: they keep the blur instead of rebuilding detail. The 3B was the best here, and faster. The 7B models may do better on less degraded sources (not tested).

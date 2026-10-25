@@ -64,3 +64,23 @@ Apache-2.0: uso pessoal e comercial livres, sem limite de receita nem de territ�
 
 - O nó `ImageCompare` do template (comparador visual da interface) foi removido da versão API.
 - Só 7,8 GB de pico de VRAM: cabe com folga em 16 GB.
+
+### Modelos 7B (opcionais)
+
+O repositório [Comfy-Org/SeedVR2](https://huggingface.co/Comfy-Org/SeedVR2) (Apache-2.0) também tem o SeedVR2 **7B**, normal e *sharp*. Funcionam neste mesmo workflow trocando o `unet_name` do **UNETLoader**; não estão no `install.sh`. Para baixar, em `models/diffusion_models/`:
+
+| Arquivo | Tamanho | SHA-256 |
+|---|---|---|
+| [`seedvr2_7b_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/SeedVR2/resolve/df48879708206a403d2a61acd55578c2e80fd233/diffusion_models/seedvr2_7b_int8_convrot.safetensors) | 8.33 GB | `5aa0d25fc9d35e449b659d0c9a5dcb22e2a4fa04032101b95a39da42b32c1be6` |
+| [`seedvr2_7b_sharp_int8_convrot.safetensors`](https://huggingface.co/Comfy-Org/SeedVR2/resolve/df48879708206a403d2a61acd55578c2e80fd233/diffusion_models/seedvr2_7b_sharp_int8_convrot.safetensors) | 8.33 GB | `db48be2f1cc7e36b01a2aa529810f5d9c6a971edd29be225cf1b0eb18d51c366` |
+
+Teste (2026-10-25, template de vídeo oficial `utility_seedvr2_3b_int8_upscale_video`, 3 s de uma captura de VHS 640x480 → 960x720, correção de cor `lab`, blocos temporais automáticos):
+
+| Modelo | Tempo | Pico de VRAM | Nitidez (variância do Laplaciano) |
+|---|---|---|---|
+| entrada (lanczos) | — | — | 65 |
+| 3B INT8 | 329 s | 7,5 GB | **221** |
+| 7B INT8 | 392 s | 10,8 GB | 119 |
+| 7B *sharp* INT8 | 438 s | 10,9 GB | 109 |
+
+Com fonte muito degradada (VHS), os 7B saíram mais conservadores que o 3B: preservam o borrado em vez de reconstruir. O 3B foi o melhor nesse caso, além de mais rápido. Os 7B podem render mais em fontes menos degradadas (não testado).
