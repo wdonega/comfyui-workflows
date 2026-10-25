@@ -84,3 +84,5 @@ Teste (2026-10-25, template de vídeo oficial `utility_seedvr2_3b_int8_upscale_v
 | 7B *sharp* INT8 | 438 s | 10,9 GB | 109 |
 
 Com fonte muito degradada (VHS), os 7B saíram mais conservadores que o 3B: preservam o borrado em vez de reconstruir. O 3B foi o melhor nesse caso, além de mais rápido. Os 7B podem render mais em fontes menos degradadas (não testado).
+
+Segunda passada (o resultado do 3B passado de novo pelo 3B): 354 s mantendo 960x720 e 384 s subindo para 1440x1080. Fica mais nítido, mas o rosto piora: contornos duros, olhos escurecidos e sombras inventadas. Uma passada só é o limite.
