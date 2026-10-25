@@ -42,6 +42,9 @@ L = {
         "tested": "Every workflow below was tested on the setup described above; times are from those runs.",
         "kinds": {"image": "Image", "video": "Video", "audio": "Audio"},
         "none": "_No tested workflows yet._",
+        "uc_title": "Use cases and scripts",
+        "uc_intro": "Complete jobs that combine workflows from this repo with ffmpeg and a script. Each folder has the script, the workflow it sends to ComfyUI and a README with the decisions and tests behind it.",
+        "uc_tbl": ["Use case", "What it does", "Workflows used", "Script"],
     },
     "pt": {
         "switch": "Idioma: [English](README.md) · **Português**",
@@ -67,6 +70,9 @@ L = {
         "tested": "Todos os workflows abaixo foram testados no setup descrito acima; os tempos são dessas execuções.",
         "kinds": {"image": "Imagem", "video": "Vídeo", "audio": "Áudio"},
         "none": "_Nenhum workflow testado ainda._",
+        "uc_title": "Casos de uso e scripts",
+        "uc_intro": "Trabalhos completos que combinam workflows deste repositório com ffmpeg e um script. Cada pasta tem o script, o workflow que ele manda para o ComfyUI e um README com as decisões e os testes por trás.",
+        "uc_tbl": ["Caso de uso", "O que faz", "Workflows usados", "Script"],
     },
 }
 
@@ -186,6 +192,19 @@ def readme(c, models, total, lang):
     return "\n".join(r)
 
 
+def usecases_table(s, lang, fname, workflows):
+    """Seção de casos de uso do README principal, a partir de usecases/<pasta>/usecase.json (os READMEs deles são escritos à mão)."""
+    items = [(d.name, json.loads((d / "usecase.json").read_text())) for d in sorted((ROOT / "usecases").glob("*")) if (d / "usecase.json").exists()]
+    if not items:
+        return []
+    r = [f"## {s['uc_title']}", "", s["uc_intro"], "", "| " + " | ".join(s["uc_tbl"]) + " |", "|" + "---|" * len(s["uc_tbl"])]
+    for name, u in items:
+        wfs = ", ".join(f"[{tr(workflows[w]['title'], lang)}](workflows/{w}/{fname})" for w in u["workflows"])
+        r.append(f"| [{tr(u['title'], lang)}](usecases/{name}/{fname}) | {tr(u['short'], lang)} | {wfs} "
+                 f"| [`{u['script']}`](usecases/{name}/{u['script']}) |")
+    return r + [""]
+
+
 def main():
     rows = []
     for folder in sorted((ROOT / "workflows").iterdir()):
@@ -218,6 +237,8 @@ def main():
             table.append("")
         head = (ROOT / "tools" / f"README.head.{lang}.md").read_text().strip()
         tail = (ROOT / "tools" / f"README.tail.{lang}.md").read_text().strip()
+        note, _, rest = tail.partition("\n## ")              # a nota dos tempos fecha as tabelas de workflows
+        tail = "\n".join([note.rstrip(), ""] + usecases_table(s, lang, fname, {n: c for n, c, _ in rows}) + ["## " + rest])
         logo = '<p align="center"><img src="assets/logo.svg" alt="ComfyUI Workflows" width="100%"></p>'
         (ROOT / fname).write_text(logo + "\n\n" + s["switch"] + "\n\n" + head + "\n\n" + "\n".join(table).rstrip() + "\n\n" + tail + "\n")
         print(f"ok  {fname}")

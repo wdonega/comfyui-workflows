@@ -1,0 +1,1170 @@
+{
+ "last_node_id": 20,
+ "last_link_id": 32,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "LoadVideo",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "slot_index": 0,
+     "links": [
+      21,
+      22
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "LoadVideo"
+   },
+   "widgets_values": [
+    "grainy_perfume_shot_crf32.mp4"
+   ]
+  },
+  {
+   "id": 2,
+   "type": "SaveVideo",
+   "pos": [
+    6720,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 19,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "video",
+     "type": "VIDEO",
+     "link": 1
+    }
+   ],
+   "outputs": [
+    {
+     "name": "video",
+     "type": "VIDEO",
+     "slot_index": 0,
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SaveVideo"
+   },
+   "widgets_values": [
+    "video/Upscaled_seedVR2",
+    "auto",
+    "auto",
+    0
+   ]
+  },
+  {
+   "id": 3,
+   "type": "VAEEncodeTiled",
+   "pos": [
+    2520,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "pixels",
+     "type": "IMAGE",
+     "link": 2
+    },
+    {
+     "name": "vae",
+     "type": "VAE",
+     "link": 3
+    }
+   ],
+   "outputs": [
+    {
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      24,
+      28
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAEEncodeTiled"
+   },
+   "widgets_values": [
+    512,
+    128,
+    64,
+    8
+   ]
+  },
+  {
+   "id": 4,
+   "type": "VAELoader",
+   "pos": [
+    0,
+    260
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "VAE",
+     "type": "VAE",
+     "slot_index": 0,
+     "links": [
+      3,
+      9
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "seedvr2_ema_vae_fp16.safetensors"
+   ]
+  },
+  {
+   "id": 5,
+   "type": "UNETLoader",
+   "pos": [
+    0,
+    520
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      4,
+      14
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UNETLoader"
+   },
+   "widgets_values": [
+    "seedvr2_3b_int8_convrot.safetensors",
+    "default"
+   ]
+  },
+  {
+   "id": 6,
+   "type": "KSampler",
+   "pos": [
+    4200,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model",
+     "type": "MODEL",
+     "link": 4
+    },
+    {
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 5
+    },
+    {
+     "name": "negative",
+     "type": "CONDITIONING",
+     "link": 6
+    },
+    {
+     "name": "latent_image",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 7
+    }
+   ],
+   "outputs": [
+    {
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      25,
+      31
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "KSampler"
+   },
+   "widgets_values": [
+    959948902156062,
+    "fixed",
+    1,
+    1,
+    "euler",
+    "simple",
+    1
+   ]
+  },
+  {
+   "id": 7,
+   "type": "VAEDecodeTiled",
+   "pos": [
+    5460,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 16,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "samples",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 8
+    },
+    {
+     "name": "vae",
+     "type": "VAE",
+     "link": 9
+    }
+   ],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      12
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAEDecodeTiled"
+   },
+   "widgets_values": [
+    512,
+    128,
+    64,
+    8
+   ]
+  },
+  {
+   "id": 8,
+   "type": "ResizeImageMaskNode",
+   "pos": [
+    1680,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "input",
+     "type": "IMAGE",
+     "link": 10
+    }
+   ],
+   "outputs": [
+    {
+     "name": "resized",
+     "type": "COMFY_MATCHTYPE_V3",
+     "slot_index": 0,
+     "links": [
+      11,
+      13
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "ResizeImageMaskNode"
+   },
+   "widgets_values": [
+    "scale by multiplier",
+    2,
+    "lanczos"
+   ]
+  },
+  {
+   "id": 9,
+   "type": "SeedVR2Preprocess",
+   "pos": [
+    2100,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "resized_images",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 11
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      2
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2Preprocess"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 10,
+   "type": "SeedVR2PostProcessing",
+   "pos": [
+    5880,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 17,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 12
+    },
+    {
+     "name": "original_resized_images",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 13
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      19
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2PostProcessing"
+   },
+   "widgets_values": [
+    "none"
+   ]
+  },
+  {
+   "id": 11,
+   "type": "SeedVR2Conditioning",
+   "pos": [
+    3780,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model",
+     "type": "MODEL",
+     "link": 14
+    },
+    {
+     "name": "vae_conditioning",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 15
+    }
+   ],
+   "outputs": [
+    {
+     "name": "positive",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      5
+     ]
+    },
+    {
+     "name": "negative",
+     "type": "CONDITIONING",
+     "slot_index": 1,
+     "links": [
+      6
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2Conditioning"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 12,
+   "type": "GetVideoComponents",
+   "pos": [
+    1260,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "video",
+     "type": "COMFY_MATCHTYPE_V3",
+     "link": 16
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      10
+     ]
+    },
+    {
+     "name": "audio",
+     "type": "AUDIO",
+     "slot_index": 1,
+     "links": [
+      20
+     ]
+    },
+    {
+     "name": "fps",
+     "type": "FLOAT",
+     "slot_index": 2,
+     "links": [
+      17
+     ]
+    },
+    {
+     "name": "bit_depth",
+     "type": "COMBO",
+     "slot_index": 3,
+     "links": [
+      18
+     ]
+    },
+    {
+     "name": "color_space",
+     "type": "COMBO",
+     "slot_index": 4,
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "GetVideoComponents"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 13,
+   "type": "CreateVideo",
+   "pos": [
+    6300,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 18,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "fps",
+     "type": "FLOAT",
+     "link": 17,
+     "widget": {
+      "name": "fps"
+     }
+    },
+    {
+     "name": "bit_depth",
+     "type": "COMBO",
+     "link": 18,
+     "widget": {
+      "name": "bit_depth"
+     }
+    },
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 19
+    },
+    {
+     "name": "audio",
+     "type": "AUDIO",
+     "link": 20
+    }
+   ],
+   "outputs": [
+    {
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "slot_index": 0,
+     "links": [
+      1
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "CreateVideo"
+   },
+   "widgets_values": [
+    30.0,
+    "auto",
+    "sRGB",
+    "none"
+   ]
+  },
+  {
+   "id": 14,
+   "type": "Video Slice",
+   "pos": [
+    420,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "video",
+     "type": "VIDEO",
+     "link": 21
+    }
+   ],
+   "outputs": [
+    {
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "slot_index": 0,
+     "links": [
+      23
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "Video Slice"
+   },
+   "widgets_values": [
+    0,
+    0,
+    false
+   ]
+  },
+  {
+   "id": 15,
+   "type": "ComfySwitchNode",
+   "pos": [
+    840,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "on_false",
+     "type": "VIDEO",
+     "link": 22
+    },
+    {
+     "name": "on_true",
+     "type": "VIDEO",
+     "link": 23
+    }
+   ],
+   "outputs": [
+    {
+     "name": "output",
+     "type": "COMFY_MATCHTYPE_V3",
+     "slot_index": 0,
+     "links": [
+      16
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "ComfySwitchNode"
+   },
+   "widgets_values": [
+    false
+   ]
+  },
+  {
+   "id": 16,
+   "type": "SeedVR2TemporalChunk",
+   "pos": [
+    2940,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "latent",
+     "type": "LATENT",
+     "link": 24
+    }
+   ],
+   "outputs": [
+    {
+     "name": "latents",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      29
+     ]
+    },
+    {
+     "name": "temporal_overlap",
+     "type": "INT",
+     "slot_index": 1,
+     "links": [
+      26
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2TemporalChunk"
+   },
+   "widgets_values": [
+    0,
+    "auto"
+   ]
+  },
+  {
+   "id": 17,
+   "type": "SeedVR2TemporalMerge",
+   "pos": [
+    4620,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "latents",
+     "type": "LATENT",
+     "link": 25
+    },
+    {
+     "name": "temporal_overlap",
+     "type": "INT",
+     "link": 26,
+     "widget": {
+      "name": "temporal_overlap"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "latent",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      32
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SeedVR2TemporalMerge"
+   },
+   "widgets_values": [
+    0
+   ]
+  },
+  {
+   "id": 18,
+   "type": "ComfySwitchNode",
+   "pos": [
+    3360,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "switch",
+     "type": "BOOLEAN",
+     "link": 27,
+     "widget": {
+      "name": "switch"
+     }
+    },
+    {
+     "name": "on_false",
+     "type": "LATENT",
+     "link": 28
+    },
+    {
+     "name": "on_true",
+     "type": "LATENT",
+     "link": 29
+    }
+   ],
+   "outputs": [
+    {
+     "name": "output",
+     "type": "COMFY_MATCHTYPE_V3",
+     "slot_index": 0,
+     "links": [
+      7,
+      15
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "ComfySwitchNode"
+   },
+   "widgets_values": [
+    0
+   ]
+  },
+  {
+   "id": 19,
+   "type": "ComfySwitchNode",
+   "pos": [
+    5040,
+    0
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "switch",
+     "type": "BOOLEAN",
+     "link": 30,
+     "widget": {
+      "name": "switch"
+     }
+    },
+    {
+     "name": "on_false",
+     "type": "LATENT",
+     "link": 31
+    },
+    {
+     "name": "on_true",
+     "type": "LATENT",
+     "link": 32
+    }
+   ],
+   "outputs": [
+    {
+     "name": "output",
+     "type": "COMFY_MATCHTYPE_V3",
+     "slot_index": 0,
+     "links": [
+      8
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "ComfySwitchNode"
+   },
+   "widgets_values": [
+    0
+   ]
+  },
+  {
+   "id": 20,
+   "type": "PrimitiveBoolean",
+   "pos": [
+    0,
+    780
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "BOOLEAN",
+     "type": "BOOLEAN",
+     "slot_index": 0,
+     "links": [
+      27,
+      30
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "PrimitiveBoolean"
+   },
+   "widgets_values": [
+    false
+   ],
+   "title": "Boolean (Split Latent)"
+  }
+ ],
+ "links": [
+  [
+   1,
+   13,
+   0,
+   2,
+   0,
+   "VIDEO"
+  ],
+  [
+   2,
+   9,
+   0,
+   3,
+   0,
+   "IMAGE"
+  ],
+  [
+   3,
+   4,
+   0,
+   3,
+   1,
+   "VAE"
+  ],
+  [
+   4,
+   5,
+   0,
+   6,
+   0,
+   "MODEL"
+  ],
+  [
+   5,
+   11,
+   0,
+   6,
+   1,
+   "CONDITIONING"
+  ],
+  [
+   6,
+   11,
+   1,
+   6,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   7,
+   18,
+   0,
+   6,
+   3,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   8,
+   19,
+   0,
+   7,
+   0,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   9,
+   4,
+   0,
+   7,
+   1,
+   "VAE"
+  ],
+  [
+   10,
+   12,
+   0,
+   8,
+   0,
+   "IMAGE"
+  ],
+  [
+   11,
+   8,
+   0,
+   9,
+   0,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   12,
+   7,
+   0,
+   10,
+   0,
+   "IMAGE"
+  ],
+  [
+   13,
+   8,
+   0,
+   10,
+   1,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   14,
+   5,
+   0,
+   11,
+   0,
+   "MODEL"
+  ],
+  [
+   15,
+   18,
+   0,
+   11,
+   1,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   16,
+   15,
+   0,
+   12,
+   0,
+   "COMFY_MATCHTYPE_V3"
+  ],
+  [
+   17,
+   12,
+   2,
+   13,
+   0,
+   "FLOAT"
+  ],
+  [
+   18,
+   12,
+   3,
+   13,
+   1,
+   "COMBO"
+  ],
+  [
+   19,
+   10,
+   0,
+   13,
+   2,
+   "IMAGE"
+  ],
+  [
+   20,
+   12,
+   1,
+   13,
+   3,
+   "AUDIO"
+  ],
+  [
+   21,
+   1,
+   0,
+   14,
+   0,
+   "VIDEO"
+  ],
+  [
+   22,
+   1,
+   0,
+   15,
+   0,
+   "VIDEO"
+  ],
+  [
+   23,
+   14,
+   0,
+   15,
+   1,
+   "VIDEO"
+  ],
+  [
+   24,
+   3,
+   0,
+   16,
+   0,
+   "LATENT"
+  ],
+  [
+   25,
+   6,
+   0,
+   17,
+   0,
+   "LATENT"
+  ],
+  [
+   26,
+   16,
+   1,
+   17,
+   1,
+   "INT"
+  ],
+  [
+   27,
+   20,
+   0,
+   18,
+   0,
+   "BOOLEAN"
+  ],
+  [
+   28,
+   3,
+   0,
+   18,
+   1,
+   "LATENT"
+  ],
+  [
+   29,
+   16,
+   0,
+   18,
+   2,
+   "LATENT"
+  ],
+  [
+   30,
+   20,
+   0,
+   19,
+   0,
+   "BOOLEAN"
+  ],
+  [
+   31,
+   6,
+   0,
+   19,
+   1,
+   "LATENT"
+  ],
+  [
+   32,
+   17,
+   0,
+   19,
+   2,
+   "LATENT"
+  ]
+ ],
+ "groups": [],
+ "config": {},
+ "extra": {},
+ "version": 0.4
+}

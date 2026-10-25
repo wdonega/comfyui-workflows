@@ -79,6 +79,14 @@ Tempos medidos na RTX 5060 Ti 16 GB com os parâmetros descritos no README de ca
 (execução no ComfyUI, sem fila; o pico de VRAM está no README de cada pasta). "Download" é o total de modelos do workflow, contando
 arquivos compartilhados com outros.
 
+## Casos de uso e scripts
+
+Trabalhos completos que combinam workflows deste repositório com ffmpeg e um script. Cada pasta tem o script, o workflow que ele manda para o ComfyUI e um README com as decisões e os testes por trás.
+
+| Caso de uso | O que faz | Workflows usados | Script |
+|---|---|---|---|
+| [Restauração de fitas VHS](usecases/vhs-upscale/README_ptBR.md) | Limpa capturas antigas (bordas, ruído, cor, áudio) com ffmpeg e faz upscale com SeedVR2, em lote | [SeedVR2 · upscale 4x](workflows/42-seedvr2-upscale/README_ptBR.md) | [`restore_vhs.py`](usecases/vhs-upscale/restore_vhs.py) |
+
 ## Instalar um workflow
 
 ```bash
@@ -118,3 +126,6 @@ Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `work
 ---
 
 Projeto independente, sem afiliação nem endosso da Comfy Org. O logo usa letras próprias; "ComfyUI" aparece só para dizer para que servem estes workflows.
+
+Para adicionar um caso de uso: crie `usecases/<pasta>/` com o script, o README.md/README_ptBR.md (escritos à mão) e um
+`usecase.json` (`title`, `short`, `workflows` com os nomes das pastas usadas, `script`); o gerador inclui na tabela acima.

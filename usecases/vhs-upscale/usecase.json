@@ -1,0 +1,6 @@
+{
+ "title": {"pt": "Restauração de fitas VHS", "en": "VHS tape restoration"},
+ "short": {"pt": "Limpa capturas antigas (bordas, ruído, cor, áudio) com ffmpeg e faz upscale com SeedVR2, em lote", "en": "Cleans old captures (borders, noise, color, audio) with ffmpeg and upscales them with SeedVR2, in batch"},
+ "workflows": ["42-seedvr2-upscale"],
+ "script": "restore_vhs.py"
+}

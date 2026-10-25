@@ -42,3 +42,6 @@ and run the generator.
 ---
 
 Independent project, not affiliated with or endorsed by Comfy Org. The logo uses original lettering; "ComfyUI" is used only to say what these workflows are for.
+
+To add a use case: create `usecases/<folder>/` with the script, its README.md/README_ptBR.md (written by hand) and a
+`usecase.json` (`title`, `short`, `workflows` with the folder names used, `script`); the generator adds it to the table above.

@@ -41,3 +41,6 @@ Para adicionar um workflow: crie `workflows/<pasta>/` com `workflow.json`, `work
 ---
 
 Projeto independente, sem afiliação nem endosso da Comfy Org. O logo usa letras próprias; "ComfyUI" aparece só para dizer para que servem estes workflows.
+
+Para adicionar um caso de uso: crie `usecases/<pasta>/` com o script, o README.md/README_ptBR.md (escritos à mão) e um
+`usecase.json` (`title`, `short`, `workflows` com os nomes das pastas usadas, `script`); o gerador inclui na tabela acima.

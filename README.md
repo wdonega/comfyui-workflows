@@ -79,6 +79,14 @@ Times measured on the RTX 5060 Ti 16 GB with the parameters described in each fo
 (execution inside ComfyUI, without queue; peak VRAM is in each folder's README). "Download" is the workflow's total model size,
 counting files shared with other workflows.
 
+## Use cases and scripts
+
+Complete jobs that combine workflows from this repo with ffmpeg and a script. Each folder has the script, the workflow it sends to ComfyUI and a README with the decisions and tests behind it.
+
+| Use case | What it does | Workflows used | Script |
+|---|---|---|---|
+| [VHS tape restoration](usecases/vhs-upscale/README.md) | Cleans old captures (borders, noise, color, audio) with ffmpeg and upscales them with SeedVR2, in batch | [SeedVR2 · 4x upscale](workflows/42-seedvr2-upscale/README.md) | [`restore_vhs.py`](usecases/vhs-upscale/restore_vhs.py) |
+
 ## Installing a workflow
 
 ```bash
@@ -119,3 +127,6 @@ and run the generator.
 ---
 
 Independent project, not affiliated with or endorsed by Comfy Org. The logo uses original lettering; "ComfyUI" is used only to say what these workflows are for.
+
+To add a use case: create `usecases/<folder>/` with the script, its README.md/README_ptBR.md (written by hand) and a
+`usecase.json` (`title`, `short`, `workflows` with the folder names used, `script`); the generator adds it to the table above.
