@@ -18,12 +18,15 @@ alterado.
 
 ## Resultado
 
-O mesmo quadro de um vídeo caseiro dos anos 1990: a captura original da fita VHS em DVD (redimensionada para o mesmo
-tamanho com lanczos) e a saída padrão do script (cor `normalize`, SeedVR2 3B, 720p).
+O mesmo quadro de um vídeo caseiro dos anos 1990, gerado pelo script com os padrões:
 
-![Captura VHS vs SeedVR2 3B 720p](assets/compare.jpg)
+1. **Captura VHS**: a captura original da fita em DVD, só cortada como as outras e redimensionada para o mesmo tamanho;
+2. **Limpeza com ffmpeg**: bordas, blocos de compressão, ruído e cor `normalize` (`--upscale none`);
+3. **SeedVR2 3B 720p**: a saída final.
 
-![Detalhe do rosto: original vs SeedVR2 3B](assets/compare_face.jpg)
+![Captura VHS, limpeza com ffmpeg e SeedVR2 3B 720p](assets/compare.jpg)
+
+![Detalhe do rosto nas três etapas](assets/compare_face.jpg)
 
 ## Arquivos desta pasta
 
