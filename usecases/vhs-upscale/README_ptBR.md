@@ -7,6 +7,9 @@ cada arquivo com ffmpeg (bordas, blocos de compressão, ruído, cor, áudio), ma
 upscale com **SeedVR2** em blocos, junta tudo de volta com o áudio tratado e salva um MP4 moderno. O original nunca é
 alterado.
 
+> **v2 disponível:** [Restauração de fitas VHS v2](../vhs-upscale-v2/README_ptBR.md) faz o mesmo com o custom node do
+> numz e o SeedVR2 em GGUF Q8: ~3x mais rápida, mesma qualidade ou melhor. Esta v1 não precisa de custom node.
+
 | | |
 |---|---|
 | Status | ✅ testado |

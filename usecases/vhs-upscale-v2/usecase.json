@@ -1,0 +1,6 @@
+{
+ "title": {"pt": "Restauração de fitas VHS v2", "en": "VHS tape restoration v2"},
+ "short": {"pt": "Igual à v1, mas o upscale usa o custom node do numz com SeedVR2 em GGUF Q8: ~3x mais rápido, mesma qualidade", "en": "Same as v1, but the upscale uses numz's custom node with SeedVR2 in GGUF Q8: ~3x faster, same quality"},
+ "workflows": ["42-seedvr2-upscale-v2"],
+ "script": "restore_vhs.py"
+}

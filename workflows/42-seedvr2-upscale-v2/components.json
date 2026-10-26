@@ -1,0 +1,75 @@
+{
+ "kind": "video",
+ "title": {
+  "pt": "SeedVR2 v2 · upscale de vídeo (GGUF)",
+  "en": "SeedVR2 v2 · video upscale (GGUF)"
+ },
+ "short": {
+  "pt": "Upscale de vídeo com o custom node do numz e modelo GGUF Q8: ~3x mais rápido que o nativo",
+  "en": "Video upscale with numz's custom node and a GGUF Q8 model: ~3x faster than the native one"
+ },
+ "plan": "#42",
+ "family": "SeedVR2",
+ "summary": {
+  "pt": "Segunda versão do [SeedVR2](../42-seedvr2-upscale/README_ptBR.md): em vez do suporte nativo do ComfyUI (INT8), usa o custom node [ComfyUI-SeedVR2_VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler) v2.5 do numz com o modelo 3B em GGUF Q8_0. Mesmo modelo e mesma qualidade a olho; no mesmo trecho de VHS levou 134 s contra ~410 s do nativo. Processa o vídeo em lotes de 21 frames (`batch_size`, sempre 4n+1) e define a altura final em `resolution` (lado menor).",
+  "en": "Second version of [SeedVR2](../42-seedvr2-upscale/README.md): instead of ComfyUI's native support (INT8), it uses numz's [ComfyUI-SeedVR2_VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler) v2.5 custom node with the 3B model in GGUF Q8_0. Same model and the same quality by eye; on the same VHS clip it took 134 s against ~410 s for the native one. It processes the video in batches of 21 frames (`batch_size`, always 4n+1) and sets the final height in `resolution` (shortest edge)."
+ },
+ "status": "testado",
+ "test": {
+  "what": {
+   "pt": "3 s de VHS limpo com ffmpeg (632x468, 90 frames) → 972x720: 90 frames e áudio preservados, sem saltos entre lotes",
+   "en": "3 s of VHS cleaned with ffmpeg (632x468, 90 frames) → 972x720: 90 frames and audio kept, no jumps between batches"
+  },
+  "clip": "632x468 → 972x720, 3 s",
+  "time_s": 134,
+  "vram_mib": 7887,
+  "gpu": "RTX 5060 Ti 16 GB",
+  "date": "2026-10-26"
+ },
+ "license": {
+  "name": "Apache-2.0",
+  "url": "https://www.apache.org/licenses/LICENSE-2.0",
+  "short": {
+   "pt": "Apache-2.0 (livre)",
+   "en": "Apache-2.0 (free)"
+  },
+  "summary": {
+   "pt": "Apache-2.0 (modelos GGUF, VAE e custom node): uso pessoal e comercial livres, sem limite de receita nem de território; basta manter os avisos de licença ao redistribuir. As saídas são suas.",
+   "en": "Apache-2.0 (GGUF models, VAE and custom node): free personal and commercial use, with no revenue or territory limits; just keep the license notices when redistributing. The outputs are yours."
+  }
+ },
+ "nodes": [
+  {
+   "name": "ComfyUI-SeedVR2_VideoUpscaler (v2.5.23)",
+   "url": "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler",
+   "commit": "5a4bf428f3735cc72ac760d40f372f94dec28422",
+   "page": "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler"
+  }
+ ],
+ "models": [
+  {
+   "dest": "SEEDVR2",
+   "hf": "cmeka/SeedVR2-GGUF:seedvr2_ema_3b-Q8_0.gguf@de058a1261f2fc4bb41f39e9ddf313877e4ebf0d",
+   "role": {
+    "pt": "SeedVR2 3B (GGUF Q8_0)",
+    "en": "SeedVR2 3B (GGUF Q8_0)"
+   }
+  },
+  {
+   "dest": "SEEDVR2",
+   "hf": "numz/SeedVR2_comfyUI:ema_vae_fp16.safetensors@09ced71023636e9bc8cdf9cdecfb2625d1e691e8",
+   "role": {
+    "pt": "VAE do SeedVR2",
+    "en": "SeedVR2 VAE"
+   }
+  }
+ ],
+ "usage": {
+  "pt": "1. Depois do `install.sh`, instale a dependência do custom node no Python do ComfyUI: `pip install rotary-embedding-torch==0.9.1` (as outras do `requirements.txt` já vêm com o ComfyUI) e reinicie o ComfyUI.\n2. Vídeo no **LoadVideo** (`input.mp4`).\n3. Altura final em `resolution` do **SeedVR2VideoUpscaler** (720; é o lado menor). `batch_size` 21: lotes maiores pedem mais VRAM (93 frames estouraram 16 GB sem `blocks_to_swap`).\n4. Para vídeos longos, divida em trechos (o [caso de uso de VHS v2](../../usecases/vhs-upscale-v2/README_ptBR.md) faz isso sozinho): todos os frames do vídeo ficam na RAM.",
+  "en": "1. After `install.sh`, install the custom node's dependency in ComfyUI's Python: `pip install rotary-embedding-torch==0.9.1` (the rest of `requirements.txt` already ships with ComfyUI) and restart ComfyUI.\n2. Video in **LoadVideo** (`input.mp4`).\n3. Final height in the **SeedVR2VideoUpscaler** `resolution` (720; it is the shortest edge). `batch_size` 21: bigger batches need more VRAM (93 frames ran out of 16 GB without `blocks_to_swap`).\n4. For long videos, split them into chunks (the [VHS v2 use case](../../usecases/vhs-upscale-v2/README.md) does it for you): every frame of the video is kept in RAM."
+ },
+ "notes": {
+  "pt": "### Comparação (2026-10-26, mesmos 3 s de VHS, 720p, correção de cor `lab`)\n\n| Versão | Tempo | Pico de VRAM |\n|---|---|---|\n| [v1](../42-seedvr2-upscale/README_ptBR.md) nativo 3B INT8 | 411 s | 7,0 GB |\n| v2 3B Q8_0, `batch_size` 21 | 150 s | 8,1 GB |\n| v2 3B Q4_K_M, `batch_size` 21 | 148 s | 8,0 GB |\n| v2 3B Q8_0, `batch_size` 93 | sem VRAM (OOM) | — |\n| v2 3B Q8_0, `batch_size` 93, `blocks_to_swap` 16 | 142 s | 15,6 GB |\n\nFonte crua (sem limpeza), para medir só o upscale. A olho, as versões ficaram iguais (o Q4 também); lotes maiores não trouxeram ganho visível e nenhuma versão teve salto entre lotes. O `torch.compile` (nó **SeedVR2TorchCompileSettings**) não foi usado nem testado.\n\n### Modelo 7B (opcional)\n\n[`seedvr2_ema_7b-Q8_0.gguf`](https://huggingface.co/cmeka/SeedVR2-GGUF/resolve/de058a1261f2fc4bb41f39e9ddf313877e4ebf0d/seedvr2_ema_7b-Q8_0.gguf) (8,84 GB, Apache-2.0), em `models/SEEDVR2/`. Não está no `install.sh`; troque o `model` do **SeedVR2LoadDiTModel**. Teste (mesmos 3 s de VHS limpo, 720p): 160 s e 12,1 GB de pico de VRAM (3B: 134 s, 7,9 GB), mas nitidez 108 contra 174 do 3B: com fonte tão degradada, o 7B preserva o borrado em vez de reconstruir, como na [v1](../42-seedvr2-upscale/README_ptBR.md). Em 1080p: 347 s, 15,4 GB.",
+  "en": "### Comparison (2026-10-26, same 3 s of VHS, 720p, `lab` color correction)\n\n| Version | Time | Peak VRAM |\n|---|---|---|\n| [v1](../42-seedvr2-upscale/README.md) native 3B INT8 | 411 s | 7.0 GB |\n| v2 3B Q8_0, `batch_size` 21 | 150 s | 8.1 GB |\n| v2 3B Q4_K_M, `batch_size` 21 | 148 s | 8.0 GB |\n| v2 3B Q8_0, `batch_size` 93 | out of VRAM (OOM) | — |\n| v2 3B Q8_0, `batch_size` 93, `blocks_to_swap` 16 | 142 s | 15.6 GB |\n\nRaw source (no cleanup), to measure only the upscale. By eye the versions came out the same (Q4 too); bigger batches gave no visible gain and no version had a jump between batches. `torch.compile` (the **SeedVR2TorchCompileSettings** node) was not used or tested.\n\n### 7B model (optional)\n\n[`seedvr2_ema_7b-Q8_0.gguf`](https://huggingface.co/cmeka/SeedVR2-GGUF/resolve/de058a1261f2fc4bb41f39e9ddf313877e4ebf0d/seedvr2_ema_7b-Q8_0.gguf) (8.84 GB, Apache-2.0), into `models/SEEDVR2/`. It is not in `install.sh`; change the **SeedVR2LoadDiTModel** `model`. Test (same 3 s of cleaned VHS, 720p): 160 s and 12.1 GB peak VRAM (3B: 134 s, 7.9 GB), but sharpness 108 against 174 for the 3B: on a source this degraded the 7B keeps the blur instead of rebuilding it, as in [v1](../42-seedvr2-upscale/README.md). At 1080p: 347 s, 15.4 GB."
+ }
+}

@@ -6,6 +6,9 @@ Batch restoration of old home videos captured from VHS (and other old formats): 
 ffmpeg (borders, compression blocks, noise, color, audio), sends the cleaned video to ComfyUI for a **SeedVR2** upscale
 in chunks, joins everything back with the processed audio and saves a modern MP4. The original is never modified.
 
+> **v2 available:** [VHS tape restoration v2](../vhs-upscale-v2/README.md) does the same with numz's custom node and
+> SeedVR2 in GGUF Q8: ~3x faster, same quality or better. This v1 needs no custom node.
+
 | | |
 |---|---|
 | Status | ✅ tested |

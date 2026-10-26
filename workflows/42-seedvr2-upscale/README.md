@@ -86,3 +86,7 @@ Test (2026-10-25, official video template `utility_seedvr2_3b_int8_upscale_video
 On a heavily degraded source (VHS), the 7B models were more conservative than the 3B: they keep the blur instead of rebuilding detail. The 3B was the best here, and faster. The 7B models may do better on less degraded sources (not tested).
 
 Second pass (the 3B output run through the 3B again): 354 s keeping 960x720 and 384 s going to 1440x1080. It gets sharper, but faces get worse: hard outlines, darkened eyes and made-up shadows. One pass is the limit.
+
+### v2
+
+For video, [v2](../42-seedvr2-upscale-v2/README.md) uses numz's custom node with the 3B in GGUF Q8_0: ~3x faster on the same clip.
